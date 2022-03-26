@@ -48,6 +48,42 @@ Card <- component("Card")
 Pre <- component("Pre")
 
 #' @export
+H1 <- component("H1")
+
+#' @export
+H2 <- component("H2")
+
+#' @export
+H3 <- component("H3")
+
+#' @export
+H4 <- component("H4")
+
+#' @export
+H5 <- component("H5")
+
+#' @export
+H6 <- component("H6")
+
+#' @export
+Blockquote <- component("Blockquote")
+
+#' @export
+Code <- component("Code")
+
+#' @export
+Label <- component("Label")
+
+#' @export
+OL <- component("OL")
+
+#' @export
+UL <- component("UL")
+
+#' @export
+HTMLTable <- component("HTMLTable")
+
+#' @export
 Divider <- component("Divider")
 
 #' @export
