@@ -19,9 +19,18 @@ component <- function(name) {
 
 input <- function(name, defaultValue) {
   function(inputId, ..., value = defaultValue) shiny.react::reactElement(
-    module = "@/blueprint",
+    module = "@/shiny.blueprint",
     name = name,
     props = shiny.react::asProps(inputId = inputId, ..., value = value),
+    deps = blueprintDependency()
+  )
+}
+
+button <- function(name) {
+  function(inputId, ...) shiny.react::reactElement(
+    module = "@/shiny.blueprint", 
+    name = name,
+    props = shiny.react::asProps(inputId = inputId, ...),
     deps = blueprintDependency()
   )
 }
@@ -30,10 +39,25 @@ input <- function(name, defaultValue) {
 ProgressBar <- component("ProgressBar")
 
 #' @export
+Callout <- component("Callout")
+
+#' @export
+Card <- component("Card")
+
+#' @export
 Switch <- component("Switch")
+
+#' @export
+Switch.shinyInput <- input("Switch", FALSE)
 
 #' @export
 Spinner <- component("Spinner")
 
 #' @export
-Switch.shinyInput <- input("Switch", FALSE)
+ButtonGroup <- component("ButtonGroup")
+
+#' @export
+Button <- component("Button")
+
+#' @export
+Button.shinyInput <- button("Button")

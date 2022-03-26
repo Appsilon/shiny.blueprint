@@ -1,7 +1,9 @@
 const Blueprint = require('@blueprintjs/core');
-const { InputAdapter } = require('@/shiny.react')
+const { ButtonAdapter, InputAdapter } = require('@/shiny.react')
 
 require('@blueprintjs/core/lib/css/blueprint.css');
+
+const Button = ButtonAdapter(Blueprint.Button);
 
 const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   checked: value,
@@ -11,5 +13,5 @@ const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
 window.jsmodule = {
   ...window.jsmodule,
   '@blueprintjs/core': require('@blueprintjs/core'),
-  '@/blueprint': { Switch }
+  '@/shiny.blueprint': { Switch, Button }
 };

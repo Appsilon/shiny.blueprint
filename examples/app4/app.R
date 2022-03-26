@@ -4,6 +4,26 @@ library(shiny.blueprint)
 
 shinyApp(
   ui = tagList(
+    Button(text = "test", icon = "refresh"),
+    Button(text = "test", icon = "refresh", disabled = "true"),
+    Button(text = "test", icon = "refresh", loading = "true"),
+    Button(text = "test", icon = "refresh", minimal = "true"),
+    Button(text = "test", icon = "refresh", outlined = "true"),
+    Button(text = "test", icon = "refresh", small = "true"),
+    Button(text = "test", icon = "refresh", large = "true"),
+    Button(text = "test", icon = "refresh", intent = "primary"),
+    Button(icon = "refresh", intent = "danger"),
+    Button.shinyInput(text = "Log it", inputId = "button"),
+    ButtonGroup(
+      Button(text = "File", icon = "database"),
+      Button(text = "Edit", icon = "refresh"),
+      Button(text = "View", icon = "function")
+    ),
+    ButtonGroup(vertical = "true",
+      Button(text = "File", icon = "database"),
+      Button(text = "Edit", icon = "refresh"),
+      Button(text = "View", icon = "function")
+    ),
     Spinner(),
     Spinner(intent = "danger"),
     Spinner(intent = "success", size = 150),
@@ -13,11 +33,22 @@ shinyApp(
       value = TRUE,
       label = "Animate progress bar"
     ),
-    reactOutput("progress")
+    reactOutput("progress"),
+    Callout(title = "Visually important content", "The component is a simple wrapper around the CSS API that provides props for modifiers and optional title element. Any additional HTML props will be spread to the rendered element."
+    ),
+    Card(interactive = "true", 
+      tags$h2(tags$a(href="#", "Analytical applications")),
+      tags$p("User interfaces that enable people to interact smoothly with data, ask better questions, and make better decisions."),
+      Button(intent = "primary", "Submit")
+    )
   ),
   server = function(input, output) {
     output$progress <- renderReact({
       ProgressBar(animate = input$animate)
+    })
+    observe({
+      input$button
+      print("clicked!")
     })
   }
 )
