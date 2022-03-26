@@ -48,6 +48,9 @@ Card <- component("Card")
 Pre <- component("Pre")
 
 #' @export
+Divider <- component("Divider")
+
+#' @export
 Collapse <- component("Collapse")
 
 #' @export
@@ -67,3 +70,6 @@ Button <- component("Button")
 
 #' @export
 Button.shinyInput <- button("Button")
+
+#' @export
+EditableText.shinyInput <- input("EditableText", "")

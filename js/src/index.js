@@ -10,8 +10,14 @@ const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   onChange: (event) => setValue(event.target.checked),
 }));
 
+const EditableText = InputAdapter(Blueprint.EditableText, (value, setValue) => ({
+  value,
+  onChange: setValue
+  }
+));
+
 window.jsmodule = {
   ...window.jsmodule,
   '@blueprintjs/core': require('@blueprintjs/core'),
-  '@/shiny.blueprint': { Switch, Button }
+  '@/shiny.blueprint': { Switch, Button, EditableText }
 };

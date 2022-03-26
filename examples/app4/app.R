@@ -19,11 +19,23 @@ shinyApp(
       Button(text = "Edit", icon = "refresh"),
       Button(text = "View", icon = "function")
     ),
+    ButtonGroup(minimal = "true",
+      Button(text="File"),
+      Button(text="Edit"),
+      Divider(),
+      Button(text="Create"),
+      Button(text="Delete"),
+      Divider(),
+      Button(icon="add"),
+      Button(icon="remove")
+    ),
     ButtonGroup(vertical = "true",
       Button(text = "File", icon = "database"),
       Button(text = "Edit", icon = "refresh"),
       Button(text = "View", icon = "function")
     ),
+    tags$h2(EditableText.shinyInput(inputId = "editable_header")),
+    EditableText.shinyInput(inputId = "editable", multiline = "true", minLines = 3, maxLines = 12),
     Spinner(),
     Spinner(intent = "danger"),
     Spinner(intent = "success", size = 150),
@@ -58,6 +70,9 @@ shinyApp(
     observe({
       input$button
       print("clicked!")
+    })
+    observe({
+      print(input$editable)
     })
   }
 )
