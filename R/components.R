@@ -45,6 +45,12 @@ Callout <- component("Callout")
 Card <- component("Card")
 
 #' @export
+Pre <- component("Pre")
+
+#' @export
+Collapse <- component("Collapse")
+
+#' @export
 Switch <- component("Switch")
 
 #' @export

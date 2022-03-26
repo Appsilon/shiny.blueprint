@@ -40,11 +40,20 @@ shinyApp(
       tags$h2(tags$a(href="#", "Analytical applications")),
       tags$p("User interfaces that enable people to interact smoothly with data, ask better questions, and make better decisions."),
       Button(intent = "primary", "Submit")
-    )
+    ),
+    reactOutput("collapse")
   ),
   server = function(input, output) {
     output$progress <- renderReact({
       ProgressBar(animate = input$animate)
+    })
+    output$collapse <- renderReact({
+      Collapse(isOpen = input$animate,
+      Pre("[11:53:30] Finished 'typescript-bundle-blueprint' after 769 ms
+[11:53:30] Starting 'typescript-typings-blueprint'...
+[11:53:30] Finished 'typescript-typings-blueprint' after 198 ms
+[11:53:30] write ./blueprint.css
+[11:53:30] Finished 'sass-compile-blueprint' after 2.84 s"))
     })
     observe({
       input$button
