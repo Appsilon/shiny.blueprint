@@ -33,4 +33,7 @@ ProgressBar <- component("ProgressBar")
 Switch <- component("Switch")
 
 #' @export
+Spinner <- component("Spinner")
+
+#' @export
 Switch.shinyInput <- input("Switch", FALSE)
