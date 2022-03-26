@@ -121,3 +121,15 @@ Menu <- component("Menu")
 
 #' @export
 MenuItem <- component("MenuItem")
+
+#' @export
+Navbar <- component("Navbar")
+
+#' @export
+NavbarGroup <- component("NavbarGroup")
+
+#' @export
+NavbarHeading <- component("NavbarHeading")
+
+#' @export
+NavbarDivider <- component("NavbarDivider")
