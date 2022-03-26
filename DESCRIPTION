@@ -1,0 +1,20 @@
+Package: shiny.blueprint
+Title: Blueprint UI for Shiny apps
+Version: 0.0.0.9000
+Authors@R:
+  c(
+    person(given = "Filip", family = "Stachura", role = "aut", email = "filip@appsilon.com"),
+    person("Developers", "Appsilon", email = "support+opensource@appsilon.com", role = "cre"),
+    person(family = "Appsilon Sp. z o.o.", role = "cph")
+  )
+Description: Blueprint UI for Shiny apps through shiny.react bindings.
+License: Appsilon proprietary
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+  htmltools,
+  shiny,
+  shiny.react (>= 0.2.2)
+
