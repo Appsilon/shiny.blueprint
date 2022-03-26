@@ -133,3 +133,6 @@ NavbarHeading <- component("NavbarHeading")
 
 #' @export
 NavbarDivider <- component("NavbarDivider")
+
+#' @export
+Popover <- component("Popover")
