@@ -84,6 +84,9 @@ UL <- component("UL")
 HTMLTable <- component("HTMLTable")
 
 #' @export
+Icon <- component("Icon")
+
+#' @export
 Divider <- component("Divider")
 
 #' @export
