@@ -1,6 +1,4 @@
-<a href = "https://appsilon.com/careers/" target="_blank"><img src="http://d2v95fjda94ghc.cloudfront.net/hiring.png" alt="We are hiring!"/></a>
-
-# shiny.blueprint
+# shiny.blueprint [Appsilon proprietary] 
 
 We believe that a great UI plays a huge role in the success of application projects. shiny.blueprint gives your apps:
 - beautiful, professional look
