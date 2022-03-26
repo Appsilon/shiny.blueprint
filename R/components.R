@@ -112,3 +112,12 @@ Button.shinyInput <- button("Button")
 
 #' @export
 EditableText.shinyInput <- input("EditableText", "")
+
+#' @export
+MenuDivider <- component("MenuDivider")
+
+#' @export
+Menu <- component("Menu")
+
+#' @export
+MenuItem <- component("MenuItem")
