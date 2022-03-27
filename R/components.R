@@ -136,3 +136,6 @@ NavbarDivider <- component("NavbarDivider")
 
 #' @export
 Popover <- component("Popover")
+
+#' @export
+NonIdealState <- component("NonIdealState")
