@@ -1,5 +1,5 @@
 library(shiny)
-library(shiny.blueprint)
+library(appsilon.blueprint)
 library(shiny.router)
 library(sass)
 library(stringi)

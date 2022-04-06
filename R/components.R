@@ -2,7 +2,7 @@ blueprintDependency <- function() {
   htmltools::htmlDependency(
     name = "blueprint",
     version = "0.1.0",
-    package = "shiny.blueprint",
+    package = "appsilon.blueprint",
     src = "www",
     script = "blueprint.js"
   )
@@ -19,7 +19,7 @@ component <- function(name) {
 
 input <- function(name, defaultValue) {
   function(inputId, ..., value = defaultValue) shiny.react::reactElement(
-    module = "@/shiny.blueprint",
+    module = "@/appsilon.blueprint",
     name = name,
     props = shiny.react::asProps(inputId = inputId, ..., value = value),
     deps = blueprintDependency()
@@ -28,7 +28,7 @@ input <- function(name, defaultValue) {
 
 button <- function(name) {
   function(inputId, ...) shiny.react::reactElement(
-    module = "@/shiny.blueprint", 
+    module = "@/appsilon.blueprint", 
     name = name,
     props = shiny.react::asProps(inputId = inputId, ...),
     deps = blueprintDependency()

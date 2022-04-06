@@ -1,6 +1,6 @@
 library(shiny)
 library(shiny.react)
-library(shiny.blueprint)
+library(appsilon.blueprint)
 
 shinyApp(
   ui = tagList(
@@ -21,7 +21,7 @@ shinyApp(
       tags$tbody(
         tags$tr(tags$td("Blueprint"), tags$td("JS React"), tags$td("268")),
         tags$tr(tags$td("TS"), tags$td("JSX"), tags$td("68")),
-        tags$tr(tags$td("shiny.blueprint"), tags$td("R JS"), tags$td("2"))
+        tags$tr(tags$td("appsilon.blueprint"), tags$td("R JS"), tags$td("2"))
       ),
       tags$tfoot(tags$tr(tags$td("Total", colspan = 2), tags$td("1508")))
     )

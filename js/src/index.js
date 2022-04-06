@@ -19,5 +19,5 @@ const EditableText = InputAdapter(Blueprint.EditableText, (value, setValue) => (
 window.jsmodule = {
   ...window.jsmodule,
   '@blueprintjs/core': require('@blueprintjs/core'),
-  '@/shiny.blueprint': { Switch, Button, EditableText }
+  '@/appsilon.blueprint': { Switch, Button, EditableText }
 };

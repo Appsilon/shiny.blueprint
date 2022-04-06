@@ -1,6 +1,6 @@
 library(shiny)
 library(shiny.react)
-library(shiny.blueprint)
+library(appsilon.blueprint)
 
 withDefault <- function(x, default) {
   if (is.null(x)) default
