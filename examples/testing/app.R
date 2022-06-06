@@ -48,7 +48,7 @@ shinyApp(
     reactOutput("progress"),
     Callout(title = "Visually important content", "The component is a simple wrapper around the CSS API that provides props for modifiers and optional title element. Any additional HTML props will be spread to the rendered element."
     ),
-    Card(interactive = "true", 
+    Card(interactive = "true",
       tags$h2(tags$a(href="#", "Analytical applications")),
       tags$p("User interfaces that enable people to interact smoothly with data, ask better questions, and make better decisions."),
       Button(intent = "primary", "Submit")
