@@ -1,1 +1,4 @@
+^\.github$
+^\.lintr$
 ^js$
+^reinstall.sh$
