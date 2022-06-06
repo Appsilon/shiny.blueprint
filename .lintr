@@ -1,0 +1,7 @@
+linters:
+  with_defaults(
+    line_length_linter = line_length_linter(100),
+    object_name_linter = object_name_linter(c("camelCase", "CamelCase")),
+    open_curly_linter = open_curly_linter(allow_single_line = TRUE),
+    closed_curly_linter = closed_curly_linter(allow_single_line = TRUE)
+  )

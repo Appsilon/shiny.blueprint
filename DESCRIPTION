@@ -20,4 +20,5 @@ Imports:
   shiny.react (>= 0.2.2)
 Suggests:
   knitr,
+  lintr,
   rmarkdown
