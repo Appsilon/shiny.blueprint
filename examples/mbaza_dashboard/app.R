@@ -11,16 +11,19 @@ source("home.R")
 
 layout <- div(
   navbar,
-  div(style = "display: flex; flex-direction: row",
-      sidebar,
-      homePage)
+  div(
+    style = "display: flex; flex-direction: row",
+    sidebar,
+    homePage
+  )
 )
 
-ui <- fluidPage(suppressDependencies("bootstrap"),
-                tags$head(
-                  tags$link(href = "style.css", rel = "stylesheet", type = "text/css")
-                ),
-                shiny::tags$body(layout)
+ui <- fluidPage(
+  suppressDependencies("bootstrap"),
+  tags$head(
+    tags$link(href = "style.css", rel = "stylesheet", type = "text/css")
+  ),
+  shiny::tags$body(layout)
 )
 
 sass(sass_file("style.scss"), output = "www/style.css", cache = FALSE)

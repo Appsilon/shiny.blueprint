@@ -1,5 +1,4 @@
 library(shiny)
-library(shiny.react)
 library(appsilon.blueprint)
 
 withDefault <- function(x, default) {

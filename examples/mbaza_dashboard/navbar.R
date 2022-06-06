@@ -1,10 +1,12 @@
 navbarLeft <-
   NavbarGroup(
-    align = 'left',
+    align = "left",
     NavbarHeading(
-      img(src = "appsilon-logo.png",
-          style = "height: 32px;",
-          alt = "Appsilon")
+      img(
+        src = "appsilon-logo.png",
+        style = "height: 32px;",
+        alt = "Appsilon"
+      )
     ),
     NavbarHeading(strong("Mbaza")),
     NavbarDivider(),
@@ -13,7 +15,7 @@ navbarLeft <-
 
 navbarRight <-
   NavbarGroup(
-    align = 'right',
+    align = "right",
     Button(
       minimal = "true",
       icon = "projects",
@@ -22,15 +24,18 @@ navbarRight <-
     ),
     NavbarDivider(),
     Button(minimal = "true", icon = "user"),
-    Button(minimal = "true", icon = "notifications"
-    ),
+    Button(minimal = "true", icon = "notifications"),
     Popover(
       Button(minimal = "true", icon = "globe"),
-      Menu(MenuItem(text = "English"),
-           MenuItem(text = "Français"))
+      Menu(
+        MenuItem(text = "English"),
+        MenuItem(text = "Français")
+      )
     )
   )
 
-navbar <- Navbar(className = "bp4-dark",
-                 navbarLeft,
-                 navbarRight)
+navbar <- Navbar(
+  className = "bp4-dark",
+  navbarLeft,
+  navbarRight
+)
