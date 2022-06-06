@@ -23,7 +23,7 @@ ui <- fluidPage(suppressDependencies("bootstrap"),
                 shiny::tags$body(layout)
 )
 
-sass(sass_file("style.scss"), output = "www/style.css")
+sass(sass_file("style.scss"), output = "www/style.css", cache = FALSE)
 
 server <- function(input, output, session) {
   observeEvent(input$`user-button`, {
