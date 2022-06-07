@@ -3,7 +3,7 @@ library(appsilon.blueprint)
 
 shinyApp(
   ui = Card(
-    interactive = "true",
+    interactive = TRUE,
     H5(tags$a(href = "#", "Analytical applications")),
     tags$p(
       "User interfaces that enable people to interact smoothly with data,",

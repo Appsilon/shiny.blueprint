@@ -6,13 +6,13 @@ shinyApp(
     NavbarGroup(
       NavbarHeading("Blueprint"),
       NavbarDivider(),
-      Button(minimal = "true", icon = "home", text = "Home"),
-      Button(minimal = "true", icon = "document", text = "Files")
+      Button(minimal = TRUE, icon = "home", text = "Home"),
+      Button(minimal = TRUE, icon = "document", text = "Files")
     ),
     NavbarGroup(
       align = "right",
-      Button(minimal = "true", icon = "user"),
-      Button(minimal = "true", icon = "refresh")
+      Button(minimal = TRUE, icon = "user"),
+      Button(minimal = TRUE, icon = "refresh")
     )
   ),
   server = function(input, output) {}

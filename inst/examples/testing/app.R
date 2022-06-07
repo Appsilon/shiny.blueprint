@@ -4,12 +4,12 @@ library(appsilon.blueprint)
 shinyApp(
   ui = tagList(
     Button(text = "test", icon = "refresh"),
-    Button(text = "test", icon = "refresh", disabled = "true"),
-    Button(text = "test", icon = "refresh", loading = "true"),
-    Button(text = "test", icon = "refresh", minimal = "true"),
-    Button(text = "test", icon = "refresh", outlined = "true"),
-    Button(text = "test", icon = "refresh", small = "true"),
-    Button(text = "test", icon = "refresh", large = "true"),
+    Button(text = "test", icon = "refresh", disabled = TRUE),
+    Button(text = "test", icon = "refresh", loading = TRUE),
+    Button(text = "test", icon = "refresh", minimal = TRUE),
+    Button(text = "test", icon = "refresh", outlined = TRUE),
+    Button(text = "test", icon = "refresh", small = TRUE),
+    Button(text = "test", icon = "refresh", large = TRUE),
     Button(text = "test", icon = "refresh", intent = "primary"),
     Button(icon = "refresh", intent = "danger"),
     Button.shinyInput(text = "Log it", inputId = "button"),
@@ -19,7 +19,7 @@ shinyApp(
       Button(text = "View", icon = "function")
     ),
     ButtonGroup(
-      minimal = "true",
+      minimal = TRUE,
       Button(text = "File"),
       Button(text = "Edit"),
       Divider(),
@@ -30,13 +30,13 @@ shinyApp(
       Button(icon = "remove")
     ),
     ButtonGroup(
-      vertical = "true",
+      vertical = TRUE,
       Button(text = "File", icon = "database"),
       Button(text = "Edit", icon = "refresh"),
       Button(text = "View", icon = "function")
     ),
     tags$h2(EditableText.shinyInput(inputId = "editable_header")),
-    EditableText.shinyInput(inputId = "editable", multiline = "true", minLines = 3, maxLines = 12),
+    EditableText.shinyInput(inputId = "editable", multiline = TRUE, minLines = 3, maxLines = 12),
     Spinner(),
     Spinner(intent = "danger"),
     Spinner(intent = "success", size = 150),
@@ -56,7 +56,7 @@ shinyApp(
       )
     ),
     Card(
-      interactive = "true",
+      interactive = TRUE,
       tags$h2(tags$a(href = "#", "Analytical applications")),
       tags$p(paste(
         "User interfaces that enable people to interact smoothly with data,",

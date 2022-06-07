@@ -17,16 +17,16 @@ navbarRight <-
   NavbarGroup(
     align = "right",
     Button(
-      minimal = "true",
+      minimal = TRUE,
       icon = "projects",
       text = "Projects",
       style = list(color = "#fff")
     ),
     NavbarDivider(),
-    Button(minimal = "true", icon = "user"),
-    Button(minimal = "true", icon = "notifications"),
+    Button(minimal = TRUE, icon = "user"),
+    Button(minimal = TRUE, icon = "notifications"),
     Popover(
-      Button(minimal = "true", icon = "globe"),
+      Button(minimal = TRUE, icon = "globe"),
       Menu(
         MenuItem(text = "English"),
         MenuItem(text = "Français")

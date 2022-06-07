@@ -27,7 +27,7 @@ sidebarItem <- function(item) {
     href = item$path,
     class = "sidebar_item",
     Button(
-      minimal = "true",
+      minimal = TRUE,
       icon = item$iconName,
       text = item$title,
       style = list(
