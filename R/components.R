@@ -193,6 +193,8 @@ NonIdealState <- component("NonIdealState")
 
 # TODO(porting): Panel stack (v2)
 
+#' Progress bar
+#' @example inst/examples/components/ProgressBar.R
 #' @export
 ProgressBar <- component("ProgressBar")
 
@@ -200,6 +202,8 @@ ProgressBar <- component("ProgressBar")
 
 # TODO(porting): Skeleton
 
+#' Spinner
+#' @example inst/examples/components/Spinner.R
 #' @export
 Spinner <- component("Spinner")
 
