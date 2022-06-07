@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = Card(
     interactive = TRUE,
     H5(tags$a(href = "#", "Analytical applications")),

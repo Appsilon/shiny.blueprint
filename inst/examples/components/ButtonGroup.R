@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = ButtonGroup(
     Button(icon = "database", "Queries"),
     Button(icon = "function", "Functions"),

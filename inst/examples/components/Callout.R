@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = Callout(
     title = "Visually important content",
     "The component is a simple wrapper around the CSS API",

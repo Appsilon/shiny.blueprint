@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = tagList(
     H2(EditableText(onChange = setInput("header"))),
     EditableText.shinyInput(

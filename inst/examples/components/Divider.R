@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = ButtonGroup(
     minimal = TRUE,
     Button(text = "File"),

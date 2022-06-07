@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = reactOutput("ui"),
   server = function(input, output) {
     isOpen = reactiveVal(FALSE)

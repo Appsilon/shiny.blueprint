@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = Spinner(intent = "primary", size = 100),
   server = function(input, output) {}
 )

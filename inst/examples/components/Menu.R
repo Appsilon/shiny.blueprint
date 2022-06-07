@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = Menu(
     style = "max-width: 200px",
     className = "bp4-elevation-1",

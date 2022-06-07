@@ -9,7 +9,7 @@ logs <- Pre(
   "[11:53:30] Finished 'sass-compile-blueprint' after 2.84 s\n"
 )
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = tagList(
     Button.shinyInput("toggle", "Toggle logs"),
     reactOutput("ui")

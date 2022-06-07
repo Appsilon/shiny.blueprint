@@ -1,7 +1,7 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
+if (interactive()) shinyApp(
   ui = ProgressBar(animate = TRUE),
   server = function(input, output) {}
 )
