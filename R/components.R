@@ -54,6 +54,8 @@ AnchorButton <- component("AnchorButton")
 #' @export
 AnchorButton.shinyInput <- button("AnchorButton")
 
+#' Button group
+#' @example inst/examples/components/ButtonGroup.R
 #' @export
 ButtonGroup <- component("ButtonGroup")
 
