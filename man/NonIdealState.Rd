@@ -6,21 +6,26 @@
 \usage{
 NonIdealState(...)
 }
+\arguments{
+\item{...}{Component props and children. See the official Blueprint docs for details.}
+}
 \description{
-Non-ideal state
+Documentation: \url{https://blueprintjs.com/docs/#core/components/non-ideal-state}
 }
 \examples{
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
-  ui = tagList(
-    NonIdealState(
-      icon = "search",
-      title = "No search results",
-      description = Card("Your search didn't match any files.\nTry searching for something else."),
-      action = Button(text = "test", icon = "refresh")
-    )
+if (interactive()) shinyApp(
+  ui = NonIdealState(
+    icon = "search",
+    title = "No search results",
+    description = Card(
+      "Your search didn't match any files.",
+      tags$br(),
+      "Try searching for something else, or create a new file."
+    ),
+    action = Button(icon = "plus", text = "New file", intent = "primary", outlined = TRUE)
   ),
   server = function(input, output) {}
 )

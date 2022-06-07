@@ -9,49 +9,38 @@ Switch(...)
 
 Switch.shinyInput(inputId, ..., value = defaultValue)
 }
+\arguments{
+\item{...}{Component props and children. See the official Blueprint docs for details.}
+
+\item{inputId}{The \code{input} slot that will be used to access the value.}
+
+\item{value}{Initial value.}
+}
 \description{
-Switch
+Documentation: \url{https://blueprintjs.com/docs/#core/components/switch}
 }
 \examples{
 library(shiny)
 library(appsilon.blueprint)
 
-withDefault <- function(x, default) {
-  if (is.null(x)) default
-  else x
-}
-
-shinyApp(
+if (interactive()) shinyApp(
   ui = tagList(
     Switch(
-      onChange = JS("(event) => Shiny.setInputValue('animate', event.target.checked)"),
+      onChange = JS("(event) => Shiny.setInputValue('apples', event.target.checked)"),
       defaultChecked = TRUE,
-      label = "Animate"
+      label = "Apples"
     ),
-    reactOutput("progress")
-  ),
-  server = function(input, output) {
-    output$progress <- renderReact({
-      ProgressBar(animate = withDefault(input$animate, TRUE))
-    })
-  }
-)
-library(shiny)
-library(appsilon.blueprint)
-
-shinyApp(
-  ui = tagList(
     Switch.shinyInput(
-      inputId = "animate",
+      inputId = "bananas",
       value = TRUE,
-      label = "Animate"
+      label = "Bananas"
     ),
-    reactOutput("progress")
+    textOutput("applesEnabled"),
+    textOutput("bananasEnabled")
   ),
   server = function(input, output) {
-    output$progress <- renderReact({
-      ProgressBar(animate = input$animate)
-    })
+    output$applesEnabled <- renderText(paste("Apples:", deparse(input$apples)))
+    output$bananasEnabled <- renderText(paste("Bananas:", deparse(input$bananas)))
   }
 )
 }
