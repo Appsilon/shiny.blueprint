@@ -37,11 +37,22 @@ button <- function(name) {
 
 # TODO(porting): Breadcrumbs
 
+#' Button
+#' @example inst/examples/components/Button.R
 #' @export
 Button <- component("Button")
 
+#' @rdname Button
 #' @export
 Button.shinyInput <- button("Button")
+
+#' @rdname Button
+#' @export
+AnchorButton <- component("AnchorButton")
+
+#' @rdname Button
+#' @export
+AnchorButton.shinyInput <- button("AnchorButton")
 
 #' @export
 ButtonGroup <- component("ButtonGroup")

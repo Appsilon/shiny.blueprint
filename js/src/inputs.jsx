@@ -2,6 +2,7 @@ import * as Blueprint from '@blueprintjs/core';
 import { ButtonAdapter, InputAdapter }  from '@/shiny.react';
 
 export const Button = ButtonAdapter(Blueprint.Button);
+export const AnchorButton = ButtonAdapter(Blueprint.AnchorButton);
 
 export const EditableText = InputAdapter(Blueprint.EditableText, (value, setValue) => ({
   value,
