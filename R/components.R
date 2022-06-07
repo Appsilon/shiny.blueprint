@@ -59,17 +59,25 @@ AnchorButton.shinyInput <- button("AnchorButton")
 #' @export
 ButtonGroup <- component("ButtonGroup")
 
+#' Callout
+#' @example inst/examples/components/Callout.R
 #' @export
 Callout <- component("Callout")
 
+#' Card
+#' @example inst/examples/components/Card.R
 #' @export
 Card <- component("Card")
 
+#' Collapse
+#' @example inst/examples/components/Collapse.R
 #' @export
 Collapse <- component("Collapse")
 
 # TODO(porting): Collapsible list
 
+#' Divider
+#' @example inst/examples/components/Divider.R
 #' @export
 Divider <- component("Divider")
 
