@@ -38,6 +38,9 @@ button <- function(name) {
 # TODO(porting): Breadcrumbs
 
 #' Button
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/button>
+#'
 #' @example inst/examples/components/Button.R
 #' @export
 Button <- component("Button")
@@ -55,21 +58,33 @@ AnchorButton <- component("AnchorButton")
 AnchorButton.shinyInput <- button("AnchorButton")
 
 #' Button group
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/button-group>
+#'
 #' @example inst/examples/components/ButtonGroup.R
 #' @export
 ButtonGroup <- component("ButtonGroup")
 
 #' Callout
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/callout>
+#'
 #' @example inst/examples/components/Callout.R
 #' @export
 Callout <- component("Callout")
 
 #' Card
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/card>
+#'
 #' @example inst/examples/components/Card.R
 #' @export
 Card <- component("Card")
 
 #' Collapse
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/collapse>
+#'
 #' @example inst/examples/components/Collapse.R
 #' @export
 Collapse <- component("Collapse")
@@ -77,11 +92,17 @@ Collapse <- component("Collapse")
 # TODO(porting): Collapsible list
 
 #' Divider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/divider>
+#'
 #' @example inst/examples/components/Divider.R
 #' @export
 Divider <- component("Divider")
 
 #' Editable text
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/editable-text>
+#'
 #' @example inst/examples/components/EditableText.R
 #' @export
 EditableText <- component("EditableText")
@@ -91,6 +112,9 @@ EditableText <- component("EditableText")
 EditableText.shinyInput <- input("EditableText", "")
 
 #' HTML elements
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/html>
+#'
 #' @example inst/examples/components/html_elements.R
 #' @name html_elements
 NULL
@@ -150,11 +174,17 @@ HTMLTable <- component("HTMLTable")
 # TODO(porting): HotkeysTarget2
 
 #' Icon
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/icon>
+#'
 #' @example inst/examples/components/Icon.R
 #' @export
 Icon <- component("Icon")
 
 #' Menu
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/menu>
+#'
 #' @example inst/examples/components/Menu.R
 #' @export
 Menu <- component("Menu")
@@ -168,6 +198,9 @@ MenuItem <- component("MenuItem")
 MenuDivider <- component("MenuDivider")
 
 #' Navbar
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/navbar>
+#'
 #' @example inst/examples/components/Navbar.R
 #' @export
 Navbar <- component("Navbar")
@@ -185,6 +218,9 @@ NavbarHeading <- component("NavbarHeading")
 NavbarDivider <- component("NavbarDivider")
 
 #' Non-ideal state
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/non-ideal-state>
+#'
 #' @example inst/examples/components/NonIdealState.R
 #' @export
 NonIdealState <- component("NonIdealState")
@@ -194,6 +230,9 @@ NonIdealState <- component("NonIdealState")
 # TODO(porting): Panel stack (v2)
 
 #' Progress bar
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/progress-bar>
+#'
 #' @example inst/examples/components/ProgressBar.R
 #' @export
 ProgressBar <- component("ProgressBar")
@@ -203,6 +242,9 @@ ProgressBar <- component("ProgressBar")
 # TODO(porting): Skeleton
 
 #' Spinner
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/spinner>
+#'
 #' @example inst/examples/components/Spinner.R
 #' @export
 Spinner <- component("Spinner")
@@ -230,6 +272,9 @@ Spinner <- component("Spinner")
 # TODO(porting): Slider
 
 #' Switch
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/switch>
+#'
 #' @example inst/examples/components/Switch.R
 #' @export
 Switch <- component("Switch")
@@ -259,6 +304,9 @@ Switch.shinyInput <- input("Switch", FALSE)
 # TODO(porting): Drawer
 
 #' Popover
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/popover>
+#'
 #' @example inst/examples/components/Popover.R
 #' @export
 Popover <- component("Popover")
