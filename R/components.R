@@ -81,8 +81,12 @@ Collapse <- component("Collapse")
 #' @export
 Divider <- component("Divider")
 
-# TODO: Add EditableText plain component
+#' Editable text
+#' @example inst/examples/components/EditableText.R
+#' @export
+EditableText <- component("EditableText")
 
+#' @rdname EditableText
 #' @export
 EditableText.shinyInput <- input("EditableText", "")
 
