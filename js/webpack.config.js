@@ -1,31 +1,27 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const config = {
-  entry: './src/index.js',
+module.exports = {
+  mode: 'production',
   output: {
     path: path.join(__dirname, '..', 'inst', 'www'),
-    filename: 'blueprint.js'
+    filename: 'blueprint.min.js',
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   externals: {
     'react': 'jsmodule["react"]',
     'react-dom': 'jsmodule["react-dom"]',
-    '@/shiny.react': 'jsmodule["@/shiny.react"]'
+    '@/shiny.react': 'jsmodule["@/shiny.react"]',
   },
-  plugins: [
-    new webpack.DefinePlugin({ 'process.env': '{}' })
-  ]
+  performance: {
+    maxAssetSize: 2097152, // 2 MiB
+    maxEntrypointSize: 2097152, // 2 MiB
+  },
 };
-
-module.exports = config;

@@ -4,7 +4,7 @@ blueprintDependency <- function() {
     version = "0.1.0",
     package = "appsilon.blueprint",
     src = "www",
-    script = "blueprint.js"
+    script = "blueprint.min.js"
   )
 }
 
