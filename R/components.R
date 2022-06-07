@@ -258,6 +258,8 @@ Switch.shinyInput <- input("Switch", FALSE)
 
 # TODO(porting): Drawer
 
+#' Popover
+#' @example inst/examples/components/Popover.R
 #' @export
 Popover <- component("Popover")
 
