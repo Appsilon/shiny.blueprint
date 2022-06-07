@@ -1,23 +1,23 @@
 library(shiny)
 library(appsilon.blueprint)
 
-withDefault <- function(x, default) {
-  if (is.null(x)) default
-  else x
-}
-
 shinyApp(
   ui = tagList(
     Switch(
-      onChange = JS("(event) => Shiny.setInputValue('animate', event.target.checked)"),
+      onChange = JS("(event) => Shiny.setInputValue('apples', event.target.checked)"),
       defaultChecked = TRUE,
-      label = "Animate"
+      label = "Apples"
     ),
-    reactOutput("progress")
+    Switch.shinyInput(
+      inputId = "bananas",
+      value = TRUE,
+      label = "Bananas"
+    ),
+    textOutput("applesEnabled"),
+    textOutput("bananasEnabled")
   ),
   server = function(input, output) {
-    output$progress <- renderReact({
-      ProgressBar(animate = withDefault(input$animate, TRUE))
-    })
+    output$applesEnabled <- renderText(paste("Apples:", deparse(input$apples)))
+    output$bananasEnabled <- renderText(paste("Bananas:", deparse(input$bananas)))
   }
 )

@@ -235,7 +235,6 @@ Spinner <- component("Spinner")
 Switch <- component("Switch")
 
 #' @rdname Switch
-#' @example inst/examples/components/Switch.shinyInput.R
 #' @export
 Switch.shinyInput <- input("Switch", FALSE)
 
