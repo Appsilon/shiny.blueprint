@@ -41,7 +41,7 @@ input <- function(name, defaultValue) {
   )
 }
 
-# TODO(porting): Breadcrumbs
+# TODO: Breadcrumbs
 
 #' Button
 #'
@@ -54,7 +54,7 @@ Button <- component("Button")
 
 #' @rdname Button
 #' @export
-Button.shinyInput <- button("Button")
+Button.shinyInput <- button("Button") # nolint
 
 #' @rdname Button
 #' @export
@@ -62,7 +62,7 @@ AnchorButton <- component("AnchorButton")
 
 #' @rdname Button
 #' @export
-AnchorButton.shinyInput <- button("AnchorButton")
+AnchorButton.shinyInput <- button("AnchorButton") # nolint
 
 #' Button group
 #'
@@ -100,7 +100,7 @@ Card <- component("Card")
 #' @export
 Collapse <- component("Collapse")
 
-# TODO(porting): Collapsible list
+# TODO: Collapsible list
 
 #' Divider
 #'
@@ -122,7 +122,7 @@ EditableText <- component("EditableText")
 
 #' @rdname EditableText
 #' @export
-EditableText.shinyInput <- input("EditableText", "")
+EditableText.shinyInput <- input("EditableText", "") # nolint
 
 #' HTML elements
 #'
@@ -185,7 +185,7 @@ UL <- component("UL")
 #' @export
 HTMLTable <- component("HTMLTable")
 
-# TODO(porting): HotkeysTarget2
+# TODO: HotkeysTarget2
 
 #' Icon
 #'
@@ -243,9 +243,9 @@ NavbarDivider <- component("NavbarDivider")
 #' @export
 NonIdealState <- component("NonIdealState")
 
-# TODO(porting): Overflow list
+# TODO: Overflow list
 
-# TODO(porting): Panel stack (v2)
+# TODO: Panel stack (v2)
 
 #' Progress bar
 #'
@@ -256,9 +256,9 @@ NonIdealState <- component("NonIdealState")
 #' @export
 ProgressBar <- component("ProgressBar")
 
-# TODO(porting): Resize sensor
+# TODO: Resize sensor
 
-# TODO(porting): Skeleton
+# TODO: Skeleton
 
 #' Spinner
 #'
@@ -313,21 +313,19 @@ Text <- component("Text")
 #' @export
 Tree <- component("Tree")
 
+# TODO: Form group
 
+# TODO: Control group
 
-# TODO(porting): Form group
+# TODO: Label
 
-# TODO(porting): Control group
+# TODO: Checkbox
 
-# TODO(porting): Label
+# TODO: Radio
 
-# TODO(porting): Checkbox
+# TODO: HTML select
 
-# TODO(porting): Radio
-
-# TODO(porting): HTML select
-
-# TODO(porting): Slider
+# TODO: Slider
 
 #' Switch
 #'
@@ -340,27 +338,27 @@ Switch <- component("Switch")
 
 #' @rdname Switch
 #' @export
-Switch.shinyInput <- input("Switch", FALSE)
+Switch.shinyInput <- input("Switch", FALSE) # nolint
 
-# TODO(porting): File input
+# TODO: File input
 
-# TODO(porting): Numeric input
+# TODO: Numeric input
 
-# TODO(porting): Text inputs
+# TODO: Text inputs
 
-# TODO(porting): Tag input
+# TODO: Tag input
 
-# TODO(porting): Overlay
+# TODO: Overlay
 
-# TODO(porting): Portal
+# TODO: Portal
 
-# TODO(porting): Alert
+# TODO: Alert
 
-# TODO(porting): Context menu
+# TODO: Context menu
 
-# TODO(porting): Dialogs
+# TODO: Dialogs
 
-# TODO(porting): Drawer
+# TODO: Drawer
 
 #' Popover
 #'
@@ -371,8 +369,8 @@ Switch.shinyInput <- input("Switch", FALSE)
 #' @export
 Popover <- component("Popover")
 
-# TODO(porting): Toast
+# TODO: Toast
 
-# TODO(porting): Tooltip
+# TODO: Tooltip
 
-# TODO(porting): HotkeysProvider
+# TODO: HotkeysProvider
