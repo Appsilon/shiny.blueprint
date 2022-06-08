@@ -304,7 +304,16 @@ Tag <- component("Tag")
 #' @export
 Text <- component("Text")
 
-# TODO(porting): Tree
+#' Tree
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tree>
+#'
+#' @example inst/examples/components/Tree.R
+#' @inherit template params
+#' @export
+Tree <- component("Tree")
+
+
 
 # TODO(porting): Form group
 
