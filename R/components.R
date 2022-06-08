@@ -286,7 +286,14 @@ Tab <- component("Tab")
 #' @export
 Expander <- component("Expander")
 
-# TODO(porting): Tag
+#' Tag
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tag>
+#'
+#' @example inst/examples/components/Tag.R
+#' @inherit template params
+#' @export
+Tag <- component("Tag")
 
 # TODO(porting): Text
 
