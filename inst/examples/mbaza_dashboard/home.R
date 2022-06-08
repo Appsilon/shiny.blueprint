@@ -83,17 +83,21 @@ homePage <- div(
       )
     )
   ),
-  div(style = "padding: 20px",
-      Card(
-        interactive = TRUE,
-        elevation = 2,
-        h1(style = "margin-top: 0", "Take a look at this awesome Blueprint example!"),
-        menusExample
-      )),
+  div(
+    style = "padding: 20px",
+    Card(
+      interactive = TRUE,
+      elevation = 2,
+      h1(style = "margin-top: 0", "Take a look at this awesome Blueprint example!"),
+      menusExample
+    )
+  ),
   div(
     style = "display: flex; justify-content: space-evenly; margin-top: 30px",
-    img(style = "height: 60px; margin: 20px",
-        src = "appsilon-logo.png",
-        alt = "Appsilon")
+    img(
+      style = "height: 60px; margin: 20px",
+      src = "appsilon-logo.png",
+      alt = "Appsilon"
+    )
   )
 )

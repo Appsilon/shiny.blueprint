@@ -1,4 +1,4 @@
-# appsilon.blueprint [Appsilon proprietary] 
+# appsilon.blueprint [Appsilon proprietary]
 
 We believe that a great UI plays a huge role in the success of application projects. appsilon.blueprint gives your apps:
 - beautiful, professional look
@@ -25,7 +25,6 @@ Here's how to make a very basis Blueprint Shiny app:
 
 ```r
 library(shiny)
-library(shiny.react)
 library(appsilon.blueprint)
 
 shinyApp(
@@ -50,4 +49,3 @@ Browse the [official docs](https://blueprintjs.com/)
 or start typing `appsilon.blueprint::` in RStudio to see all available controls.
 
 All components ~are~ will be documented, so if you run `?appsilon.blueprint::MyComponentName`, hopefully you'll see documentation for this component in RStudio, along with examples. When in doubt, open Blueprint.js docs for details.
-
