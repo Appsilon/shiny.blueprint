@@ -21,5 +21,6 @@ Imports:
 Suggests:
   knitr,
   lintr,
-  rmarkdown,
-  purrr
+  purrr,
+  rcmdcheck,
+  rmarkdown
