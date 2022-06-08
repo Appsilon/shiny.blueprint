@@ -1,20 +1,18 @@
 library(shiny)
 library(appsilon.blueprint)
 
-shinyApp(
-  ui = tagList(
-    Navbar(
-      NavbarGroup(
-        NavbarHeading("Blueprint"),
-        NavbarDivider(),
-        Button(minimal = "true", icon = "home", text = "Home"),
-        Button(minimal = "true", icon = "document", text = "Files")
-      ),
-      NavbarGroup(
-        align = "right",
-        Button(minimal = "true", icon = "user"),
-        Button(minimal = "true", icon = "refresh")
-      )
+if (interactive()) shinyApp(
+  ui = Navbar(
+    NavbarGroup(
+      NavbarHeading("Blueprint"),
+      NavbarDivider(),
+      Button(minimal = TRUE, icon = "home", text = "Home"),
+      Button(minimal = TRUE, icon = "document", text = "Files")
+    ),
+    NavbarGroup(
+      align = "right",
+      Button(minimal = TRUE, icon = "user"),
+      Button(minimal = TRUE, icon = "refresh")
     )
   ),
   server = function(input, output) {}
