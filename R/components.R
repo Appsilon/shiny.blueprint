@@ -295,7 +295,14 @@ Expander <- component("Expander")
 #' @export
 Tag <- component("Tag")
 
-# TODO(porting): Text
+#' Text
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/text>
+#'
+#' @example inst/examples/components/Text.R
+#' @inherit template params
+#' @export
+Text <- component("Text")
 
 # TODO(porting): Tree
 
