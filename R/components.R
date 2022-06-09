@@ -336,7 +336,18 @@ FormGroup <- component("FormGroup")
 
 # TODO: Radio
 
-# TODO: HTML select
+#' HTMLSelect
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/html-select>
+#'
+#' @example inst/examples/components/HTMLSelect.R
+#' @inherit template params
+#' @export
+HTMLSelect <- component("HTMLSelect")
+
+#' @rdname HTMLSelect
+#' @export
+HTMLSelect.shinyInput <- input("HTMLSelect", "")
 
 # TODO: Slider
 

@@ -19,6 +19,11 @@ export const TextArea = InputAdapter(Blueprint.TextArea, (value, setValue) => ({
   onChange: (event) => setValue(event.target.value),
 }));
 
+export const HTMLSelect = InputAdapter(Blueprint.HTMLSelect, (value, setValue) => ({
+  value,
+  onChange: (event) => setValue(event.target.value),
+}));
+
 export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   checked: value,
   onChange: (event) => setValue(event.target.checked),
