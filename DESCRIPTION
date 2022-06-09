@@ -16,10 +16,11 @@ RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Imports:
   htmltools,
-  shiny,
   shiny.react (>= 0.2.2)
 Suggests:
   knitr,
   lintr,
+  purrr,
+  rcmdcheck,
   rmarkdown,
-  purrr
+  shiny
