@@ -319,7 +319,14 @@ Text <- component("Text")
 #' @export
 Tree <- component("Tree")
 
-# TODO: Form group
+#' FormGroup
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/form-group>
+#'
+#' @example inst/examples/components/FormGroup.R
+#' @inherit template params
+#' @export
+FormGroup <- component("FormGroup")
 
 # TODO: Control group
 
