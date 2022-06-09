@@ -328,7 +328,14 @@ Tree <- component("Tree")
 #' @export
 FormGroup <- component("FormGroup")
 
-# TODO: Control group
+#' ControlGroup
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/control-group>
+#'
+#' @example inst/examples/components/ControlGroup.R
+#' @inherit template params
+#' @export
+ControlGroup <- component("ControlGroup")
 
 # TODO: Label
 

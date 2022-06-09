@@ -17,8 +17,5 @@ if (interactive()) shinyApp(
       label = "Bananas"
     )
   ),
-  server = function(input, output) {
-    output$applesEnabled <- renderText(paste("Apples:", deparse(input$apples)))
-    output$bananasEnabled <- renderText(paste("Bananas:", deparse(input$bananas)))
-  }
+  server = function(input, output) {}
 )
