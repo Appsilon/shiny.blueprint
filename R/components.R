@@ -357,7 +357,18 @@ Switch.shinyInput <- input("Switch", FALSE) # nolint
 
 # TODO: Numeric input
 
-# TODO: Text inputs
+#' InputGroup
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.input-group>
+#'
+#' @example inst/examples/components/InputGroup.R
+#' @inherit template params
+#' @export
+InputGroup <- component("InputGroup")
+
+#' @rdname InputGroup
+#' @export
+InputGroup.shinyInput <- input("InputGroup", "")
 
 # TODO: Tag input
 
