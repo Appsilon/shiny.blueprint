@@ -14,6 +14,11 @@ export const InputGroup = InputAdapter(Blueprint.InputGroup, (value, setValue) =
   onChange: (event) => setValue(event.target.value),
 }));
 
+export const TextArea = InputAdapter(Blueprint.TextArea, (value, setValue) => ({
+  value,
+  onChange: (event) => setValue(event.target.value),
+}));
+
 export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   checked: value,
   onChange: (event) => setValue(event.target.checked),

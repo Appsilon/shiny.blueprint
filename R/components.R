@@ -372,6 +372,19 @@ InputGroup.shinyInput <- input("InputGroup", "")
 
 # TODO: Tag input
 
+#' TextArea
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.text-area>
+#'
+#' @example inst/examples/components/TextArea.R
+#' @inherit template params
+#' @export
+TextArea <- component("TextArea")
+
+#' @rdname InputGroup
+#' @export
+TextArea.shinyInput <- input("TextArea", "")
+
 # TODO: Overlay
 
 # TODO: Portal

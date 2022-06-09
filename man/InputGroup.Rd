@@ -3,11 +3,14 @@
 \name{InputGroup}
 \alias{InputGroup}
 \alias{InputGroup.shinyInput}
+\alias{TextArea.shinyInput}
 \title{InputGroup}
 \usage{
 InputGroup(...)
 
 InputGroup.shinyInput(inputId, ..., value = defaultValue)
+
+TextArea.shinyInput(inputId, ..., value = defaultValue)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
@@ -17,7 +20,7 @@ InputGroup.shinyInput(inputId, ..., value = defaultValue)
 \item{value}{Initial value.}
 }
 \description{
-Documentation: \url{https://blueprintjs.com/docs/#core/components/text-inputs}
+Documentation: \url{https://blueprintjs.com/docs/#core/components/text-inputs.input-group}
 }
 \examples{
 library(shiny)
