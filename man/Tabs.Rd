@@ -3,14 +3,14 @@
 \name{Tabs}
 \alias{Tabs}
 \alias{Tab}
-\alias{Expander}
+\alias{TabsExpander}
 \title{Tabs}
 \usage{
 Tabs(...)
 
 Tab(...)
 
-Expander(...)
+TabsExpander(...)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
@@ -23,21 +23,18 @@ library(shiny)
 library(appsilon.blueprint)
 
 if (interactive()) shinyApp(
-  ui = tagList(
-    reactOutput("tabs")
-  ),
+  ui = reactOutput("tabs"),
   server = function(input, output) {
-    current_tab <- reactiveVal("rx")
+    currentTab <- reactiveVal("react")
     observeEvent(input$select_tab, current_tab(input$select_tab))
     output$tabs <- renderReact(
       Tabs(
-        id = "TabsExample",
-        selectedTabId = current_tab(),
+        selectedTabId = currentTab(),
         onChange = setInput("select_tab"),
-        Tab(id = "ng", title = "Angular", panel = "Angular"),
-        Tab(id = "mb", title = "Ember", panel = "Ember"),
-        Tab(id = "rx", title = "React", panel = "React"),
-        Expander(),
+        Tab(id = "angular", title = "Angular", panel = "Angular"),
+        Tab(id = "ember", title = "Ember", panel = "Ember"),
+        Tab(id = "react", title = "React", panel = "React"),
+        TabsExpander(),
         tags$input(class = "bp4-input", type = "text", placeholder = "Search...")
       )
     )

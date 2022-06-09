@@ -2,7 +2,7 @@ library(shiny)
 library(appsilon.blueprint)
 library(purrr)
 
-tree_list <- list(
+treeList <- list(
   list(
     id = 0,
     hasCaret = TRUE,
@@ -19,7 +19,7 @@ tree_list <- list(
         id = 2,
         icon = "document",
         label = "Item 0",
-        secondaryLabel = "An eye"
+        secondaryLabel = Icon(icon = "eye-open")
       ),
       list(
         id = 3,
@@ -30,7 +30,7 @@ tree_list <- list(
             id = 4,
             icon = "document",
             label = "Item 0",
-            secondaryLabel = "An eye"
+            secondaryLabel = Icon(icon = "eye-open")
           ),
           list(
             id = 5,
@@ -50,25 +50,14 @@ tree_list <- list(
   )
 )
 
-
-#' Helper function to modify the list
-modify_tree <- function(tree, ids, props) {
-  recur <- function(items, ids = NULL, props) {
-    purrr::map(items, function(item) {
-      if (item$id %in% ids) {
-        item <- purrr::list_modify(item, !!!props)
-      }
-      item$childNodes <- purrr::map(item$childNodes, function(child) {
-        if (child$id %in% ids) {
-          child <- purrr::list_modify(child, !!!props)
-        }
-        child$childNodes <- recur(child$childNodes, ids, props)
-        child
-      })
-      item
-    })
-  }
-  recur(tree, ids = ids, props = props)
+modifyTree <- function(tree, ids, props) {
+  if (!is.null(tree)) purrr::map(tree, function(node) {
+    if (node$id %in% ids) {
+      node <- purrr::list_modify(node, !!!props)
+    }
+    node$childNodes <- modifyTree(node$childNodes, ids, props)
+    node
+  })
 }
 
 if (interactive()) shinyApp(
@@ -76,24 +65,23 @@ if (interactive()) shinyApp(
     reactOutput("tree")
   ),
   server = function(input, output) {
-
-    tree_reactive <- reactiveVal(tree_list)
+    treeReactive <- reactiveVal(treeList)
 
     observeEvent(input$expand, {
-      tree_reactive(
-        modify_tree(tree_reactive(), ids = input$expand$id, props = list(isExpanded = TRUE))
+      treeReactive(
+        modifyTree(treeReactive(), ids = input$expand$id, props = list(isExpanded = TRUE))
       )
     })
 
     observeEvent(input$collapse, {
-      tree_reactive(
-        modify_tree(tree_reactive(), ids = input$collapse$id, props = list(isExpanded = FALSE))
+      treeReactive(
+        modifyTree(treeReactive(), ids = input$collapse$id, props = list(isExpanded = FALSE))
       )
     })
 
     output$tree <- renderReact({
       Tree(
-        contents = tree_reactive(),
+        contents = treeReactive(),
         onNodeExpand = setInput("expand"),
         onNodeCollapse = setInput("collapse")
       )

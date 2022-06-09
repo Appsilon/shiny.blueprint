@@ -284,7 +284,7 @@ Tab <- component("Tab")
 
 #' @rdname Tabs
 #' @export
-Expander <- component("Expander")
+TabsExpander <- component("Expander")
 
 #' Tag
 #'
