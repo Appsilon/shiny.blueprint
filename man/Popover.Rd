@@ -19,7 +19,7 @@ library(appsilon.blueprint)
 if (interactive()) shinyApp(
   ui = reactOutput("ui"),
   server = function(input, output) {
-    isOpen = reactiveVal(FALSE)
+    isOpen <- reactiveVal(FALSE)
     observeEvent(input$hello, isOpen(TRUE))
     observeEvent(input$dismiss, isOpen(FALSE))
 

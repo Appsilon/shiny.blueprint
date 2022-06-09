@@ -269,13 +269,51 @@ ProgressBar <- component("ProgressBar")
 #' @export
 Spinner <- component("Spinner")
 
-# TODO(porting): Tabs
+#' Tabs
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tabs>
+#'
+#' @example inst/examples/components/Tabs.R
+#' @inherit template params
+#' @export
+Tabs <- component("Tabs")
 
-# TODO(porting): Tag
+#' @rdname Tabs
+#' @export
+Tab <- component("Tab")
 
-# TODO(porting): Text
+#' @rdname Tabs
+#' @export
+TabsExpander <- component("Expander")
 
-# TODO(porting): Tree
+#' Tag
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tag>
+#'
+#' @example inst/examples/components/Tag.R
+#' @inherit template params
+#' @export
+Tag <- component("Tag")
+
+#' Text
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/text>
+#'
+#' @example inst/examples/components/Text.R
+#' @inherit template params
+#' @export
+Text <- component("Text")
+
+#' Tree
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tree>
+#'
+#' @example inst/examples/components/Tree.R
+#' @inherit template params
+#' @export
+Tree <- component("Tree")
+
+
 
 # TODO(porting): Form group
 
