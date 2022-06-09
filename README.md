@@ -1,5 +1,7 @@
 # appsilon.blueprint [Appsilon proprietary]
 
+[![CI](https://github.com/Appsilon/appsilon.blueprint/actions/workflows/ci.yml/badge.svg)](https://github.com/Appsilon/appsilon.blueprint/actions/workflows/ci.yml)
+
 We believe that a great UI plays a huge role in the success of application projects. appsilon.blueprint gives your apps:
 - beautiful, professional look
 - rich set of components easily usable in Shiny
