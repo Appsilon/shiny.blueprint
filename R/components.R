@@ -283,8 +283,6 @@ ProgressBar <- component("ProgressBar")
 
 # TODO: Resize sensor
 
-# TODO: Skeleton
-
 #' Spinner
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/spinner>
