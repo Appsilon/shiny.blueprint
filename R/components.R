@@ -113,8 +113,6 @@ Card <- component("Card")
 #' @export
 Collapse <- component("Collapse")
 
-# TODO: Collapsible list
-
 #' Divider
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/divider>
