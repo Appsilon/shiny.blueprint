@@ -19,7 +19,7 @@ Imports:
   shiny.react (>= 0.2.2)
 Suggests:
   knitr,
-  lintr,
+  lintr (>= 3.0.0),
   purrr,
   rcmdcheck,
   rmarkdown,

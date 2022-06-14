@@ -23,10 +23,10 @@ routes <- list(
 names(routes) <- NULL
 
 sidebarItem <- function(item) {
-  a(
+  shiny::a(
     href = item$path,
     class = "sidebar_item",
-    Button(
+    appsilon.blueprint::Button(
       minimal = TRUE,
       icon = item$iconName,
       text = item$title,
