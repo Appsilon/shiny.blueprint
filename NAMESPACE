@@ -3,6 +3,7 @@
 export(AnchorButton)
 export(AnchorButton.shinyInput)
 export(Blockquote)
+export(Breadcrumbs)
 export(Button)
 export(Button.shinyInput)
 export(ButtonGroup)

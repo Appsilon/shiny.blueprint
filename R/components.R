@@ -47,7 +47,14 @@ input <- function(name, defaultValue) {
   }
 }
 
-# TODO: Breadcrumbs
+#' Breadcrumbs
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/breadcrumbs>
+#'
+#' @example inst/examples/components/Breadcrumbs.R
+#' @inherit template params
+#' @export
+Breadcrumbs <- component("Breadcrumbs")
 
 #' Button
 #'
