@@ -368,7 +368,18 @@ ControlGroup <- component("ControlGroup")
 #' @export
 Label <- component("Label")
 
-# TODO: Checkbox
+#' Checkbox
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/checkbox>
+#'
+#' @example inst/examples/components/Checkbox.R
+#' @inherit template params
+#' @export
+Checkbox <- component("Checkbox")
+
+#' @rdname Checkbox
+#' @export
+Checkbox.shinyInput <- input("Checkbox", FALSE) # nolint
 
 # TODO: Radio
 
