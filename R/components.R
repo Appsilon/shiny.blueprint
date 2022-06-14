@@ -176,9 +176,7 @@ Blockquote <- component("Blockquote")
 #' @export
 Code <- component("Code")
 
-#' @rdname html_elements
-#' @export
-Label <- component("Label")
+# Label has its own documentation page.
 
 #' @rdname html_elements
 #' @export
@@ -361,7 +359,14 @@ FormGroup <- component("FormGroup")
 #' @export
 ControlGroup <- component("ControlGroup")
 
-# TODO: Label
+#' Label
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/label>
+#'
+#' @example inst/examples/components/Label.R
+#' @inherit template params
+#' @export
+Label <- component("Label")
 
 # TODO: Checkbox
 
