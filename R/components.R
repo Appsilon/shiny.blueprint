@@ -254,7 +254,14 @@ NavbarDivider <- component("NavbarDivider")
 #' @export
 NonIdealState <- component("NonIdealState")
 
-# TODO: Overflow list
+#' Overflow list
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/overflow-list>
+#'
+#' @example inst/examples/components/OverflowList.R
+#' @inherit template params
+#' @export
+OverflowList <- component("OverflowList")
 
 # TODO: Panel stack (v2)
 
