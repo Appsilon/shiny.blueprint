@@ -281,7 +281,14 @@ PanelStack2 <- component("PanelStack2")
 #' @export
 ProgressBar <- component("ProgressBar")
 
-# TODO: Resize sensor
+#' Resize sensor
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/resize-sensor>
+#'
+#' @example inst/examples/components/ResizeSensor.R
+#' @inherit template params
+#' @export
+ResizeSensor <- component("ResizeSensor")
 
 #' Spinner
 #'
