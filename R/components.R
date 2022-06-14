@@ -381,7 +381,22 @@ Checkbox <- component("Checkbox")
 #' @export
 Checkbox.shinyInput <- input("Checkbox", FALSE) # nolint
 
-# TODO: Radio
+#' Radio
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/radio>
+#'
+#' @example inst/examples/components/Radio.R
+#' @inherit template params
+#' @export
+Radio <- component("Radio")
+
+#' @rdname Radio
+#' @export
+RadioGroup <- component("RadioGroup")
+
+#' @rdname Radio
+#' @export
+RadioGroup.shinyInput <- input("RadioGroup", NULL) # nolint
 
 #' HTMLSelect
 #'

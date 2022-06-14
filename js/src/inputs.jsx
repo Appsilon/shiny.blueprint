@@ -14,6 +14,11 @@ export const Checkbox = InputAdapter(Blueprint.Checkbox, (value, setValue) => ({
   onChange: (event) => setValue(event.target.checked),
 }));
 
+export const RadioGroup = InputAdapter(Blueprint.RadioGroup, (value, setValue) => ({
+  selectedValue: value,
+  onChange: (event) => setValue(event.currentTarget.value),
+}));
+
 export const HTMLSelect = InputAdapter(Blueprint.HTMLSelect, (value, setValue) => ({
   value,
   onChange: (event) => setValue(event.target.value),
