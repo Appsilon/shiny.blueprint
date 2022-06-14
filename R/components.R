@@ -263,7 +263,14 @@ NonIdealState <- component("NonIdealState")
 #' @export
 OverflowList <- component("OverflowList")
 
-# TODO: Panel stack (v2)
+#' Panel stack (v2)
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/panel-stack2>
+#'
+#' @example inst/examples/components/PanelStack2.R
+#' @inherit template params
+#' @export
+PanelStack2 <- component("PanelStack2")
 
 #' Progress bar
 #'
