@@ -15,30 +15,36 @@ blueprintDependency <- function() {
 NULL
 
 component <- function(name) {
-  function(...) shiny.react::reactElement(
-    module = "@blueprintjs/core",
-    name = name,
-    props = shiny.react::asProps(...),
-    deps = blueprintDependency()
-  )
+  function(...) {
+    shiny.react::reactElement(
+      module = "@blueprintjs/core",
+      name = name,
+      props = shiny.react::asProps(...),
+      deps = blueprintDependency()
+    )
+  }
 }
 
 button <- function(name) {
-  function(inputId, ...) shiny.react::reactElement(
-    module = "@/appsilon.blueprint",
-    name = name,
-    props = shiny.react::asProps(inputId = inputId, ...),
-    deps = blueprintDependency()
-  )
+  function(inputId, ...) {
+    shiny.react::reactElement(
+      module = "@/appsilon.blueprint",
+      name = name,
+      props = shiny.react::asProps(inputId = inputId, ...),
+      deps = blueprintDependency()
+    )
+  }
 }
 
 input <- function(name, defaultValue) {
-  function(inputId, ..., value = defaultValue) shiny.react::reactElement(
-    module = "@/appsilon.blueprint",
-    name = name,
-    props = shiny.react::asProps(inputId = inputId, ..., value = value),
-    deps = blueprintDependency()
-  )
+  function(inputId, ..., value = defaultValue) {
+    shiny.react::reactElement(
+      module = "@/appsilon.blueprint",
+      name = name,
+      props = shiny.react::asProps(inputId = inputId, ..., value = value),
+      deps = blueprintDependency()
+    )
+  }
 }
 
 # TODO: Breadcrumbs
