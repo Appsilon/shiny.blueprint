@@ -1,6 +1,6 @@
 linters:
-  linters_with_defaults(
-    brace_linter = brace_linter(allow_single_line = TRUE),
-    line_length_linter = line_length_linter(100),
-    object_name_linter = object_name_linter(c("camelCase", "CamelCase"))
+  lintr::linters_with_defaults(
+    brace_linter = lintr::brace_linter(allow_single_line = TRUE),
+    line_length_linter = lintr::line_length_linter(100),
+    object_name_linter = lintr::object_name_linter(c("camelCase", "CamelCase"))
   )

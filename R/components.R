@@ -354,7 +354,7 @@ HTMLSelect <- component("HTMLSelect")
 
 #' @rdname HTMLSelect
 #' @export
-HTMLSelect.shinyInput <- input("HTMLSelect", "")
+HTMLSelect.shinyInput <- input("HTMLSelect", "") # nolint
 
 # TODO: Slider
 
@@ -386,7 +386,7 @@ InputGroup <- component("InputGroup")
 
 #' @rdname InputGroup
 #' @export
-InputGroup.shinyInput <- input("InputGroup", "")
+InputGroup.shinyInput <- input("InputGroup", "") # nolint
 
 # TODO: Tag input
 
@@ -401,7 +401,7 @@ TextArea <- component("TextArea")
 
 #' @rdname InputGroup
 #' @export
-TextArea.shinyInput <- input("TextArea", "")
+TextArea.shinyInput <- input("TextArea", "") # nolint
 
 # TODO: Overlay
 

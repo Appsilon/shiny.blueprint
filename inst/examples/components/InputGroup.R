@@ -4,28 +4,31 @@ library(appsilon.blueprint)
 if (interactive()) shinyApp(
   ui = div(
     style = "width: 20rem; display: grid; row-gap: 0.5rem",
+    H4("Uncontrolled"),
     InputGroup(
-      asyncControl = TRUE,
+      onChange = JS("(event) => Shiny.setInputValue('uncontrolledInputGroup', event.target.value)"),
       disabled = FALSE,
       large = TRUE,
       leftIcon = "filter",
       placeholder = "Filter histogram...",
       rightElement = Spinner(intent = "primary", size = 20)
     ),
+    textOutput("uncontrolledInputGroupOutput"),
+    H4("Controlled"),
     InputGroup.shinyInput(
-      inputId = "inputGroup2",
-      asyncControl = FALSE,
+      inputId = "controlledInputGroup",
       disabled = FALSE,
       large = FALSE,
       leftIcon = "home",
       placeholder = "Type something..."
     ),
-    textOutput("inputGroup2"),
+    textOutput("controlledInputGroupOutput"),
     reactOutput("passwordExample"),
     textOutput("passwordOutput")
   ),
   server = function(input, output) {
-    output$inputGroup2 <- renderText(input$inputGroup2)
+    output$uncontrolledInputGroupOutput <- renderText(input$uncontrolledInputGroup)
+    output$controlledInputGroupOutput <- renderText(input$controlledInputGroup)
 
     isLocked <- reactiveVal(TRUE)
 

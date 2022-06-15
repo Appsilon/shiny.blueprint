@@ -27,17 +27,20 @@ if (interactive()) shinyApp(
   ui = tagList(
     H4("Uncontrolled"),
     HTMLSelect(
-      options = rownames(mtcars)
+      options = rownames(mtcars),
+       onChange = JS("(event) => Shiny.setInputValue('uncontrolledHtmlSelect', event.target.value)")
     ),
+    textOutput("uncontrolledHtmlSelectOutput"),
     H4("Controlled"),
     HTMLSelect.shinyInput(
-      inputId = "htmlSelect",
+      inputId = "controlledHtmlSelect",
       options = rownames(mtcars)
     ),
-    textOutput("htmlSelectOutput")
+    textOutput("controlledHtmlSelectOutput")
   ),
   server = function(input, output) {
-    output$htmlSelectOutput <- renderText(input$htmlSelect)
+    output$uncontrolledHtmlSelectOutput <- renderText(input$uncontrolledHtmlSelect)
+    output$controlledHtmlSelectOutput <- renderText(input$controlledHtmlSelect)
   }
 )
 }
