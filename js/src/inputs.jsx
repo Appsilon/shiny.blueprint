@@ -9,7 +9,22 @@ export const EditableText = InputAdapter(Blueprint.EditableText, (value, setValu
   onChange: setValue,
 }));
 
+export const HTMLSelect = InputAdapter(Blueprint.HTMLSelect, (value, setValue) => ({
+  value,
+  onChange: (event) => setValue(event.target.value),
+}));
+
 export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   checked: value,
   onChange: (event) => setValue(event.target.checked),
+}));
+
+export const InputGroup = InputAdapter(Blueprint.InputGroup, (value, setValue) => ({
+  value,
+  onChange: (event) => setValue(event.target.value),
+}));
+
+export const TextArea = InputAdapter(Blueprint.TextArea, (value, setValue) => ({
+  value,
+  onChange: (event) => setValue(event.target.value),
 }));

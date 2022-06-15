@@ -319,9 +319,23 @@ Text <- component("Text")
 #' @export
 Tree <- component("Tree")
 
-# TODO: Form group
+#' FormGroup
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/form-group>
+#'
+#' @example inst/examples/components/FormGroup.R
+#' @inherit template params
+#' @export
+FormGroup <- component("FormGroup")
 
-# TODO: Control group
+#' ControlGroup
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/control-group>
+#'
+#' @example inst/examples/components/ControlGroup.R
+#' @inherit template params
+#' @export
+ControlGroup <- component("ControlGroup")
 
 # TODO: Label
 
@@ -329,7 +343,18 @@ Tree <- component("Tree")
 
 # TODO: Radio
 
-# TODO: HTML select
+#' HTMLSelect
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/html-select>
+#'
+#' @example inst/examples/components/HTMLSelect.R
+#' @inherit template params
+#' @export
+HTMLSelect <- component("HTMLSelect")
+
+#' @rdname HTMLSelect
+#' @export
+HTMLSelect.shinyInput <- input("HTMLSelect", "") # nolint
 
 # TODO: Slider
 
@@ -350,9 +375,33 @@ Switch.shinyInput <- input("Switch", FALSE) # nolint
 
 # TODO: Numeric input
 
-# TODO: Text inputs
+#' InputGroup
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.input-group>
+#'
+#' @example inst/examples/components/InputGroup.R
+#' @inherit template params
+#' @export
+InputGroup <- component("InputGroup")
+
+#' @rdname InputGroup
+#' @export
+InputGroup.shinyInput <- input("InputGroup", "") # nolint
 
 # TODO: Tag input
+
+#' TextArea
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.text-area>
+#'
+#' @example inst/examples/components/TextArea.R
+#' @inherit template params
+#' @export
+TextArea <- component("TextArea")
+
+#' @rdname InputGroup
+#' @export
+TextArea.shinyInput <- input("TextArea", "") # nolint
 
 # TODO: Overlay
 
