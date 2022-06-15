@@ -434,7 +434,18 @@ Switch <- component("Switch")
 #' @export
 Switch.shinyInput <- input("Switch", FALSE) # nolint
 
-# TODO: File input
+#' FileInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/file-input>
+#'
+#' @example inst/examples/components/Switch.R
+#' @inherit template params
+#' @export
+FileInput <- component("FileInput")
+
+#' @rdname Switch
+#' @export
+FileInput.shinyInput <- input("FileInput", FALSE) # nolint
 
 # TODO: Numeric input
 

@@ -29,6 +29,11 @@ export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   onChange: (event) => setValue(event.target.checked),
 }));
 
+export const FileInput = InputAdapter(Blueprint.FileInput, (value, setValue) => ({
+  text: value,
+  onInputChange: (event) => setValue(event.target.value),
+}));
+
 export const InputGroup = InputAdapter(Blueprint.InputGroup, (value, setValue) => ({
   value,
   onChange: (event) => setValue(event.target.value),

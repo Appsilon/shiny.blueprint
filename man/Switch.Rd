@@ -3,11 +3,14 @@
 \name{Switch}
 \alias{Switch}
 \alias{Switch.shinyInput}
+\alias{FileInput.shinyInput}
 \title{Switch}
 \usage{
 Switch(...)
 
 Switch.shinyInput(inputId, ..., value = defaultValue)
+
+FileInput.shinyInput(inputId, ..., value = defaultValue)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
