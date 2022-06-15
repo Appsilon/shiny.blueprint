@@ -27,6 +27,6 @@ if (interactive()) shinyApp(
 \seealso{
 Other HTML elements: 
 \code{\link{HTMLTable}()},
-\code{\link{html_elements}}
+\code{\link{htmlElements}}
 }
 \concept{HTML elements}

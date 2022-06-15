@@ -36,6 +36,6 @@ if (interactive()) shinyApp(
 \seealso{
 Other HTML elements: 
 \code{\link{Label}()},
-\code{\link{html_elements}}
+\code{\link{htmlElements}}
 }
 \concept{HTML elements}

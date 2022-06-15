@@ -140,54 +140,54 @@ EditableText.shinyInput <- input("EditableText", "") # nolint
 #' Documentation: <https://blueprintjs.com/docs/#core/components/html>
 #'
 #' @family HTML elements
-#' @example inst/examples/components/html_elements.R
+#' @example inst/examples/components/htmlElements.R
 #' @inherit template params
-#' @name html_elements
+#' @name htmlElements
 NULL
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 H1 <- component("H1")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 H2 <- component("H2")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 H3 <- component("H3")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 H4 <- component("H4")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 H5 <- component("H5")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 H6 <- component("H6")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 Blockquote <- component("Blockquote")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 Code <- component("Code")
 
 # Label has its own documentation page.
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 Pre <- component("Pre")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 OL <- component("OL")
 
-#' @rdname html_elements
+#' @rdname htmlElements
 #' @export
 UL <- component("UL")
 
