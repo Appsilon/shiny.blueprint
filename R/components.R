@@ -447,7 +447,18 @@ FileInput <- component("FileInput")
 #' @export
 FileInput.shinyInput <- input("FileInput", FALSE) # nolint
 
-# TODO: Numeric input
+#' NumericInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/numeric-input>
+#'
+#' @example inst/examples/components/NumericInput.R
+#' @inherit template params
+#' @export
+NumericInput <- component("NumericInput")
+
+#' @rdname NumericInput
+#' @export
+NumericInput.shinyInput <- input("NumericInput", 0) # nolint
 
 #' Input group
 #'

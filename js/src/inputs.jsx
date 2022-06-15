@@ -34,6 +34,11 @@ export const FileInput = InputAdapter(Blueprint.FileInput, (value, setValue) => 
   onInputChange: (event) => setValue(event.target.value),
 }));
 
+export const NumericInput = InputAdapter(Blueprint.NumericInput, (value, setValue) => ({
+  value,
+  onValueChange: setValue,
+}));
+
 export const InputGroup = InputAdapter(Blueprint.InputGroup, (value, setValue) => ({
   value,
   onChange: (event) => setValue(event.target.value),
