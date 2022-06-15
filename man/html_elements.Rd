@@ -13,7 +13,6 @@
 \alias{Pre}
 \alias{OL}
 \alias{UL}
-\alias{HTMLTable}
 \title{HTML elements}
 \usage{
 H1(...)
@@ -37,8 +36,6 @@ Pre(...)
 OL(...)
 
 UL(...)
-
-HTMLTable(...)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
@@ -63,21 +60,14 @@ if (interactive()) shinyApp(
     Label("Label"),
     Pre("Pre"),
     OL(tags$li("OL")),
-    UL(tags$li("UL")),
-    HTMLTable(
-      tags$thead(
-        tags$tr(tags$th("Project"), tags$th("Stack"), tags$th("Contributors"))
-      ),
-      tags$tbody(
-        tags$tr(tags$td("Blueprint"), tags$td("JS React"), tags$td("268")),
-        tags$tr(tags$td("TS"), tags$td("JSX"), tags$td("68")),
-        tags$tr(tags$td("appsilon.blueprint"), tags$td("R JS"), tags$td("2"))
-      ),
-      tags$tfoot(
-        tags$tr(tags$td("Total", colspan = 2), tags$td("1508"))
-      )
-    )
+    UL(tags$li("UL"))
   ),
   server = function(input, output) {}
 )
 }
+\seealso{
+Other HTML elements: 
+\code{\link{HTMLTable}()},
+\code{\link{Label}()}
+}
+\concept{HTML elements}

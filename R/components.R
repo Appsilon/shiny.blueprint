@@ -139,6 +139,7 @@ EditableText.shinyInput <- input("EditableText", "") # nolint
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/html>
 #'
+#' @family HTML elements
 #' @example inst/examples/components/html_elements.R
 #' @inherit template params
 #' @name html_elements
@@ -190,7 +191,13 @@ OL <- component("OL")
 #' @export
 UL <- component("UL")
 
-#' @rdname html_elements
+#' HTML table
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/html-table>
+#'
+#' @family HTML elements
+#' @example inst/examples/components/HTMLTable.R
+#' @inherit template params
 #' @export
 HTMLTable <- component("HTMLTable")
 
@@ -363,6 +370,7 @@ ControlGroup <- component("ControlGroup")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/label>
 #'
+#' @family HTML elements
 #' @example inst/examples/components/Label.R
 #' @inherit template params
 #' @export
