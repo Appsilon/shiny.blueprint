@@ -419,7 +419,31 @@ HTMLSelect <- component("HTMLSelect")
 #' @export
 HTMLSelect.shinyInput <- input("HTMLSelect", "") # nolint
 
-# TODO: Slider
+#' Slider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.slider>
+#'
+#' @example inst/examples/components/Slider.R
+#' @inherit template params
+#' @export
+Slider <- component("Slider")
+
+#' @rdname Slider
+#' @export
+Slider.shinyInput <- input("Slider", 0) # nolint
+
+#' RangeSlider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.range-slider>
+#'
+#' @example inst/examples/components/Slider.R
+#' @inherit template params
+#' @export
+RangeSlider <- component("RangeSlider")
+
+#' @rdname RangeSlider
+#' @export
+RangeSlider.shinyInput <- input("RangeSlider", c(0, 0)) # nolint
 
 #' Switch
 #'

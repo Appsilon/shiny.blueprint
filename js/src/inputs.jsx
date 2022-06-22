@@ -24,6 +24,16 @@ export const HTMLSelect = InputAdapter(Blueprint.HTMLSelect, (value, setValue) =
   onChange: (event) => setValue(event.target.value),
 }));
 
+export const Slider = InputAdapter(Blueprint.Slider, (value, setValue) => ({
+  value,
+  onChange: setValue,
+}));
+
+export const RangeSlider = InputAdapter(Blueprint.RangeSlider, (value, setValue) => ({
+  value,
+  onChange: setValue,
+}));
+
 export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   checked: value,
   onChange: (event) => setValue(event.target.checked),
