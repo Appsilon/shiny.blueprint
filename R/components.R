@@ -47,7 +47,14 @@ input <- function(name, defaultValue) {
   }
 }
 
-# TODO: Breadcrumbs
+#' Breadcrumbs
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/breadcrumbs>
+#'
+#' @example inst/examples/components/Breadcrumbs.R
+#' @inherit template params
+#' @export
+Breadcrumbs <- component("Breadcrumbs")
 
 #' Button
 #'
@@ -105,8 +112,6 @@ Card <- component("Card")
 #' @inherit template params
 #' @export
 Collapse <- component("Collapse")
-
-# TODO: Collapsible list
 
 #' Divider
 #'
@@ -171,9 +176,7 @@ Blockquote <- component("Blockquote")
 #' @export
 Code <- component("Code")
 
-#' @rdname html_elements
-#' @export
-Label <- component("Label")
+# Label has its own documentation page.
 
 #' @rdname html_elements
 #' @export
@@ -249,9 +252,23 @@ NavbarDivider <- component("NavbarDivider")
 #' @export
 NonIdealState <- component("NonIdealState")
 
-# TODO: Overflow list
+#' Overflow list
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/overflow-list>
+#'
+#' @example inst/examples/components/OverflowList.R
+#' @inherit template params
+#' @export
+OverflowList <- component("OverflowList")
 
-# TODO: Panel stack (v2)
+#' Panel stack (v2)
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/panel-stack2>
+#'
+#' @example inst/examples/components/PanelStack2.R
+#' @inherit template params
+#' @export
+PanelStack2 <- component("PanelStack2")
 
 #' Progress bar
 #'
@@ -262,9 +279,14 @@ NonIdealState <- component("NonIdealState")
 #' @export
 ProgressBar <- component("ProgressBar")
 
-# TODO: Resize sensor
-
-# TODO: Skeleton
+#' Resize sensor
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/resize-sensor>
+#'
+#' @example inst/examples/components/ResizeSensor.R
+#' @inherit template params
+#' @export
+ResizeSensor <- component("ResizeSensor")
 
 #' Spinner
 #'
@@ -337,11 +359,44 @@ FormGroup <- component("FormGroup")
 #' @export
 ControlGroup <- component("ControlGroup")
 
-# TODO: Label
+#' Label
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/label>
+#'
+#' @example inst/examples/components/Label.R
+#' @inherit template params
+#' @export
+Label <- component("Label")
 
-# TODO: Checkbox
+#' Checkbox
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/checkbox>
+#'
+#' @example inst/examples/components/Checkbox.R
+#' @inherit template params
+#' @export
+Checkbox <- component("Checkbox")
 
-# TODO: Radio
+#' @rdname Checkbox
+#' @export
+Checkbox.shinyInput <- input("Checkbox", FALSE) # nolint
+
+#' Radio
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/radio>
+#'
+#' @example inst/examples/components/Radio.R
+#' @inherit template params
+#' @export
+Radio <- component("Radio")
+
+#' @rdname Radio
+#' @export
+RadioGroup <- component("RadioGroup")
+
+#' @rdname Radio
+#' @export
+RadioGroup.shinyInput <- input("RadioGroup", NULL) # nolint
 
 #' HTMLSelect
 #'

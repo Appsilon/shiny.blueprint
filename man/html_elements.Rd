@@ -10,7 +10,6 @@
 \alias{H6}
 \alias{Blockquote}
 \alias{Code}
-\alias{Label}
 \alias{Pre}
 \alias{OL}
 \alias{UL}
@@ -32,8 +31,6 @@ H6(...)
 Blockquote(...)
 
 Code(...)
-
-Label(...)
 
 Pre(...)
 
