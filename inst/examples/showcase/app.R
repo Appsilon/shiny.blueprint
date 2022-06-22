@@ -2,35 +2,69 @@ library(appsilon.blueprint)
 library(shiny.router)
 library(shiny)
 
-loadComponent <- function(name) {
-  module <- new.env()
-  source(glue::glue("../components/{name}.R"), local = module)
-  module
-}
+section <- function(name, ...) list(name = name, items = list(...))
+item <- function(name, id) list(type = "item", name = name, id = id)
 
-button <- loadComponent("Button")
-overflowList <- loadComponent("OverflowList")
-
-menu <- UL(
-  tags$li(tags$a(href = route_link("Button"), "Button")),
-  tags$li(tags$a(href = route_link("OverflowList"), "OverflowList"))
-)
-
-router <- make_router(
-  route(
-    "Button",
-    button$ui("button"),
-    function() button$server("button")
-  ),
-  route(
-    "OverflowList",
-    overflowList$ui("overflowList"),
-    function() overflowList$server("overflowList")
+sections <- list(
+  section(
+    "COMPONENTS",
+    item("Button", "Button"),
+    item("Overflow list", "OverflowList")
   )
 )
+items <- do.call(c, lapply(sections, `[[`, "items"))
+
+makeNav <- function(sections) {
+  lapply(sections, function(section) {
+    tagList(
+      H6(section$name),
+      UL(lapply(section$items, function(item) {
+        tags$li(
+          tags$a(item$name, href = route_link(item$id))
+        )
+      }))
+    )
+  })
+}
+
+readExample <- function(id) {
+  path <- glue::glue("../components/{id}.R")
+  code <- readChar(path, file.info(path)$size)
+  module <- new.env()
+  source(path, local = module)
+  list(code = code, ui = module$ui, server = module$server)
+}
+
+makePage <- function(name, ui, code) {
+  tagList(
+    H1(name),
+    H3("Example"),
+    ui,
+    H3("Code"),
+    Pre(code)
+  )
+}
+
+makeRouter <- function(items) {
+  routes <- lapply(items, function(item) {
+    example <- readExample(item$id)
+    route(
+      path = item$id,
+      ui = makePage(
+        name = item$name,
+        ui = example$ui(item$id),
+        code = example$code
+      ),
+      server = function() example$server(item$id)
+    )
+  })
+  do.call(shiny.router::make_router, routes)
+}
+
+router <- makeRouter(items)
 
 style <- tags$head(tags$style(HTML("
-  .page {
+  .grid {
     display: grid;
     grid-template-columns: 200px minmax(0, 1fr);
     gap: 1em;
@@ -41,8 +75,8 @@ shinyApp(
   ui = tagList(
     style,
     tags$div(
-      class = "page",
-      tags$nav(menu),
+      class = "grid",
+      tags$nav(makeNav(sections)),
       tags$main(router$ui)
     )
   ),
