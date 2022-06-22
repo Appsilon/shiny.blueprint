@@ -24,3 +24,9 @@ if (interactive()) shinyApp(
   server = function(input, output) {}
 )
 }
+\seealso{
+Other HTML elements: 
+\code{\link{HTMLTable}()},
+\code{\link{htmlElements}}
+}
+\concept{HTML elements}
