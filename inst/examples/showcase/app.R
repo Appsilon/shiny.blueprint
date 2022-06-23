@@ -8,8 +8,66 @@ item <- function(name, id) list(type = "item", name = name, id = id)
 sections <- list(
   section(
     "COMPONENTS",
+    item("Breadcrumbs", "Breadcrumbs"),
     item("Button", "Button"),
-    item("Overflow list", "OverflowList")
+    item("Button group", "ButtonGroup"),
+    item("Callout", "Callout"),
+    item("Card", "Card"),
+    item("Collapse", "Collapse"),
+    item("Divider", "Divider"),
+    item("Editable text", "EditableText"),
+    item("HTML elements", "htmlElements"),
+    item("HTML table", "HTMLTable"),
+    # TODO: HotkeysTarget2
+    item("Icon", "Icon"),
+    item("Menu", "Menu"),
+    item("Navbar", "Navbar"),
+    item("Non-ideal state", "NonIdealState"),
+    item("Overflow list", "OverflowList"),
+    item("Panel stack (v2)", "PanelStack2"),
+    item("Progress bar", "ProgressBar"),
+    item("Resize sensor", "ResizeSensor"),
+    item("Spinner", "Spinner"),
+    item("Tabs", "Tabs"),
+    item("Tag", "Tag"),
+    item("Text", "Text"),
+    item("Tree", "Tree")
+  ),
+  section(
+    "FORM CONTROLS",
+    item("Form group", "FormGroup"),
+    item("Control group", "ControlGroup"),
+    item("Label", "Label"),
+    item("Checkbox", "Checkbox"),
+    item("Radio", "Radio"),
+    item("HTML select", "HTMLSelect"),
+    # TODO: Slider
+    item("Switch", "Switch")
+  ),
+  section(
+    "FORM INPUTS",
+    # TODO: File input
+    # TODO: Numeric input
+    item("Input group", "InputGroup"),
+    item("Text area", "TextArea")
+    # TODO: Tag input
+  ),
+  section(
+    "OVERLAYS",
+    # TODO: Overlay
+    # TODO: Portal
+    # TODO: Alert
+    # TODO: Context menu
+    # TODO: Dialog
+    # TODO: MultistepDialog
+    # TODO: Drawer
+    item("Popover", "Popover")
+    # TODO: Toast
+    # TODO: Tooltip
+  ),
+  section(
+    "CONTEXT"
+    # TODO: HotkeysProvider
   )
 )
 items <- do.call(c, lapply(sections, `[[`, "items"))
