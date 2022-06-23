@@ -8,11 +8,11 @@ ui <- function(id) {
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
     currentTab <- reactiveVal("react")
-    observeEvent(input$select_tab, current_tab(input$select_tab))
+    observeEvent(input$selectTab, currentTab(input$selectTab))
     output$tabs <- renderReact(
       Tabs(
         selectedTabId = currentTab(),
-        onChange = setInput("select_tab"),
+        onChange = setInput("selectTab"),
         Tab(id = "angular", title = "Angular", panel = "Angular"),
         Tab(id = "ember", title = "Ember", panel = "Ember"),
         Tab(id = "react", title = "React", panel = "React"),
