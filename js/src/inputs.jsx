@@ -54,6 +54,11 @@ export const InputGroup = InputAdapter(Blueprint.InputGroup, (value, setValue) =
   onChange: (event) => setValue(event.target.value),
 }));
 
+export const TagInput = InputAdapter(Blueprint.TagInput, (values, setValue) => ({
+  values,
+  onChange: setValue,
+}));
+
 export const TextArea = InputAdapter(Blueprint.TextArea, (value, setValue) => ({
   value,
   onChange: (event) => setValue(event.target.value),

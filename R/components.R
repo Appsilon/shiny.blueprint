@@ -497,7 +497,18 @@ InputGroup <- component("InputGroup")
 #' @export
 InputGroup.shinyInput <- input("InputGroup", "") # nolint
 
-# TODO: Tag input
+#' TagInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tag-input>
+#'
+#' @example inst/examples/components/TagInput.R
+#' @inherit template params
+#' @export
+TagInput <- component("TagInput")
+
+#' @rdname TagInput
+#' @export
+TagInput.shinyInput <- input("TagInput", c()) # nolint
 
 #' Text area
 #'
