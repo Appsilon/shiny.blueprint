@@ -61,21 +61,22 @@ modifyTree <- function(tree, ids, props) {
 }
 
 ui <- function(id) {
+  ns <- NS(id)
   tagList(
-    reactOutput("tree")
+    reactOutput(ns("tree"))
   )
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    treeReactive <- reactiveVal(treeList)
+    ns <- session$ns
 
+    treeReactive <- reactiveVal(treeList)
     observeEvent(input$expand, {
       treeReactive(
         modifyTree(treeReactive(), ids = input$expand$id, props = list(isExpanded = TRUE))
       )
     })
-
     observeEvent(input$collapse, {
       treeReactive(
         modifyTree(treeReactive(), ids = input$collapse$id, props = list(isExpanded = FALSE))
@@ -85,8 +86,8 @@ server <- function(id) {
     output$tree <- renderReact({
       Tree(
         contents = treeReactive(),
-        onNodeExpand = setInput("expand"),
-        onNodeCollapse = setInput("collapse")
+        onNodeExpand = setInput(ns("expand")),
+        onNodeCollapse = setInput(ns("collapse"))
       )
     })
   })

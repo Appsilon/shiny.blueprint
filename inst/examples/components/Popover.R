@@ -2,11 +2,14 @@ library(shiny)
 library(appsilon.blueprint)
 
 ui <- function(id) {
-  reactOutput("ui")
+  ns <- NS(id)
+  reactOutput(ns("ui"))
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
     isOpen <- reactiveVal(FALSE)
     observeEvent(input$hello, isOpen(TRUE))
     observeEvent(input$dismiss, isOpen(FALSE))
@@ -14,12 +17,12 @@ server <- function(id) {
     output$ui <- renderReact({
       Popover(
         isOpen = isOpen(),
-        target = Button.shinyInput("hello", "Say Hello", intent = "primary"),
+        target = Button.shinyInput(ns("hello"), "Say Hello", intent = "primary"),
         content = tags$div(
           style = "padding: 1em",
           H5("Hello!"),
           tags$p("Please read this message."),
-          Button.shinyInput("dismiss", "Dismiss")
+          Button.shinyInput(ns("dismiss"), "Dismiss")
         )
       )
     })

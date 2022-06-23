@@ -1,7 +1,12 @@
 library(shiny)
 library(appsilon.blueprint)
 
+setInput <- function(inputId, accessor = NULL) {
+  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+}
+
 ui <- function(id) {
+  ns <- NS(id)
   tagList(
     tags$style("
       .resizable {
@@ -13,10 +18,10 @@ ui <- function(id) {
       }
     "),
     ResizeSensor(
-      onResize = JS("entries => Shiny.setInputValue('resize', entries[0].contentRect)"),
+      onResize = setInput(ns("resize"), "[0].contentRect"),
       div(
         class = "resizable",
-        textOutput("size")
+        textOutput(ns("size"))
       )
     )
   )

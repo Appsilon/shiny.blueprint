@@ -1,20 +1,25 @@
 library(shiny)
 library(appsilon.blueprint)
 
+setInput <- function(inputId, accessor = NULL) {
+  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+}
+
 ui <- function(id) {
+  ns <- NS(id)
   tagList(
     Checkbox(
-      onChange = JS("(event) => Shiny.setInputValue('apples', event.target.checked)"),
+      onChange = setInput(ns("apples"), ".target.checked"),
       defaultChecked = TRUE,
       label = "Apples"
     ),
     Checkbox.shinyInput(
-      inputId = "bananas",
+      inputId = ns("bananas"),
       value = TRUE,
       label = "Bananas"
     ),
-    textOutput("applesEnabled"),
-    textOutput("bananasEnabled")
+    textOutput(ns("applesEnabled")),
+    textOutput(ns("bananasEnabled"))
   )
 }
 

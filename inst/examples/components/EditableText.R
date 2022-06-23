@@ -2,15 +2,16 @@ library(shiny)
 library(appsilon.blueprint)
 
 ui <- function(id) {
+  ns <- NS(id)
   tagList(
-    H2(EditableText(onChange = setInput("header"))),
+    H2(EditableText(onChange = setInput(ns("header")))),
     EditableText.shinyInput(
-      inputId = "body",
+      inputId = ns("body"),
       multiline = TRUE,
       minLines = 3, maxLines = 12
     ),
-    textOutput("headerValue"),
-    textOutput("bodyValue")
+    textOutput(ns("headerValue")),
+    textOutput(ns("bodyValue"))
   )
 }
 

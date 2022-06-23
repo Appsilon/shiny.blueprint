@@ -10,9 +10,10 @@ logs <- Pre(
 )
 
 ui <- function(id) {
+  ns <- NS(id)
   tagList(
-    Button.shinyInput("toggle", "Toggle logs"),
-    reactOutput("ui")
+    Button.shinyInput(ns("toggle"), "Toggle logs"),
+    reactOutput(ns("ui"))
   )
 }
 

@@ -2,17 +2,20 @@ library(shiny)
 library(appsilon.blueprint)
 
 ui <- function(id) {
-  reactOutput("tabs")
+  ns <- NS(id)
+  reactOutput(ns("tabs"))
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
     currentTab <- reactiveVal("react")
     observeEvent(input$selectTab, currentTab(input$selectTab))
     output$tabs <- renderReact(
       Tabs(
         selectedTabId = currentTab(),
-        onChange = setInput("selectTab"),
+        onChange = setInput(ns("selectTab")),
         Tab(id = "angular", title = "Angular", panel = "Angular"),
         Tab(id = "ember", title = "Ember", panel = "Ember"),
         Tab(id = "react", title = "React", panel = "React"),
