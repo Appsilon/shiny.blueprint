@@ -348,7 +348,7 @@ Text <- component("Text")
 #' @export
 Tree <- component("Tree")
 
-#' FormGroup
+#' Form group
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/form-group>
 #'
@@ -357,7 +357,7 @@ Tree <- component("Tree")
 #' @export
 FormGroup <- component("FormGroup")
 
-#' ControlGroup
+#' Control group
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/control-group>
 #'
@@ -406,7 +406,7 @@ RadioGroup <- component("RadioGroup")
 #' @export
 RadioGroup.shinyInput <- input("RadioGroup", NULL) # nolint
 
-#' HTMLSelect
+#' HTML select
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/html-select>
 #'
@@ -438,7 +438,7 @@ Switch.shinyInput <- input("Switch", FALSE) # nolint
 
 # TODO: Numeric input
 
-#' InputGroup
+#' Input group
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.input-group>
 #'
@@ -453,7 +453,7 @@ InputGroup.shinyInput <- input("InputGroup", "") # nolint
 
 # TODO: Tag input
 
-#' TextArea
+#' Text area
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.text-area>
 #'
@@ -474,7 +474,9 @@ TextArea.shinyInput <- input("TextArea", "") # nolint
 
 # TODO: Context menu
 
-# TODO: Dialogs
+# TODO: Dialog
+
+# TODO: MultistepDialog
 
 # TODO: Drawer
 
