@@ -25,6 +25,17 @@ component <- function(name) {
   }
 }
 
+properties <- function(name) {
+  function(...) {
+    shiny.react::reactElement(
+      module = "@/appsilon.blueprint",
+      name = name,
+      props = shiny.react::asProps(...),
+      deps = blueprintDependency()
+    )
+  }
+}
+
 button <- function(name) {
   function(inputId, ...) {
     shiny.react::reactElement(
@@ -444,6 +455,19 @@ RangeSlider <- component("RangeSlider")
 #' @rdname RangeSlider
 #' @export
 RangeSlider.shinyInput <- input("RangeSlider", c(0, 0)) # nolint
+
+#' MultiSlider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.multi-slider>
+#'
+#' @example inst/examples/components/MultiSlider.R
+#' @inherit template params
+#' @export
+MultiSlider <- component("MultiSlider")
+
+#' @rdname MultiSlider
+#' @export
+MultiSliderHandle <- properties("MultiSliderHandle")
 
 #' Switch
 #'

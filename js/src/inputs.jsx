@@ -34,6 +34,8 @@ export const RangeSlider = InputAdapter(Blueprint.RangeSlider, (value, setValue)
   onChange: setValue,
 }));
 
+export const MultiSliderHandle = Blueprint.MultiSlider.Handle;
+
 export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   checked: value,
   onChange: (event) => setValue(event.target.checked),
