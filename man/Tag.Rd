@@ -13,11 +13,11 @@ Tag(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/tag}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     Tag(active = TRUE, "Hello"),
     Tag(active = TRUE, large = TRUE, "Hello"),
     Tag(active = TRUE, round = TRUE, "Hello"),
@@ -27,7 +27,12 @@ if (interactive()) shinyApp(
     Tag(active = TRUE, round = TRUE, intent = "warning", interactive = TRUE, "Hello"),
     Tag(active = TRUE, round = TRUE, intent = "success", interactive = TRUE, "Hello"),
     Tag(active = TRUE, round = TRUE, intent = "danger", interactive = TRUE, "Hello")
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

@@ -13,11 +13,16 @@ ProgressBar(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/progress-bar}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = ProgressBar(animate = TRUE),
-  server = function(input, output) {}
-)
+ui <- function(id) {
+  ProgressBar(animate = TRUE)
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

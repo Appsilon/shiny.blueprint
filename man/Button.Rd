@@ -24,40 +24,46 @@ AnchorButton.shinyInput(inputId, ...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/button}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
-    textOutput("clicks"),
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    textOutput(ns("clicks")),
     Button(
-      onClick = triggerEvent("click1"),
+      onClick = triggerEvent(ns("click1")),
       icon = "refresh",
       "Refresh"
     ),
     Button.shinyInput(
-      inputId = "click2",
+      inputId = ns("click2"),
       rightIcon = "share",
       "Export"
     ),
     AnchorButton(
-      onClick = triggerEvent("click3"),
+      onClick = triggerEvent(ns("click3")),
       intent = "primary",
       "OK"
     ),
     AnchorButton.shinyInput(
-      inputId = "click4",
+      inputId = ns("click4"),
       intent = "success",
       "Next"
     )
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     clicks <- reactiveVal(0)
     output$clicks <- renderText(paste("Clicks:", clicks()))
     observeEvent(input$click1, clicks(clicks() + 1))
     observeEvent(input$click2, clicks(clicks() + 1))
     observeEvent(input$click3, clicks(clicks() + 1))
     observeEvent(input$click4, clicks(clicks() + 1))
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

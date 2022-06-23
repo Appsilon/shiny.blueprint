@@ -13,8 +13,8 @@ Breadcrumbs(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/breadcrumbs}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
 items <- list(
   list(icon = "folder-close", text = "Users"),
@@ -22,8 +22,13 @@ items <- list(
   list(icon = "document", text = "image.jpg")
 )
 
-if (interactive()) shinyApp(
-  ui = Breadcrumbs(items = items),
-  server = function(input, output) {}
-)
+ui <- function(id) {
+  Breadcrumbs(items = items)
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

@@ -4,7 +4,7 @@
 \alias{InputGroup}
 \alias{InputGroup.shinyInput}
 \alias{TextArea.shinyInput}
-\title{InputGroup}
+\title{Input group}
 \usage{
 InputGroup(...)
 
@@ -23,35 +23,45 @@ TextArea.shinyInput(inputId, ..., value = defaultValue)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/text-inputs.input-group}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = div(
+setInput <- function(inputId, accessor = NULL) {
+  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+}
+
+ui <- function(id) {
+  ns <- NS(id)
+  div(
     style = "width: 20rem; display: grid; row-gap: 0.5rem",
     H4("Uncontrolled"),
     InputGroup(
-      onChange = JS("(event) => Shiny.setInputValue('uncontrolledInputGroup', event.target.value)"),
+      onChange = setInput(ns("uncontrolledInputGroup"), ".target.value"),
       disabled = FALSE,
       large = TRUE,
       leftIcon = "filter",
       placeholder = "Filter histogram...",
       rightElement = Spinner(intent = "primary", size = 20)
     ),
-    textOutput("uncontrolledInputGroupOutput"),
+    textOutput(ns("uncontrolledInputGroupOutput")),
     H4("Controlled"),
     InputGroup.shinyInput(
-      inputId = "controlledInputGroup",
+      inputId = ns("controlledInputGroup"),
       disabled = FALSE,
       large = FALSE,
       leftIcon = "home",
       placeholder = "Type something..."
     ),
-    textOutput("controlledInputGroupOutput"),
-    reactOutput("passwordExample"),
-    textOutput("passwordOutput")
-  ),
-  server = function(input, output) {
+    textOutput(ns("controlledInputGroupOutput")),
+    reactOutput(ns("passwordExample")),
+    textOutput(ns("passwordOutput"))
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
     output$uncontrolledInputGroupOutput <- renderText(input$uncontrolledInputGroup)
     output$controlledInputGroupOutput <- renderText(input$controlledInputGroup)
 
@@ -62,13 +72,13 @@ if (interactive()) shinyApp(
 
     output$passwordExample <- renderReact({
       lockButton <- Button.shinyInput(
-        inputId = "toggleLock",
+        inputId = ns("toggleLock"),
         icon = ifelse(isLocked(), "lock", "unlock"),
         minimal = TRUE,
         intent = "warning"
       )
       InputGroup.shinyInput(
-        inputId = "passwordInput",
+        inputId = ns("passwordInput"),
         disabled = FALSE,
         large = FALSE,
         rightElement = lockButton,
@@ -76,6 +86,8 @@ if (interactive()) shinyApp(
         type = ifelse(isLocked(), "password", "text")
       )
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

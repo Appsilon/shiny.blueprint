@@ -19,11 +19,11 @@ MenuDivider(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/menu}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = Menu(
+ui <- function(id) {
+  Menu(
     style = "max-width: 200px",
     className = "bp4-elevation-1",
     MenuDivider(title = "Edit"),
@@ -60,7 +60,12 @@ if (interactive()) shinyApp(
       icon = "cog", labelElement = Icon(icon = "share"),
       text = "Settings...", intent = "primary"
     )
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

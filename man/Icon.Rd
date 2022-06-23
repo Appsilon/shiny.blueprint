@@ -13,14 +13,19 @@ Icon(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/icon}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     Icon(icon = "cross"),
     Icon(icon = "globe", size = 20),
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

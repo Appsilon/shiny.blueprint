@@ -13,11 +13,11 @@ HTMLTable(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/html-table}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = HTMLTable(
+ui <- function(id) {
+  HTMLTable(
     tags$thead(
       tags$tr(tags$th("Project"), tags$th("Stack"), tags$th("Contributors"))
     ),
@@ -29,9 +29,14 @@ if (interactive()) shinyApp(
     tags$tfoot(
       tags$tr(tags$td("Total", colspan = 2), tags$td("1508"))
     )
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }
 \seealso{
 Other HTML elements: 

@@ -13,15 +13,20 @@ ButtonGroup(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/button-group}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = ButtonGroup(
+ui <- function(id) {
+  ButtonGroup(
     Button(icon = "database", "Queries"),
     Button(icon = "function", "Functions"),
     AnchorButton(rightIcon = "caret-down", "Options")
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

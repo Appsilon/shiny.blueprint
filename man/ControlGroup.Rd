@@ -2,7 +2,7 @@
 % Please edit documentation in R/components.R
 \name{ControlGroup}
 \alias{ControlGroup}
-\title{ControlGroup}
+\title{Control group}
 \usage{
 ControlGroup(...)
 }
@@ -13,15 +13,20 @@ ControlGroup(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/control-group}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = ControlGroup(
+ui <- function(id) {
+  ControlGroup(
     HTMLSelect(options = rownames(mtcars)),
     InputGroup(placeholder = "Find car..."),
     Button(icon = "arrow-right"),
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

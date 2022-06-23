@@ -13,12 +13,18 @@ Popover(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/popover}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = reactOutput("ui"),
-  server = function(input, output) {
+ui <- function(id) {
+  ns <- NS(id)
+  reactOutput(ns("ui"))
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
     isOpen <- reactiveVal(FALSE)
     observeEvent(input$hello, isOpen(TRUE))
     observeEvent(input$dismiss, isOpen(FALSE))
@@ -26,15 +32,17 @@ if (interactive()) shinyApp(
     output$ui <- renderReact({
       Popover(
         isOpen = isOpen(),
-        target = Button.shinyInput("hello", "Say Hello", intent = "primary"),
+        target = Button.shinyInput(ns("hello"), "Say Hello", intent = "primary"),
         content = tags$div(
           style = "padding: 1em",
           H5("Hello!"),
           tags$p("Please read this message."),
-          Button.shinyInput("dismiss", "Dismiss")
+          Button.shinyInput(ns("dismiss"), "Dismiss")
         )
       )
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }
