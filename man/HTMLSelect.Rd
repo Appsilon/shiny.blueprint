@@ -26,6 +26,7 @@ library(shiny)
 setInput <- function(inputId, accessor = NULL) {
   JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
 }
+
 ui <- function(id) {
   ns <- NS(id)
   tagList(
