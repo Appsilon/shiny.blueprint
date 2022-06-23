@@ -98,6 +98,7 @@ makePage <- function(name, ui, code) {
     H1(name),
     H3("Example"),
     ui,
+    br(),
     H3("Code"),
     Pre(code)
   )
