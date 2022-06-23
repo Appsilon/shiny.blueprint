@@ -13,16 +13,21 @@ Label(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/label}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = Label(
+ui <- function(id) {
+  Label(
     "Label",
     tags$input(class = "bp4-input")
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }
 \seealso{
 Other HTML elements: 

@@ -13,8 +13,8 @@ OverflowList(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/overflow-list}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
 boxStyle <- tags$style("
   .box {
@@ -30,8 +30,8 @@ items <- lapply(
   function(text) div(text, class = "box")
 )
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     boxStyle,
     OverflowList(
       items = items,
@@ -39,7 +39,12 @@ if (interactive()) shinyApp(
       overflowRenderer = JS("items => null"),
       collapseFrom = "end"
     )
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

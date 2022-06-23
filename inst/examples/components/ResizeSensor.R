@@ -1,8 +1,13 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+setInput <- function(inputId, accessor = NULL) {
+  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+}
+
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
     tags$style("
       .resizable {
         overflow: auto;
@@ -13,17 +18,22 @@ if (interactive()) shinyApp(
       }
     "),
     ResizeSensor(
-      onResize = JS("entries => Shiny.setInputValue('resize', entries[0].contentRect)"),
+      onResize = setInput(ns("resize"), "[0].contentRect"),
       div(
         class = "resizable",
-        textOutput("size")
+        textOutput(ns("size"))
       )
     )
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$size <- renderText({
       content <- req(input$resize)
       paste0(content$width, "x", content$height)
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

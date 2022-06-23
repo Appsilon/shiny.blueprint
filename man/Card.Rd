@@ -13,11 +13,11 @@ Card(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/card}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = Card(
+ui <- function(id) {
+  Card(
     interactive = TRUE,
     H5(tags$a(href = "#", "Analytical applications")),
     tags$p(
@@ -25,7 +25,12 @@ if (interactive()) shinyApp(
       " ask better questions, and make better decisions."
     ),
     Button(text = "Explore products")
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

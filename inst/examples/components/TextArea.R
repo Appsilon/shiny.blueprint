@@ -1,27 +1,37 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+setInput <- function(inputId, accessor = NULL) {
+  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+}
+
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
     H4("Uncontrolled"),
     TextArea(
       growVertically = TRUE,
-      onChange = JS("event => Shiny.setInputValue('uncontrolledTextarea', event.target.value)"),
+      onChange = setInput(ns("uncontrolledTextarea"), ".target.value"),
       large = TRUE,
       intent = "primary"
     ),
-    textOutput("uncontrolledTextareaOutput"),
+    textOutput(ns("uncontrolledTextareaOutput")),
     H4("Controlled"),
     TextArea.shinyInput(
-      inputId = "controlledTextarea",
+      inputId = ns("controlledTextarea"),
       growVertically = TRUE,
       large = TRUE,
       intent = "primary"
     ),
-    textOutput("controlledTextareaOutput")
-  ),
-  server = function(input, output) {
+    textOutput(ns("controlledTextareaOutput"))
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$uncontrolledTextareaOutput <- renderText(input$uncontrolledTextarea)
     output$controlledTextareaOutput <- renderText(input$controlledTextarea)
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

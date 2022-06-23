@@ -13,11 +13,11 @@ Divider(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/divider}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = ButtonGroup(
+ui <- function(id) {
+  ButtonGroup(
     minimal = TRUE,
     Button(text = "File"),
     Button(text = "Edit"),
@@ -27,7 +27,12 @@ if (interactive()) shinyApp(
     Divider(),
     Button(icon = "add"),
     Button(icon = "remove")
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

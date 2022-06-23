@@ -23,4 +23,5 @@ Suggests:
   purrr,
   rcmdcheck,
   rmarkdown,
-  shiny
+  shiny,
+  shiny.router

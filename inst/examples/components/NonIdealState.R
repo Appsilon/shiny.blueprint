@@ -1,8 +1,8 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = NonIdealState(
+ui <- function(id) {
+  NonIdealState(
     icon = "search",
     title = "No search results",
     description = Card(
@@ -11,6 +11,11 @@ if (interactive()) shinyApp(
       "Try searching for something else, or create a new file."
     ),
     action = Button(icon = "plus", text = "New file", intent = "primary", outlined = TRUE)
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

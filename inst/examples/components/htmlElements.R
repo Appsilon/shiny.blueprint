@@ -1,8 +1,8 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     H1("H1"),
     H2("H2"),
     H3("H3"),
@@ -15,6 +15,11 @@ if (interactive()) shinyApp(
     Pre("Pre"),
     OL(tags$li("OL")),
     UL(tags$li("UL"))
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

@@ -13,9 +13,9 @@ Tree(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/tree}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
 library(purrr)
+library(shiny)
 
 treeList <- list(
   list(
@@ -75,19 +75,23 @@ modifyTree <- function(tree, ids, props) {
   })
 }
 
-if (interactive()) shinyApp(
-  ui = tagList(
-    reactOutput("tree")
-  ),
-  server = function(input, output) {
-    treeReactive <- reactiveVal(treeList)
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    reactOutput(ns("tree"))
+  )
+}
 
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
+    treeReactive <- reactiveVal(treeList)
     observeEvent(input$expand, {
       treeReactive(
         modifyTree(treeReactive(), ids = input$expand$id, props = list(isExpanded = TRUE))
       )
     })
-
     observeEvent(input$collapse, {
       treeReactive(
         modifyTree(treeReactive(), ids = input$collapse$id, props = list(isExpanded = FALSE))
@@ -97,10 +101,12 @@ if (interactive()) shinyApp(
     output$tree <- renderReact({
       Tree(
         contents = treeReactive(),
-        onNodeExpand = setInput("expand"),
-        onNodeCollapse = setInput("collapse")
+        onNodeExpand = setInput(ns("expand")),
+        onNodeCollapse = setInput(ns("collapse"))
       )
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

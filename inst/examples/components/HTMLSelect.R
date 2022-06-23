@@ -1,23 +1,33 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+setInput <- function(inputId, accessor = NULL) {
+  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+}
+
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
     H4("Uncontrolled"),
     HTMLSelect(
       options = rownames(mtcars),
-       onChange = JS("(event) => Shiny.setInputValue('uncontrolledHtmlSelect', event.target.value)")
+      onChange = setInput(ns("uncontrolledHtmlSelect"), ".target.value")
     ),
-    textOutput("uncontrolledHtmlSelectOutput"),
+    textOutput(ns("uncontrolledHtmlSelectOutput")),
     H4("Controlled"),
     HTMLSelect.shinyInput(
-      inputId = "controlledHtmlSelect",
+      inputId = ns("controlledHtmlSelect"),
       options = rownames(mtcars)
     ),
-    textOutput("controlledHtmlSelectOutput")
-  ),
-  server = function(input, output) {
+    textOutput(ns("controlledHtmlSelectOutput"))
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$uncontrolledHtmlSelectOutput <- renderText(input$uncontrolledHtmlSelect)
     output$controlledHtmlSelectOutput <- renderText(input$controlledHtmlSelect)
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

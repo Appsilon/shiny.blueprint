@@ -23,31 +23,41 @@ RadioGroup.shinyInput(inputId, ..., value = defaultValue)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/radio}
 }
 \examples{
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+setInput <- function(inputId, accessor = NULL) {
+  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+}
+
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
     H3("Favorite animal"),
     RadioGroup.shinyInput(
-      inputId = "animal",
+      inputId = ns("animal"),
       value = "dog",
       Radio(label = "Cat", value = "cat"),
       Radio(label = "Dog", value = "dog")
     ),
-    textOutput("favoriteAnimal"),
+    textOutput(ns("favoriteAnimal")),
     H3("Favorite fruit"),
-    reactOutput("fruitRadio"),
-    textOutput("favoriteFruit")
-  ),
-  server = function(input, output) {
+    reactOutput(ns("fruitRadio")),
+    textOutput(ns("favoriteFruit"))
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
     output$favoriteAnimal <- renderText(deparse(input$animal))
 
     fruit <- reactiveVal()
     observeEvent(input$fruit, fruit(input$fruit))
     output$fruitRadio <- renderReact({
       RadioGroup(
-        onChange = JS("event => Shiny.setInputValue('fruit', event.currentTarget.value)"),
+        onChange = setInput(ns("fruit"), ".currentTarget.value"),
         selectedValue = fruit(),
         Radio(label = "Apple", value = "a"),
         Radio(label = "Banana", value = "b"),
@@ -55,6 +65,8 @@ if (interactive()) shinyApp(
       )
     })
     output$favoriteFruit <- renderText(deparse(fruit()))
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

@@ -1,9 +1,9 @@
-library(shiny)
 library(appsilon.blueprint)
-library(shiny.router)
-library(sass)
-library(stringi)
 library(purrr)
+library(sass)
+library(shiny.router)
+library(shiny)
+library(stringi)
 
 source("sidebar.R")
 source("navbar.R")

@@ -1,11 +1,16 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
-if (interactive()) shinyApp(
-  ui = ControlGroup(
+ui <- function(id) {
+  ControlGroup(
     HTMLSelect(options = rownames(mtcars)),
     InputGroup(placeholder = "Find car..."),
     Button(icon = "arrow-right"),
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
