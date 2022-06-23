@@ -1,5 +1,5 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
 items <- list(
   list(icon = "folder-close", text = "Users"),

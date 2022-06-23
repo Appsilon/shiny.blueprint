@@ -1,5 +1,5 @@
-library(shiny)
 library(appsilon.blueprint)
+library(shiny)
 
 logs <- Pre(
   "[11:53:30] Finished 'typescript-bundle-blueprint' after 769 ms\n",

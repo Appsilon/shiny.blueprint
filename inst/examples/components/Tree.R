@@ -1,6 +1,6 @@
-library(shiny)
 library(appsilon.blueprint)
 library(purrr)
+library(shiny)
 
 treeList <- list(
   list(
