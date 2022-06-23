@@ -1,9 +1,12 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = reactOutput("ui"),
-  server = function(input, output) {
+ui <- function(id) {
+  reactOutput("ui")
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     isOpen <- reactiveVal(FALSE)
     observeEvent(input$hello, isOpen(TRUE))
     observeEvent(input$dismiss, isOpen(FALSE))
@@ -20,5 +23,7 @@ if (interactive()) shinyApp(
         )
       )
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

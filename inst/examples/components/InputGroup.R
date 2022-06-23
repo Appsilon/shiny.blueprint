@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = div(
+ui <- function(id) {
+  div(
     style = "width: 20rem; display: grid; row-gap: 0.5rem",
     H4("Uncontrolled"),
     InputGroup(
@@ -25,8 +25,11 @@ if (interactive()) shinyApp(
     textOutput("controlledInputGroupOutput"),
     reactOutput("passwordExample"),
     textOutput("passwordOutput")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$uncontrolledInputGroupOutput <- renderText(input$uncontrolledInputGroup)
     output$controlledInputGroupOutput <- renderText(input$controlledInputGroup)
 
@@ -51,5 +54,7 @@ if (interactive()) shinyApp(
         type = ifelse(isLocked(), "password", "text")
       )
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

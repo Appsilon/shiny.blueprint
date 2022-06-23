@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     Text(
       "Lorem ipsum dolor sit amet,
       consectetur adipiscing elit,
@@ -14,6 +14,11 @@ if (interactive()) shinyApp(
       Excepteur sint occaecat cupidatat non proident,
       sunt in culpa qui officia deserunt mollit anim id est laborum."
     )
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     H2(EditableText(onChange = setInput("header"))),
     EditableText.shinyInput(
       inputId = "body",
@@ -11,9 +11,14 @@ if (interactive()) shinyApp(
     ),
     textOutput("headerValue"),
     textOutput("bodyValue")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$headerValue <- renderText(paste("Header:", deparse(input$header)))
     output$bodyValue <- renderText(paste("Body:", deparse(input$body)))
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

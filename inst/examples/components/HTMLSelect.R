@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     H4("Uncontrolled"),
     HTMLSelect(
       options = rownames(mtcars),
@@ -15,9 +15,14 @@ if (interactive()) shinyApp(
       options = rownames(mtcars)
     ),
     textOutput("controlledHtmlSelectOutput")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$uncontrolledHtmlSelectOutput <- renderText(input$uncontrolledHtmlSelect)
     output$controlledHtmlSelectOutput <- renderText(input$controlledHtmlSelect)
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

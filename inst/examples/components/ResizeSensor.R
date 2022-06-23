@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     tags$style("
       .resizable {
         overflow: auto;
@@ -19,11 +19,16 @@ if (interactive()) shinyApp(
         textOutput("size")
       )
     )
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$size <- renderText({
       content <- req(input$resize)
       paste0(content$width, "x", content$height)
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

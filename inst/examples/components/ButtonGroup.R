@@ -1,11 +1,16 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = ButtonGroup(
+ui <- function(id) {
+  ButtonGroup(
     Button(icon = "database", "Queries"),
     Button(icon = "function", "Functions"),
     AnchorButton(rightIcon = "caret-down", "Options")
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

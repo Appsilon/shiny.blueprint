@@ -43,13 +43,18 @@ customComponents <- tagList(
   })()"))
 )
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     customComponents,
     PanelStack2(
       className = "panel-stack",
       initialPanel = JS("createPanel(1)")
     )
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     H3("Favorite animal"),
     RadioGroup.shinyInput(
       inputId = "animal",
@@ -14,8 +14,11 @@ if (interactive()) shinyApp(
     H3("Favorite fruit"),
     reactOutput("fruitRadio"),
     textOutput("favoriteFruit")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$favoriteAnimal <- renderText(deparse(input$animal))
 
     fruit <- reactiveVal()
@@ -30,5 +33,7 @@ if (interactive()) shinyApp(
       )
     })
     output$favoriteFruit <- renderText(deparse(fruit()))
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     H4("Uncontrolled"),
     TextArea(
       growVertically = TRUE,
@@ -19,9 +19,14 @@ if (interactive()) shinyApp(
       intent = "primary"
     ),
     textOutput("controlledTextareaOutput")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$uncontrolledTextareaOutput <- renderText(input$uncontrolledTextarea)
     output$controlledTextareaOutput <- renderText(input$controlledTextarea)
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

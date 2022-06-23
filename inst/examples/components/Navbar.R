@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = Navbar(
+ui <- function(id) {
+  Navbar(
     NavbarGroup(
       NavbarHeading("Blueprint"),
       NavbarDivider(),
@@ -14,6 +14,11 @@ if (interactive()) shinyApp(
       Button(minimal = TRUE, icon = "user"),
       Button(minimal = TRUE, icon = "refresh")
     )
-  ),
-  server = function(input, output) {}
-)
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {})
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

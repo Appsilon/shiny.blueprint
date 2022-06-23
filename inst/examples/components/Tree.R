@@ -60,11 +60,14 @@ modifyTree <- function(tree, ids, props) {
   })
 }
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     reactOutput("tree")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     treeReactive <- reactiveVal(treeList)
 
     observeEvent(input$expand, {
@@ -86,5 +89,7 @@ if (interactive()) shinyApp(
         onNodeCollapse = setInput("collapse")
       )
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

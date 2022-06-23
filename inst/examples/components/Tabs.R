@@ -1,9 +1,12 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = reactOutput("tabs"),
-  server = function(input, output) {
+ui <- function(id) {
+  reactOutput("tabs")
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     currentTab <- reactiveVal("react")
     observeEvent(input$select_tab, current_tab(input$select_tab))
     output$tabs <- renderReact(
@@ -17,5 +20,7 @@ if (interactive()) shinyApp(
         tags$input(class = "bp4-input", type = "text", placeholder = "Search...")
       )
     )
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

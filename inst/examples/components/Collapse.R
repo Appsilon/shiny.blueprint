@@ -9,16 +9,21 @@ logs <- Pre(
   "[11:53:30] Finished 'sass-compile-blueprint' after 2.84 s\n"
 )
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     Button.shinyInput("toggle", "Toggle logs"),
     reactOutput("ui")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     show <- reactiveVal(FALSE)
     observeEvent(input$toggle, show(!show()))
     output$ui <- renderReact({
       Collapse(isOpen = show(), logs)
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

@@ -1,8 +1,8 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  tagList(
     Checkbox(
       onChange = JS("(event) => Shiny.setInputValue('apples', event.target.checked)"),
       defaultChecked = TRUE,
@@ -15,9 +15,14 @@ if (interactive()) shinyApp(
     ),
     textOutput("applesEnabled"),
     textOutput("bananasEnabled")
-  ),
-  server = function(input, output) {
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$applesEnabled <- renderText(paste("Apples:", deparse(input$apples)))
     output$bananasEnabled <- renderText(paste("Bananas:", deparse(input$bananas)))
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
