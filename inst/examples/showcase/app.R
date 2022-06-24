@@ -62,7 +62,7 @@ sections <- list(
     # TODO: Context menu
     # TODO: Dialog
     # TODO: MultistepDialog
-    # TODO: Drawer
+    item("Drawer", "Drawer"),
     item("Popover", "Popover")
     # TODO: Toast
     # TODO: Tooltip
