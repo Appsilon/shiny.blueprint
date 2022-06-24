@@ -18,6 +18,7 @@ server <- function(id) {
       Popover(
         isOpen = isOpen(),
         target = Button.shinyInput(ns("hello"), "Say Hello", intent = "primary"),
+        usePortal = FALSE,
         content = tags$div(
           style = "padding: 1em",
           H5("Hello!"),
