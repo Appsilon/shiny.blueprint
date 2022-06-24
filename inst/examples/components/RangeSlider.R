@@ -1,31 +1,25 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
-    H4("Uncontrolled"),
-    # The uncontrolled slider value change works correctly but the component is not reactive
-    RangeSlider(
-      min = 0,
-      max = 10,
-      value = c(2, 4),
-      stepSize = 0.1,
-      labelStepSize = 10,
-      onChange = setInput("uncontrolledRangeSlider")
-    ),
-    textOutput("uncontrolledRangeSliderOutput"),
-    H4("Controlled"),
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    # RangeSlider must be controlled
     RangeSlider.shinyInput(
-      inputId = "controlledRangeSlider",
+      inputId = ns("controlledRangeSlider"),
       min = 0,
       max = 10,
       stepSize = 0.1,
       labelStepSize = 10
     ),
-    textOutput("controlledRangeSliderOutput")
-  ),
-  server = function(input, output) {
-    output$uncontrolledRangeSliderOutput <- renderText(input$uncontrolledRangeSlider)
+    textOutput(ns("controlledRangeSliderOutput"))
+  )
+}
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$controlledRangeSliderOutput <- renderText(input$controlledRangeSlider)
-  }
-)
+  })
+}
+
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

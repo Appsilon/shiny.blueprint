@@ -1,9 +1,14 @@
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = reactOutput("multiSliderOutput"),
-  server = function(input, output) {
+ui <- function(id) {
+  ns <- NS(id)
+  reactOutput(ns("multiSliderOutput"))
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
+    ns <- session$ns
 
     thresholds <- reactiveValues(
       dangerStart = 3,
@@ -23,7 +28,7 @@ if (interactive()) shinyApp(
     output$multiSliderOutput <- renderReact({
       MultiSlider(
         defaultTrackIntent = "success",
-        onChange = setInput("mutliSliderInput"),
+        onChange = setInput(ns("mutliSliderInput")),
         stepSize = 1,
         min = 0,
         max = 20,
@@ -53,5 +58,7 @@ if (interactive()) shinyApp(
         )
       )
     })
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

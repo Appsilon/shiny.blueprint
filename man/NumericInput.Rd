@@ -23,24 +23,30 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/numeric-input}
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
-  ui = tagList(
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
     H4("Uncontrolled"),
     NumericInput(
-      onValueChange = setInput("uncontrolledNumericInput"),
+      onValueChange = setInput(ns("uncontrolledNumericInput")),
       intent = "primary"
     ),
-    textOutput("uncontrolledNumericInputOutput"),
+    textOutput(ns("uncontrolledNumericInputOutput")),
     H4("Controlled"),
     NumericInput.shinyInput(
-      inputId = "controlledNumericInput",
+      inputId = ns("controlledNumericInput"),
       intent = "primary"
     ),
-    textOutput("controlledNumericInputOutput")
-  ),
-  server = function(input, output) {
+    textOutput(ns("controlledNumericInputOutput"))
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$uncontrolledNumericInputOutput <- renderText(input$uncontrolledNumericInput)
     output$controlledNumericInputOutput <- renderText(input$controlledNumericInput)
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }

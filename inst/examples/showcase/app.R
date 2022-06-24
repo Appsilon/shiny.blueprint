@@ -41,16 +41,18 @@ sections <- list(
     item("Checkbox", "Checkbox"),
     item("Radio", "Radio"),
     item("HTML select", "HTMLSelect"),
-    # TODO: Slider
+    item("Slider", "Slider"),
+    item("Range-slider", "RangeSlider"),
+    item("Multi-slider", "MultiSlider"),
     item("Switch", "Switch")
   ),
   section(
     "FORM INPUTS",
-    # TODO: File input
-    # TODO: Numeric input
+    item("File input", "FileInput"),
+    item("Numeric input", "NumericInput"),
     item("Input group", "InputGroup"),
-    item("Text area", "TextArea")
-    # TODO: Tag input
+    item("Text area", "TextArea"),
+    item("Tag input", "TagInput")
   ),
   section(
     "OVERLAYS",

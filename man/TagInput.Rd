@@ -23,17 +23,24 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/tag-input}
 library(shiny)
 library(appsilon.blueprint)
 
-if (interactive()) shinyApp(
+
+ui <- function(id) {
+  ns <- NS(id)
   # TagInput must be controlled
-  ui = tagList(
+  tagList(
     TagInput.shinyInput(
-      inputId = "controlledTagInput",
+      inputId = ns("controlledTagInput"),
       value = c("one", "two", "three")
     ),
-    textOutput("controlledTagInputOutput")
-  ),
-  server = function(input, output) {
+    textOutput(ns("controlledTagInputOutput"))
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     output$controlledTagInputOutput <- renderText(input$controlledTagInput)
-  }
-)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))
 }
