@@ -1,15 +1,14 @@
-function test(id, what) {
+function test(id, callback) {
   it(id, () => {
     cy.visit(`#!/${id}`);
-    cy.get(`[data-example-id=${id}]`).as('app');
-    what()
+    cy.get(`[data-example-id=${id}]`).within(callback);
   })
 }
 
 describe('showcase', () => {
   test('Button', () => {
     for (const text of ['Refresh', 'Export', 'OK', 'Next'])
-      cy.get('@app').contains(text).click();
-    cy.get('@app').contains('Clicks: 4');
+      cy.contains(text).click();
+    cy.contains('Clicks: 4');
   })
 })
