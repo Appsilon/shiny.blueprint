@@ -88,7 +88,7 @@ makeNav <- function(sections) {
 }
 
 readExample <- function(id) {
-  path <- glue::glue("../components/{id}.R")
+  path <- file.path("..", paste0(id, ".R"))
   code <- readChar(path, file.info(path)$size)
   module <- new.env()
   source(path, local = module)
