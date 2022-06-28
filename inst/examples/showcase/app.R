@@ -95,11 +95,12 @@ readExample <- function(id) {
   list(code = code, ui = module$ui, server = module$server)
 }
 
-makePage <- function(name, ui, code) {
+makePage <- function(id, name, ui, code) {
   tagList(
     H1(name),
     H3("Example"),
-    ui,
+    # The ID is used to locate the example in Cypress tests.
+    div(`data-example-id` = id, ui),
     br(),
     H3("Code"),
     Pre(code)
@@ -112,6 +113,7 @@ makeRouter <- function(items) {
     route(
       path = item$id,
       ui = makePage(
+        id = item$id,
         name = item$name,
         ui = example$ui(item$id),
         code = example$code
