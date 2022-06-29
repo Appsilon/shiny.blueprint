@@ -3,7 +3,7 @@
 \name{MultiSlider}
 \alias{MultiSlider}
 \alias{MultiSliderHandle}
-\title{MultiSlider}
+\title{Multi slider}
 \usage{
 MultiSlider(...)
 

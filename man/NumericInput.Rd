@@ -26,25 +26,23 @@ library(appsilon.blueprint)
 ui <- function(id) {
   ns <- NS(id)
   tagList(
-    H4("Uncontrolled"),
     NumericInput(
-      onValueChange = setInput(ns("uncontrolledNumericInput")),
+      onValueChange = setInput(ns("value1")),
       intent = "primary"
     ),
-    textOutput(ns("uncontrolledNumericInputOutput")),
-    H4("Controlled"),
+    textOutput(ns("value1Output")),
     NumericInput.shinyInput(
-      inputId = ns("controlledNumericInput"),
+      inputId = ns("value2"),
       intent = "primary"
     ),
-    textOutput(ns("controlledNumericInputOutput"))
+    textOutput(ns("value2Output"))
   )
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$uncontrolledNumericInputOutput <- renderText(input$uncontrolledNumericInput)
-    output$controlledNumericInputOutput <- renderText(input$controlledNumericInput)
+    output$value1Output <- renderText(input$value1)
+    output$value2Output <- renderText(input$value2)
   })
 }
 

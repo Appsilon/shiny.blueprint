@@ -42,8 +42,8 @@ sections <- list(
     item("Radio", "Radio"),
     item("HTML select", "HTMLSelect"),
     item("Slider", "Slider"),
-    item("Range-slider", "RangeSlider"),
-    item("Multi-slider", "MultiSlider"),
+    item("Range slider", "RangeSlider"),
+    item("Multi slider", "MultiSlider"),
     item("Switch", "Switch")
   ),
   section(

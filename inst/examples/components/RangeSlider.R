@@ -6,18 +6,18 @@ ui <- function(id) {
   tagList(
     # RangeSlider must be controlled
     RangeSlider.shinyInput(
-      inputId = ns("controlledRangeSlider"),
+      inputId = ns("value"),
       min = 0,
       max = 10,
       stepSize = 0.1,
       labelStepSize = 10
     ),
-    textOutput(ns("controlledRangeSliderOutput"))
+    textOutput(ns("valueOutput"))
   )
 }
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$controlledRangeSliderOutput <- renderText(input$controlledRangeSlider)
+    output$valueOutput <- renderText(input$value)
   })
 }
 

@@ -4,21 +4,20 @@ library(appsilon.blueprint)
 ui <- function(id) {
   ns <- NS(id)
   tagList(
-    # Slider must be controlled
     Slider.shinyInput(
-      inputId = ns("controlledSlider"),
+      inputId = ns("value"),
       min = 0,
       max = 10,
       stepSize = 0.1,
       labelStepSize = 10
     ),
-    textOutput(ns("controlledSliderOutput"))
+    textOutput(ns("valueOutput"))
   )
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$controlledSliderOutput <- renderText(input$controlledSlider)
+    output$valueOutput <- renderText(input$value)
   })
 }
 

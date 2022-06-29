@@ -443,7 +443,7 @@ Slider <- component("Slider")
 #' @export
 Slider.shinyInput <- input("Slider", 0) # nolint
 
-#' RangeSlider
+#' Range slider
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.range-slider>
 #'
@@ -456,7 +456,7 @@ RangeSlider <- component("RangeSlider")
 #' @export
 RangeSlider.shinyInput <- input("RangeSlider", c(0, 0)) # nolint
 
-#' MultiSlider
+#' Multi slider
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.multi-slider>
 #'
@@ -493,7 +493,7 @@ FileInput <- component("FileInput")
 
 #' @rdname Switch
 #' @export
-FileInput.shinyInput <- input("FileInput", FALSE) # nolint
+FileInput.shinyInput <- input("FileInput", "") # nolint
 
 #' NumericInput
 #'
@@ -532,7 +532,7 @@ TagInput <- component("TagInput")
 
 #' @rdname TagInput
 #' @export
-TagInput.shinyInput <- input("TagInput", c()) # nolint
+TagInput.shinyInput <- input("TagInput", NULL) # nolint
 
 #' Text area
 #'
