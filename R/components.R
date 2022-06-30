@@ -551,7 +551,14 @@ TextArea.shinyInput <- input("TextArea", "") # nolint
 
 # TODO: Portal
 
-# TODO: Alert
+#' Alert
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/alert>
+#'
+#' @example inst/examples/components/Alert.R
+#' @inherit template params
+#' @export
+Alert <- component("Alert")
 
 # TODO: Context menu
 
@@ -559,7 +566,14 @@ TextArea.shinyInput <- input("TextArea", "") # nolint
 
 # TODO: MultistepDialog
 
-# TODO: Drawer
+#' Drawer
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/drawer>
+#'
+#' @example inst/examples/components/Drawer.R
+#' @inherit template params
+#' @export
+Drawer <- component("Drawer")
 
 #' Popover
 #'

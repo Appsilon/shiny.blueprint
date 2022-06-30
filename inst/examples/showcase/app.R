@@ -58,11 +58,11 @@ sections <- list(
     "OVERLAYS",
     # TODO: Overlay
     # TODO: Portal
-    # TODO: Alert
+    item("Alert", "Alert"),
     # TODO: Context menu
     # TODO: Dialog
     # TODO: MultistepDialog
-    # TODO: Drawer
+    item("Drawer", "Drawer"),
     item("Popover", "Popover")
     # TODO: Toast
     # TODO: Tooltip
