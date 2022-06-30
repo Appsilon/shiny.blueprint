@@ -25,6 +25,17 @@ component <- function(name) {
   }
 }
 
+properties <- function(name) {
+  function(...) {
+    shiny.react::reactElement(
+      module = "@/appsilon.blueprint",
+      name = name,
+      props = shiny.react::asProps(...),
+      deps = blueprintDependency()
+    )
+  }
+}
+
 button <- function(name) {
   function(inputId, ...) {
     shiny.react::reactElement(
@@ -419,7 +430,44 @@ HTMLSelect <- component("HTMLSelect")
 #' @export
 HTMLSelect.shinyInput <- input("HTMLSelect", "") # nolint
 
-# TODO: Slider
+#' Slider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.slider>
+#'
+#' @example inst/examples/components/Slider.R
+#' @inherit template params
+#' @export
+Slider <- component("Slider")
+
+#' @rdname Slider
+#' @export
+Slider.shinyInput <- input("Slider", 0) # nolint
+
+#' Range slider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.range-slider>
+#'
+#' @example inst/examples/components/Slider.R
+#' @inherit template params
+#' @export
+RangeSlider <- component("RangeSlider")
+
+#' @rdname RangeSlider
+#' @export
+RangeSlider.shinyInput <- input("RangeSlider", c(0, 0)) # nolint
+
+#' Multi slider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.multi-slider>
+#'
+#' @example inst/examples/components/MultiSlider.R
+#' @inherit template params
+#' @export
+MultiSlider <- component("MultiSlider")
+
+#' @rdname MultiSlider
+#' @export
+MultiSliderHandle <- properties("MultiSliderHandle")
 
 #' Switch
 #'
@@ -434,9 +482,31 @@ Switch <- component("Switch")
 #' @export
 Switch.shinyInput <- input("Switch", FALSE) # nolint
 
-# TODO: File input
+#' FileInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/file-input>
+#'
+#' @example inst/examples/components/Switch.R
+#' @inherit template params
+#' @export
+FileInput <- component("FileInput")
 
-# TODO: Numeric input
+#' @rdname Switch
+#' @export
+FileInput.shinyInput <- input("FileInput", "") # nolint
+
+#' NumericInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/numeric-input>
+#'
+#' @example inst/examples/components/NumericInput.R
+#' @inherit template params
+#' @export
+NumericInput <- component("NumericInput")
+
+#' @rdname NumericInput
+#' @export
+NumericInput.shinyInput <- input("NumericInput", 0) # nolint
 
 #' Input group
 #'
@@ -451,7 +521,18 @@ InputGroup <- component("InputGroup")
 #' @export
 InputGroup.shinyInput <- input("InputGroup", "") # nolint
 
-# TODO: Tag input
+#' TagInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tag-input>
+#'
+#' @example inst/examples/components/TagInput.R
+#' @inherit template params
+#' @export
+TagInput <- component("TagInput")
+
+#' @rdname TagInput
+#' @export
+TagInput.shinyInput <- input("TagInput", NULL) # nolint
 
 #' Text area
 #'
