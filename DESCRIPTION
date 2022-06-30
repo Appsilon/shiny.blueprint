@@ -16,12 +16,13 @@ RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Imports:
   htmltools,
-  shiny.react (>= 0.2.2)
+  shiny,
+  shiny.react (>= 0.2.2),
+  utils
 Suggests:
   knitr,
   lintr (>= 3.0.0),
   purrr,
   rcmdcheck,
   rmarkdown,
-  shiny,
   shiny.router
