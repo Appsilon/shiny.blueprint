@@ -43,7 +43,7 @@ export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
 
 export const FileInput = InputAdapter(Blueprint.FileInput, (value, setValue) => ({
   text: value,
-  onInputChange: (event) => setValue(event.target.value),
+  onInputChange: (event) => setValue(event.target.files[0].name),
 }));
 
 export const NumericInput = InputAdapter(Blueprint.NumericInput, (value, setValue) => ({

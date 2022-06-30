@@ -4,7 +4,6 @@ library(appsilon.blueprint)
 ui <- function(id) {
   ns <- NS(id)
   tagList(
-    # RangeSlider must be controlled
     RangeSlider.shinyInput(
       inputId = ns("value"),
       min = 0,
