@@ -569,7 +569,14 @@ Alert <- component("Alert")
 
 # TODO: Context menu
 
-# TODO: Dialog
+#' Dialog
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.dialog>
+#'
+#' @example inst/examples/Dialog.R
+#' @inherit template params
+#' @export
+Dialog <- component("Dialog")
 
 # TODO: MultistepDialog
 
