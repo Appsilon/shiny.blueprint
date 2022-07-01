@@ -12,3 +12,10 @@ describe('showcase', () => {
     cy.contains('Clicks: 4');
   })
 })
+
+describe('showcase', () => {
+  test('Overlay', () => {
+    cy.contains('Show').click();
+    cy.get('.bp4-overlay-open').contains('Close');
+  })
+})

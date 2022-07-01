@@ -547,7 +547,14 @@ TextArea <- component("TextArea")
 #' @export
 TextArea.shinyInput <- input("TextArea", "") # nolint
 
-# TODO: Overlay
+#' Overlay
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/overlay>
+#'
+#' @example inst/examples/Overlay.R
+#' @inherit template params
+#' @export
+Overlay <- component("Overlay")
 
 # TODO: Portal
 

@@ -56,7 +56,7 @@ sections <- list(
   ),
   section(
     "OVERLAYS",
-    # TODO: Overlay
+    item("Overlay", "Overlay"),
     # TODO: Portal
     item("Alert", "Alert"),
     # TODO: Context menu
