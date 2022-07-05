@@ -21,4 +21,14 @@ describe('showcase', () => {
     cy.contains('Show').click();
     cy.get('.bp4-dialog').contains('Close');
   })
+
+  test('MultistepDialog', () => {
+    cy.contains('Show').click();
+    const selector = '.bp4-dialog';
+    cy.get(selector).contains('Next').click();
+    cy.get(selector).contains('Next').click();
+    cy.get(selector).contains('Step 2').click();
+    cy.get(selector).contains('Next').click();
+    cy.get(selector).contains('Submit').click();
+  })
 });

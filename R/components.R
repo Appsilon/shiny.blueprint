@@ -578,7 +578,23 @@ Alert <- component("Alert")
 #' @export
 Dialog <- component("Dialog")
 
-# TODO: MultistepDialog
+#' Multistep dialog
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.multistep-dialog>
+#'
+#' @example inst/examples/MultistepDialog.R
+#' @inherit template params
+#' @export
+MultistepDialog <- component("MultistepDialog")
+
+#' Dialog step
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.dialogstep>
+#'
+#' @example inst/examples/MultistepDialog.R
+#' @inherit template params
+#' @export
+DialogStep <- component("DialogStep")
 
 #' Drawer
 #'

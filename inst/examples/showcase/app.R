@@ -60,7 +60,7 @@ sections <- list(
     item("Alert", "Alert"),
     # TODO: Context menu
     item("Dialog", "Dialog"),
-    # TODO: MultistepDialog
+    item("Multistep dialog", "MultistepDialog"),
     item("Drawer", "Drawer"),
     item("Popover", "Popover")
     # TODO: Toast
