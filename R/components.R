@@ -547,7 +547,14 @@ TextArea <- component("TextArea")
 #' @export
 TextArea.shinyInput <- input("TextArea", "") # nolint
 
-# TODO: Overlay
+#' Overlay
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/overlay>
+#'
+#' @example inst/examples/Overlay.R
+#' @inherit template params
+#' @export
+Overlay <- component("Overlay")
 
 # TODO: Portal
 
@@ -562,9 +569,27 @@ Alert <- component("Alert")
 
 # TODO: Context menu
 
-# TODO: Dialog
+#' Dialog
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.dialog>
+#'
+#' @example inst/examples/Dialog.R
+#' @inherit template params
+#' @export
+Dialog <- component("Dialog")
 
-# TODO: MultistepDialog
+#' Multistep dialog
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.multistep-dialog>
+#'
+#' @example inst/examples/MultistepDialog.R
+#' @inherit template params
+#' @export
+MultistepDialog <- component("MultistepDialog")
+
+#' @rdname MultistepDialog
+#' @export
+DialogStep <- component("DialogStep")
 
 #' Drawer
 #'

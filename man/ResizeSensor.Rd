@@ -17,7 +17,11 @@ library(appsilon.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {
-  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+  # Use ShinyProxy to avoid an exception on app startup:
+  JS(paste0(
+    "x => jsmodule['@/shiny.react'].ShinyProxy.setInputValue",
+    "('", inputId, "', x", accessor, ")"
+  ))
 }
 
 ui <- function(id) {
