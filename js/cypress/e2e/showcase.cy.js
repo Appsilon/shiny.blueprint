@@ -1,7 +1,7 @@
 function test(id, callback) {
   it(id, () => {
     cy.visit(`#!/${id}`);
-    cy.get(`[data-example-id=${id}]`).within(callback);
+    cy.get(`[data-example-id=${id}]`).should('be.visible').within(callback);
   })
 }
 
@@ -25,10 +25,7 @@ describe('showcase', () => {
   test('MultistepDialog', () => {
     cy.contains('Show').click();
     const selector = '.bp4-dialog';
-    cy.get(selector).contains('Next').click();
-    cy.get(selector).contains('Next').click();
-    cy.get(selector).contains('Step 2').click();
-    cy.get(selector).contains('Next').click();
-    cy.get(selector).contains('Submit').click();
+    for( const text of ['Next', 'Next', 'Step 2', 'Next', 'Submit'])
+      cy.get(selector).contains(text).click()
   })
 });

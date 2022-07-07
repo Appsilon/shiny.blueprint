@@ -2,9 +2,12 @@
 % Please edit documentation in R/components.R
 \name{MultistepDialog}
 \alias{MultistepDialog}
+\alias{DialogStep}
 \title{Multistep dialog}
 \usage{
 MultistepDialog(...)
+
+DialogStep(...)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}

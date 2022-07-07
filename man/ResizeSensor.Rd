@@ -18,7 +18,6 @@ library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {
   # Use ShinyProxy to avoid an exception on app startup:
-  # https://github.com/Appsilon/shiny.react/blob/e86d7372e1946dd86dc0ee69e3b4e9ef7f20d7db/js/src/react/ShinyProxy.js#L3 # nolint
   JS(paste0(
     "x => jsmodule['@/shiny.react'].ShinyProxy.setInputValue",
     "('", inputId, "', x", accessor, ")"

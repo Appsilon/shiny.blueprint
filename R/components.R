@@ -587,12 +587,7 @@ Dialog <- component("Dialog")
 #' @export
 MultistepDialog <- component("MultistepDialog")
 
-#' Dialog step
-#'
-#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.dialogstep>
-#'
-#' @example inst/examples/MultistepDialog.R
-#' @inherit template params
+#' @rdname MultistepDialog
 #' @export
 DialogStep <- component("DialogStep")
 
