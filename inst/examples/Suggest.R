@@ -1,0 +1,79 @@
+library(shiny)
+library(appsilon.blueprint)
+
+top5Films <- list(
+  list(
+    title = "The Shawshank Redemption",
+    year = 1994,
+    rank = 1
+  ),
+  list(
+    title = "The Godfather",
+    year = 1972,
+    rank = 2
+  ),
+  list(
+    title = "The Godfather: Part II",
+    year = 1974,
+    rank = 3
+  ),
+  list(
+    title = "The Dark Knight",
+    year = 2008,
+    rank = 4
+  ),
+  list(
+    title = "12 Angry Men",
+    year = 1957,
+    rank = 5
+  )
+)
+
+SuggestExample <- function(...) {
+  shiny.react::reactElement(
+    module = "exampleApp",
+    name = "SuggestExample",
+    props = shiny.react::asProps(...)
+  )
+}
+
+Suggest2Example <- function(...) {
+  shiny.react::reactElement(
+    module = "exampleApp",
+    name = "Suggest2Example",
+    props = shiny.react::asProps(...)
+  )
+}
+
+addResourcePath("static", "./js-helpers")
+
+ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    tags$script(src = "static/utils.js"),
+    tags$script(src = "static/Suggest.js"),
+    H3("Suggest"),
+    Suggest2Example(
+      items = top5Films,
+      onSelect = setInput(ns("value1")),
+      placeholder = "Search with Suggest..."
+    ),
+    uiOutput(ns("value1Output")),
+    H3("Suggest2"),
+    Suggest2Example(
+      items = top5Films,
+      onSelect = setInput(ns("value2")),
+      placeholder = "Search with Suggest2..."
+    ),
+    uiOutput(ns("value2Output"))
+  )
+}
+
+server <- function(id) {
+  moduleServer(id, function(input, output, session) {
+    output$value1Output <- renderText(input$value1$title)
+    output$value2Output <- renderText(input$value2$title)
+  })
+}
+
+if (interactive()) shinyApp(ui("app"), function(input, output) server("app"))

@@ -69,6 +69,11 @@ sections <- list(
   section(
     "CONTEXT"
     # TODO: HotkeysProvider
+  ),
+  section(
+    "SELECT",
+    item("Suggest", "Suggest"),
+    item("Select", "Select")
   )
 )
 items <- do.call(c, lapply(sections, `[[`, "items"))
@@ -87,22 +92,44 @@ makeNav <- function(sections) {
 }
 
 readExample <- function(id) {
-  path <- file.path("..", paste0(id, ".R"))
-  code <- readChar(path, file.info(path)$size)
+  rPath <- file.path("..", paste0(id, ".R"))
+  rCode <- readChar(rPath, file.info(rPath)$size)
+
+  jsPath <- file.path("../js-helpers", paste0(id, ".js"))
+  jsCode <- if (file.exists(jsPath)) readChar(jsPath, file.info(jsPath)$size) else NULL
+
   module <- new.env()
-  source(path, local = module)
-  list(code = code, ui = module$ui, server = module$server)
+  module$addResourcePath <- function(prefix, directoryPath) {}
+  source(rPath, local = module)
+  list(rCode = rCode, jsCode = jsCode, ui = module$ui, server = module$server)
 }
 
-makePage <- function(id, name, ui, code) {
+makePage <- function(id, name, ui, rCode, jsCode) {
+  jsSection <- if (!is.null(jsCode)) {
+    div(
+      H5("JavaScript"),
+      Pre(tags$code(class = "language-javascript", jsCode))
+    )
+  } else {
+    NULL
+  }
+
   tagList(
     H1(name),
     H3("Example"),
-    # The ID is used to locate the example in Cypress tests.
-    div(`data-example-id` = id, ui),
-    br(),
+    div(
+      class = "example-section",
+      # The ID is used to locate the example in Cypress tests.
+      div(`data-example-id` = id, ui)
+    ),
     H3("Code"),
-    Pre(code)
+    div(class = "code-section",
+      div(
+        H5("R"),
+        Pre(tags$code(class = "language-r", rCode))
+      ),
+      jsSection
+    )
   )
 }
 
@@ -115,7 +142,8 @@ makeRouter <- function(items) {
         id = item$id,
         name = item$name,
         ui = example$ui(item$id),
-        code = example$code
+        rCode = example$rCode,
+        jsCode = example$jsCode
       ),
       server = function() example$server(item$id)
     )
@@ -125,17 +153,14 @@ makeRouter <- function(items) {
 
 router <- makeRouter(items)
 
-style <- tags$head(tags$style(HTML("
-  .grid {
-    display: grid;
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: 1em;
-  }
-")))
+addResourcePath("static", "../js-helpers")
+addResourcePath("showcase-static", "./static")
 
 shinyApp(
   ui = tagList(
-    style,
+    tags$script(src = "showcase-static/js/prism.js"),
+    tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/prism.css"),
+    tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/styles.css"),
     tags$div(
       class = "grid",
       tags$nav(makeNav(sections)),
