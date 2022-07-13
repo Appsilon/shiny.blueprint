@@ -4,7 +4,6 @@ library(shiny)
 ui <- function(id) {
   ns <- NS(id)
   tagList(
-    useToaster(position = "top"),
     H3("Simple toasts"),
     ButtonGroup(
       Button.shinyInput(
@@ -28,10 +27,22 @@ ui <- function(id) {
         intent = "primary"
       )
     ),
+    H3("Another toaster"),
+      Button.shinyInput(
+        inputId = ns("anotherToastDanger"),
+        "Another danger",
+        intent = "danger"
+      ),
     H3("Progress"),
     Button.shinyInput(
       inputId = ns("toastProgress"),
       "Progress",
+      intent = "primary"
+    ),
+    H3("Clear all"),
+    Button.shinyInput(
+      inputId = ns("clearAllToasts"),
+      "Clear all",
       intent = "primary"
     )
   )
@@ -39,17 +50,29 @@ ui <- function(id) {
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
+    toaster <- Toaster$new(position = "top")
+    anotherToaster <- Toaster$new(position = "bottom", maxToasts = 3, toasterId = "newId")
+
     observeEvent(input$toastDanger, {
-      showToast(message = "Danger!", intent = "Danger")
+      toaster$show(message = "Danger!", intent = "Danger")
     })
     observeEvent(input$toastWarning, {
-      showToast(message = "Warning!", intent = "warning", icon = "warning-sign")
+      toaster$show(message = "Warning!", intent = "warning", icon = "warning-sign")
     })
     observeEvent(input$toastSuccess, {
-      showToast(message = "Success!", intent = "Success", icon = "hand")
+      toaster$show(message = "Success!", intent = "Success", icon = "hand")
     })
     observeEvent(input$toastPrimary, {
-      showToast(message = "Primary!", intent = "primary")
+      toaster$show(message = "Primary!", intent = "primary")
+    })
+
+    observeEvent(input$anotherToastDanger, {
+      anotherToaster$show(message = "Another danger!", intent = "Danger")
+    })
+
+    observeEvent(input$clearAllToasts, {
+      toaster$clear()
+      anotherToaster$clear()
     })
 
     counter <- 0
@@ -63,11 +86,11 @@ server <- function(id) {
     observe({
       req(doRun())
       if (counter <= 100) {
-        showToast(message = counter, intent = "primary", key = 1)
+        toaster$show(message = counter, intent = "primary", key = 1)
         counter <<- counter + 1
         invalidateLater(10)
       } else {
-        showToast(message = "Completed!", intent = "success", key = 1)
+        toaster$show(message = "Completed!", intent = "success", key = 1)
         doRun(FALSE)
       }
     })

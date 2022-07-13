@@ -609,33 +609,6 @@ Drawer <- component("Drawer")
 #' @export
 Popover <- component("Popover")
 
-#' Toaster
-#'
-#' Documentation: <https://blueprintjs.com/docs/#core/components/toast>
-#'
-#' @example inst/examples/Toast.R
-#' @inherit template params
-#' @export
-useToaster <- function(...) {
-  jsCommand <- JS(sprintf("
-     const AppToaster = window.jsmodule['@blueprintjs/core'].Toaster.create(%s);
-      Shiny.addCustomMessageHandler('toastMessage', function(toast) {
-        AppToaster.show(toast.toastConfig, toast.key);
-      });
-    ",
-    jsonlite::toJSON(list(...), auto_unbox = TRUE)
-  ))
-  tags$script(jsCommand)
-}
-
-
-#' @rdname Toast
-#' @export
-showToast <- function(..., key = runif(1), session = shiny::getDefaultReactiveDomain()) {
-  toastConfig <- list(...)
-  session$sendCustomMessage("toastMessage", list(toastConfig = toastConfig, key = key))
-}
-
 # TODO: Tooltip
 
 # TODO: HotkeysProvider
