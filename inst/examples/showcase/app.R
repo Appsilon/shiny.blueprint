@@ -91,12 +91,19 @@ makeNav <- function(sections) {
   })
 }
 
+addFileName <- function(code, filename, commentChar) {
+  paste0(commentChar, " ", filename, "\n\n", code)
+}
+
 readExample <- function(id) {
   rPath <- file.path("..", paste0(id, ".R"))
-  rCode <- readChar(rPath, file.info(rPath)$size)
-
+  rCode <- addFileName(readChar(rPath, file.info(rPath)$size), basename(rPath), "#")
   jsPath <- file.path("../js-helpers", paste0(id, ".js"))
-  jsCode <- if (file.exists(jsPath)) readChar(jsPath, file.info(jsPath)$size) else NULL
+  jsCode <- if (file.exists(jsPath)) addFileName(
+    readChar(jsPath, file.info(jsPath)$size),
+    basename(jsPath),
+    "//"
+  )
 
   module <- new.env()
   module$addResourcePath <- function(prefix, directoryPath) {}
@@ -110,8 +117,6 @@ makePage <- function(id, name, ui, rCode, jsCode) {
       H5("JavaScript"),
       Pre(tags$code(class = "language-javascript", jsCode))
     )
-  } else {
-    NULL
   }
 
   tagList(
