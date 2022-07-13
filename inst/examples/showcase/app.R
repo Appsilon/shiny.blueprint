@@ -112,13 +112,6 @@ readExample <- function(id) {
 }
 
 makePage <- function(id, name, ui, rCode, jsCode) {
-  jsSection <- if (!is.null(jsCode)) {
-    div(
-      H5("JavaScript"),
-      Pre(tags$code(class = "language-javascript", jsCode))
-    )
-  }
-
   tagList(
     H1(name),
     H3("Example"),
@@ -127,13 +120,18 @@ makePage <- function(id, name, ui, rCode, jsCode) {
       # The ID is used to locate the example in Cypress tests.
       div(`data-example-id` = id, ui)
     ),
-    H3("Code"),
-    div(class = "code-section",
+    div(
+      class = "code-section",
       div(
-        H5("R"),
+        H5("R code"),
         Pre(tags$code(class = "language-r", rCode))
       ),
-      jsSection
+      if (!is.null(jsCode)) {
+        div(
+          H5("JavaScript code"),
+          Pre(tags$code(class = "language-javascript", jsCode))
+        )
+      }
     )
   )
 }
@@ -163,8 +161,9 @@ addResourcePath("showcase-static", "./static")
 
 shinyApp(
   ui = tagList(
-    tags$script(src = "showcase-static/js/prism.js"),
-    tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/prism.css"),
+    tags$script(src = "https://unpkg.com/prismjs@1.28.0/prism.js"),
+    tags$script(src = "https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"),
+    tags$link(rel = "stylesheet", type = "text/css", href = "https://unpkg.com/prismjs@1.28.0/themes/prism.min.css"),
     tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/styles.css"),
     tags$div(
       class = "grid",

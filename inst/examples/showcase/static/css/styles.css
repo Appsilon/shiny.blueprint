@@ -9,14 +9,13 @@ code[class*=language-], pre[class*=language-] {
   gap: 1em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .code-section {
     grid-template-columns: repeat(1, 100%);
   }
 }
 
 .example-section {
-  min-height: 20vh;
   padding-top: 2vh;
   padding-bottom: 2vh;
 }
@@ -28,7 +27,7 @@ code[class*=language-], pre[class*=language-] {
 }
 
 .grid > nav {
-  max-height: 95vh;
+  max-height: calc(100vh - 16px);
   overflow: auto;
 }
 
