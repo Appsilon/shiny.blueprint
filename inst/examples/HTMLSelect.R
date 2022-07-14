@@ -5,28 +5,34 @@ setInput <- function(inputId, accessor = NULL) {
   JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
 }
 
+options <- list(
+  list(value = "a", label = "Apples"),
+  list(value = "b", label = "Bananas"),
+  list(value = "c", label = "Cherries")
+)
+
 ui <- function(id) {
   ns <- NS(id)
   tagList(
-    H4("Uncontrolled"),
     HTMLSelect(
-      options = rownames(mtcars),
-      onChange = setInput(ns("uncontrolledHtmlSelect"), ".target.value")
+      onChange = setInput(ns("choice1"), ".target.value"),
+      options = options
     ),
-    textOutput(ns("uncontrolledHtmlSelectOutput")),
-    H4("Controlled"),
+    textOutput(ns("text1")),
+    br(),
     HTMLSelect.shinyInput(
-      inputId = ns("controlledHtmlSelect"),
-      options = rownames(mtcars)
+      inputId = ns("choice2"),
+      value = "b",
+      options = options
     ),
-    textOutput(ns("controlledHtmlSelectOutput"))
+    textOutput(ns("text2"))
   )
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$uncontrolledHtmlSelectOutput <- renderText(input$uncontrolledHtmlSelect)
-    output$controlledHtmlSelectOutput <- renderText(input$controlledHtmlSelect)
+    output$text1 <- renderText(deparse(input$choice1))
+    output$text2 <- renderText(deparse(input$choice2))
   })
 }
 
