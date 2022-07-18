@@ -62,8 +62,8 @@ sections <- list(
     item("Dialog", "Dialog"),
     item("Multistep dialog", "MultistepDialog"),
     item("Drawer", "Drawer"),
-    item("Popover", "Popover")
-    # TODO: Toast
+    item("Popover", "Popover"),
+    item("Toast", "Toast")
     # TODO: Tooltip
   ),
   section(

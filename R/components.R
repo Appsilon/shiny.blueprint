@@ -609,8 +609,6 @@ Drawer <- component("Drawer")
 #' @export
 Popover <- component("Popover")
 
-# TODO: Toast
-
 # TODO: Tooltip
 
 # TODO: HotkeysProvider
