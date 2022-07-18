@@ -1,13 +1,3 @@
-blueprintDependency <- function() {
-  htmltools::htmlDependency(
-    name = "blueprint",
-    version = "0.1.0",
-    package = "appsilon.blueprint",
-    src = "www",
-    script = "blueprint.min.js"
-  )
-}
-
 #' @param inputId The `input` slot that will be used to access the value.
 #' @param ... Component props and children. See the official Blueprint docs for details.
 #' @param value Initial value.

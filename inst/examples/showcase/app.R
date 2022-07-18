@@ -73,7 +73,8 @@ sections <- list(
   section(
     "SELECT",
     item("Suggest", "Suggest"),
-    item("Select", "Select")
+    item("Select", "Select"),
+    item("MultiSelect", "MultiSelect")
   )
 )
 items <- do.call(c, lapply(sections, `[[`, "items"))
@@ -98,20 +99,13 @@ addFileName <- function(code, filename, commentChar) {
 readExample <- function(id) {
   rPath <- file.path("..", paste0(id, ".R"))
   rCode <- addFileName(readChar(rPath, file.info(rPath)$size), basename(rPath), "#")
-  jsPath <- file.path("../js-helpers", paste0(id, ".js"))
-  jsCode <- if (file.exists(jsPath)) addFileName(
-    readChar(jsPath, file.info(jsPath)$size),
-    basename(jsPath),
-    "//"
-  )
 
   module <- new.env()
-  module$addResourcePath <- function(prefix, directoryPath) {}
   source(rPath, local = module)
-  list(rCode = rCode, jsCode = jsCode, ui = module$ui, server = module$server)
+  list(rCode = rCode, ui = module$ui, server = module$server)
 }
 
-makePage <- function(id, name, ui, rCode, jsCode) {
+makePage <- function(id, name, ui, rCode) {
   tagList(
     H1(name),
     H3("Example"),
@@ -125,13 +119,7 @@ makePage <- function(id, name, ui, rCode, jsCode) {
       div(
         H5("R code"),
         Pre(tags$code(class = "language-r", rCode))
-      ),
-      if (!is.null(jsCode)) {
-        div(
-          H5("JavaScript code"),
-          Pre(tags$code(class = "language-javascript", jsCode))
-        )
-      }
+      )
     )
   )
 }
@@ -145,8 +133,7 @@ makeRouter <- function(items) {
         id = item$id,
         name = item$name,
         ui = example$ui(item$id),
-        rCode = example$rCode,
-        jsCode = example$jsCode
+        rCode = example$rCode
       ),
       server = function() example$server(item$id)
     )
@@ -156,14 +143,21 @@ makeRouter <- function(items) {
 
 router <- makeRouter(items)
 
-addResourcePath("static", "../js-helpers")
 addResourcePath("showcase-static", "./static")
 
 shinyApp(
   ui = tagList(
-    tags$script(src = "https://unpkg.com/prismjs@1.28.0/prism.js"),
-    tags$script(src = "https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"),
-    tags$link(rel = "stylesheet", type = "text/css", href = "https://unpkg.com/prismjs@1.28.0/themes/prism.min.css"),
+    tags$script(
+      src = "https://unpkg.com/prismjs@1.28.0/prism.js"
+    ),
+    tags$script(
+      src = "https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"
+    ),
+    tags$link(
+      rel = "stylesheet",
+      type = "text/css",
+      href = "https://unpkg.com/prismjs@1.28.0/themes/prism.min.css"
+    ),
     tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/styles.css"),
     tags$div(
       class = "grid",

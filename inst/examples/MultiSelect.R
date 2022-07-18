@@ -20,45 +20,57 @@ top5Films <- list(
   list(
     label = "The Dark Knight",
     rightLabel = 2008,
-    key = 4
+    key = 4,
+    selected = TRUE
   ),
   list(
     label = "12 Angry Men",
     rightLabel = 1957,
-    key = 5
+    key = 5,
+    selected = TRUE
   )
 )
 
 ui <- function(id) {
   ns <- NS(id)
   tagList(
-    H3("Select"),
-    Select(
+    H3("Multiselect"),
+    MultiSelect(
       items = top5Films,
-      inputId = ns("value1"),
+      inputId = ns("values1"),
+      tagInputProps = list(
+        tagProps = list(
+          intent = "danger"
+        )
+      ),
       noResults = MenuItem(
         disabled = TRUE,
         text = "No results"
       )
     ),
-    uiOutput(ns("value1Output")),
-    H3("Select2"),
-    Select2(
+    uiOutput(ns("values1Output")),
+    H3("Multiselect2"),
+    MultiSelect2(
       items = top5Films,
-      inputId = ns("value2"),
+      inputId = ns("values2"),
       noResults = MenuItem(
         disabled = TRUE,
         text = "No results"
       )
     ),
-    uiOutput(ns("value2Output"))
+    uiOutput(ns("values2Output"))
   )
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$value1Output <- renderText(input$value1$label)
-    output$value2Output <- renderText(input$value2$label)
+    output$values1Output <- renderText({
+      purrr::map_chr(input$values1[[1]], ~ .x$label)
+    })
+
+    output$values2Output <- renderText({
+      purrr::map_chr(input$values2[[1]], ~ .x$label)
+    })
   })
 }
 

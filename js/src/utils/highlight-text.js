@@ -1,4 +1,4 @@
-function highlightText(text, query) {
+export const highlightText = (text, query) => {
 	let lastIndex = 0;
 	const words = query
 		.split(/\s+/)
@@ -7,7 +7,7 @@ function highlightText(text, query) {
 	if (words.length === 0) {
 		return [text];
 	}
-	const regexp = new RegExp(words.join('|'), 'gi');
+	const regexp = new RegExp(words.join("|"), "gi");
 	const tokens = [];
 	while (true) {
 		const match = regexp.exec(text);
@@ -20,7 +20,7 @@ function highlightText(text, query) {
 			tokens.push(before);
 		}
 		lastIndex = regexp.lastIndex;
-		tokens.push(React.createElement('strong', { key: lastIndex }, match[0]));
+		tokens.push(React.createElement("strong", { key: lastIndex }, match[0]));
 	}
 	const rest = text.slice(lastIndex);
 	if (rest.length > 0) {
@@ -29,10 +29,6 @@ function highlightText(text, query) {
 	return tokens;
 }
 
-function escapeRegExpChars(text) {
-	return text.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
-}
-
-jsmodule.exampleApp = {
-	...jsmodule.exampleApp,
+export const escapeRegExpChars = (text) => {
+	return text.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }

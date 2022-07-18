@@ -6,11 +6,15 @@ import * as BlueprintSelect from '@blueprintjs/select';
 import * as Blueprint from '@blueprintjs/core';
 
 import * as Inputs from './inputs.jsx';
+import * as Suggests from './suggest.js';
+import * as Selects from './select.js';
+import * as MultiSelects from './multiselect.js';
+
 import './toaster.js';
 
 window.jsmodule = {
   ...window.jsmodule,
   '@blueprintjs/core': Blueprint,
   '@blueprintjs/select': BlueprintSelect,
-  '@/appsilon.blueprint': Inputs,
+  '@/appsilon.blueprint': {...Inputs, ...Suggests, ...Selects, ...MultiSelects},
 };

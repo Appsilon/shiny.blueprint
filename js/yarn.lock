@@ -9,30 +9,18 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-<<<<<<< HEAD
-"@blueprintjs/colors@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/@blueprintjs/colors/-/colors-4.0.1.tgz"
-  integrity sha512-w2kMtUzQjHdrmjXpUnCfTq7/pc41S4UnXzOp6+AZtzCR4cVG1r2yBWR4XxaAAecDb94/yIBXooqtMD0B8T1Y2w==
+"@blueprintjs/colors@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.npmjs.org/@blueprintjs/colors/-/colors-4.1.4.tgz"
+  integrity sha512-jggWTpazxg6ifWnaAiug9REsWUeMtkkuaWOFg5CjAiH6YtvMPU4ykWmQc9NnKAkabpKoXfZuR1V1KPAz79iYXQ==
 
-"@blueprintjs/core@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/@blueprintjs/core/-/core-4.0.1.tgz"
-  integrity sha512-YFtQaPJvpRL5FDxbbGXJmWkEUFGM8AXyoM1wRMhFSisffPeM7NWhKl5i3WxOUic4bzqRSMErJVsKR0+Gdgbjxg==
-=======
-"@blueprintjs/colors@^4.1.3":
-  version "4.1.3"
-  resolved "https://registry.npmjs.org/@blueprintjs/colors/-/colors-4.1.3.tgz"
-  integrity sha512-ANRQZT5h9+zC8B/y0S9B+SqEpicL0XRT4drAhiPFHBrOStRZWzOh3bPrwNSPqr7tdShxYtMyxbH+fkHMetZaxg==
-
-"@blueprintjs/core@^4.0.1", "@blueprintjs/core@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.npmjs.org/@blueprintjs/core/-/core-4.5.1.tgz"
-  integrity sha512-CrMkeuvVo+GD/hv6T9W6GNWvTJ7TGpzs2r3v0zO1lMfAYj4v2gaisSXQQ2HziT7zO/kYDyu9aRpbGv0KSvryQA==
->>>>>>> [Porting]: Select/2 + Suggest/2 + example + adding prism.js code highlights to the showcase apps
+"@blueprintjs/core@^4.0.1", "@blueprintjs/core@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.npmjs.org/@blueprintjs/core/-/core-4.6.0.tgz"
+  integrity sha512-f8Sbsd2JUrhsxPjXLHyXTS6gi9QuULtIK4MlyoTyBc1yHb3GzQNq9L8stnKQgWOgNFl/u7wOEiXDlrSVrqfYaA==
   dependencies:
-    "@blueprintjs/colors" "^4.1.3"
-    "@blueprintjs/icons" "^4.3.0"
+    "@blueprintjs/colors" "^4.1.4"
+    "@blueprintjs/icons" "^4.3.1"
     "@juggle/resize-observer" "^3.3.1"
     "@types/dom4" "^2.0.1"
     classnames "^2.2"
@@ -43,28 +31,21 @@
     react-transition-group "^4.4.1"
     tslib "~2.3.1"
 
-<<<<<<< HEAD
-"@blueprintjs/icons@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/@blueprintjs/icons/-/icons-4.1.0.tgz"
-  integrity sha512-aQEFDjRwwg6y1HNxtHbeWM1cRzilXTTrrFAvOUl1k12M7lfPvK+3gZk1LoVFs3dwtZTJTwFNAlfcOX/kg4849w==
-=======
-"@blueprintjs/icons@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.npmjs.org/@blueprintjs/icons/-/icons-4.3.0.tgz"
-  integrity sha512-uLEdVUkWe0E2Bzfh2mqW2/3DRCqFo/vsSBYXrqOzFPiBsxCnu8ySEPInJWU+OHHPA/zM1hYMfrvKjfyaIIgbew==
->>>>>>> [Porting]: Select/2 + Suggest/2 + example + adding prism.js code highlights to the showcase apps
+"@blueprintjs/icons@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.npmjs.org/@blueprintjs/icons/-/icons-4.3.1.tgz"
+  integrity sha512-XVXFWfvqq/sFSi8FN0Y8mzApD3vQxrPUtmbqp/q1B8mXVdYQLrUwmXICxzUNSvztHqXaRVrApA5jkjDBTAwSJg==
   dependencies:
     change-case "^4.1.2"
     classnames "^2.2"
     tslib "~2.3.1"
 
-"@blueprintjs/popover2@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.npmjs.org/@blueprintjs/popover2/-/popover2-1.4.1.tgz"
-  integrity sha512-EEfyJ8pU5qbX0XoTKpXqTiphgnvmlmsg9Ns/YN4njmedohOXsk2n3hWj91Wy1ZblhDFPG33VC7hK3830yCcxDA==
+"@blueprintjs/popover2@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.npmjs.org/@blueprintjs/popover2/-/popover2-1.4.2.tgz"
+  integrity sha512-Vt8RCPYspUQRV0M3yUFImtVQMoAAF6IBnJAAqsE4NF3i7u3HVBCHQWfRSv4KEKjm4G6uELLZIYqo/znv2SdCqg==
   dependencies:
-    "@blueprintjs/core" "^4.5.1"
+    "@blueprintjs/core" "^4.6.0"
     "@juggle/resize-observer" "^3.3.1"
     "@popperjs/core" "^2.5.4"
     classnames "^2.2"
@@ -73,12 +54,12 @@
     tslib "~2.3.1"
 
 "@blueprintjs/select@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.npmjs.org/@blueprintjs/select/-/select-4.4.1.tgz"
-  integrity sha512-Geyoydp6CTX/cDWROY5o9oojxBCVVyXLu4TM6io3Ul+S1xthawBt0jcXJT+ZH/VDnZ6za3G8c1TnE0bV+XakQw==
+  version "4.4.2"
+  resolved "https://registry.npmjs.org/@blueprintjs/select/-/select-4.4.2.tgz"
+  integrity sha512-HC7aMmFXPFYNJW7324WC4A67nHLk2fJPsqxaxsAmxAGN1ItlMAmOT7lckyv7HUgaEJ6EOJ6m2/lDtqS8IFpZmA==
   dependencies:
-    "@blueprintjs/core" "^4.5.1"
-    "@blueprintjs/popover2" "^1.4.1"
+    "@blueprintjs/core" "^4.6.0"
+    "@blueprintjs/popover2" "^1.4.2"
     classnames "^2.2"
     tslib "~2.3.1"
 
@@ -763,15 +744,9 @@ cssesc@^3.0.0:
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
 csstype@^3.0.2:
-<<<<<<< HEAD
   version "3.0.11"
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.0.11.tgz"
   integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
-=======
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
-  integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
->>>>>>> [Porting]: Select/2 + Suggest/2 + example + adding prism.js code highlights to the showcase apps
 
 cypress@^10.2.0:
   version "10.2.0"
@@ -1397,20 +1372,12 @@ is-unicode-supported@^0.1.0:
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
-<<<<<<< HEAD
   integrity "sha1-6PvzdNxVb/iUehDcsFctYz8s+hA= sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw=="
-=======
-  integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
->>>>>>> [Porting]: Select/2 + Suggest/2 + example + adding prism.js code highlights to the showcase apps
 
 isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/isobject/-/isobject-3.0.1.tgz"
-<<<<<<< HEAD
   integrity "sha1-TkMekrEalzFjaqH5yNHMvP2reN8= sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg=="
-=======
-  integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
->>>>>>> [Porting]: Select/2 + Suggest/2 + example + adding prism.js code highlights to the showcase apps
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -1653,11 +1620,7 @@ npm-run-path@^4.0.0, npm-run-path@^4.0.1:
 object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
-<<<<<<< HEAD
   integrity "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM= sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg=="
-=======
-  integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
->>>>>>> [Porting]: Select/2 + Suggest/2 + example + adding prism.js code highlights to the showcase apps
 
 object-is@^1.0.1:
   version "1.1.5"
@@ -2336,11 +2299,7 @@ uri-js@^4.2.2:
 util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
-<<<<<<< HEAD
   integrity "sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8= sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="
-=======
-  integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
->>>>>>> [Porting]: Select/2 + Suggest/2 + example + adding prism.js code highlights to the showcase apps
 
 uuid@^8.3.2:
   version "8.3.2"

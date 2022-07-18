@@ -1,5 +1,5 @@
 import { Toaster } from '@blueprintjs/core';
-import { addBlueprintPrefix } from './add-blueprint-prefix.js';
+import { addBlueprintPrefix } from './utils/add-blueprint-prefix.js';
 
 const toasters = {};
 
