@@ -1,3 +1,15 @@
+createIdIncrementationFunction <- function(initialId = 1, incrementBy = 1) {
+  currentId <- initialId
+  function() {
+    on.exit({
+      currentId <<- currentId + incrementBy
+    })
+    currentId
+  }
+}
+
+incrementToasterId <- createIdIncrementationFunction()
+
 #' Toaster
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/toast>
@@ -6,21 +18,21 @@ Toaster <- R6::R6Class(
   classname = "Toaster",
   public = list(
     initialize = function(
-      toasterId = "defaultToaster",
+      toasterId = incrementToasterId(),
       session = shiny::getDefaultReactiveDomain(),
       ...
     ) {
-      private$toasterId <- toasterId
+      private$toasterId <- addBlueprintPrefix(toasterId)
       private$session <- session
       private$registerToaster(...)
     },
-    show = function(..., key = runif(1)) {
-      toastConfig <- list(...)
+    show = function(..., key = NULL) {
+      props <- list(...)
       private$session$sendCustomMessage(
         private$callName("show"),
         list(
           key = key,
-          toastConfig = toastConfig
+          props = props
         )
       )
     },
@@ -41,11 +53,11 @@ Toaster <- R6::R6Class(
     toasterId = NULL,
     session = NULL,
     callName = function(prefix) {
-      paste0(prefix, private$toasterId)
+      addBlueprintPrefix(paste0(prefix, private$toasterId))
     },
     registerToaster = function(...) {
       private$session$sendCustomMessage(
-        "useToaster",
+        addBlueprintPrefix("createToaster"),
         list(toasterId = private$toasterId, ...)
       )
     }

@@ -50,29 +50,29 @@ ui <- function(id) {
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    toaster <- Toaster$new(position = "top")
-    anotherToaster <- Toaster$new(position = "bottom", maxToasts = 3, toasterId = "newId")
+    toasterTop <- Toaster$new(position = "top")
+    toasterBottom <- Toaster$new(position = "bottom", maxToasts = 3, toasterId = "newId")
 
     observeEvent(input$toastDanger, {
-      toaster$show(message = "Danger!", intent = "Danger")
+      toasterTop$show(message = "Danger!", intent = "danger")
     })
     observeEvent(input$toastWarning, {
-      toaster$show(message = "Warning!", intent = "warning", icon = "warning-sign")
+      toasterTop$show(message = "Warning!", intent = "warning", icon = "warning-sign")
     })
     observeEvent(input$toastSuccess, {
-      toaster$show(message = "Success!", intent = "Success", icon = "hand")
+      toasterTop$show(message = "Success!", intent = "success", icon = "hand")
     })
     observeEvent(input$toastPrimary, {
-      toaster$show(message = "Primary!", intent = "primary")
+      toasterTop$show(message = "Primary!", intent = "primary")
     })
 
     observeEvent(input$anotherToastDanger, {
-      anotherToaster$show(message = "Another danger!", intent = "Danger")
+      toasterBottom$show(message = "Another danger!", intent = "Danger")
     })
 
     observeEvent(input$clearAllToasts, {
-      toaster$clear()
-      anotherToaster$clear()
+      toasterTop$clear()
+      toasterBottom$clear()
     })
 
     counter <- 0
@@ -86,11 +86,11 @@ server <- function(id) {
     observe({
       req(doRun())
       if (counter <= 100) {
-        toaster$show(message = counter, intent = "primary", key = 1)
+        toasterTop$show(message = counter, intent = "primary", key = 1)
         counter <<- counter + 1
         invalidateLater(10)
       } else {
-        toaster$show(message = "Completed!", intent = "success", key = 1)
+        toasterTop$show(message = "Completed!", intent = "success", key = 1)
         doRun(FALSE)
       }
     })
