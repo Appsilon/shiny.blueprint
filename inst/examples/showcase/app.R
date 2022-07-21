@@ -75,6 +75,10 @@ sections <- list(
     item("Suggest", "Suggest"),
     item("Select", "Select"),
     item("MultiSelect", "MultiSelect")
+  ),
+  section(
+    "OTHER",
+    item("Browser interaction", "BrowserInteraction")
   )
 )
 items <- do.call(c, lapply(sections, `[[`, "items"))

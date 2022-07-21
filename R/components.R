@@ -136,15 +136,6 @@ AnchorButton.shinyInput <- button("AnchorButton") # nolint
 #' @export
 ButtonGroup <- component("ButtonGroup")
 
-#' Callout
-#'
-#' Documentation: <https://blueprintjs.com/docs/#core/components/callout>
-#'
-#' @example inst/examples/Callout.R
-#' @inherit template params
-#' @export
-Callout <- component("Callout")
-
 #' Card
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/card>
@@ -586,15 +577,6 @@ TextArea <- component("TextArea")
 #' @rdname InputGroup
 #' @export
 TextArea.shinyInput <- input("TextArea", "") # nolint
-
-#' Overlay
-#'
-#' Documentation: <https://blueprintjs.com/docs/#core/components/overlay>
-#'
-#' @example inst/examples/Overlay.R
-#' @inherit template params
-#' @export
-Overlay <- component("Overlay")
 
 # TODO: Portal
 
