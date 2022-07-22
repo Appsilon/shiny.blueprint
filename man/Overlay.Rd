@@ -4,7 +4,7 @@
 \alias{Overlay}
 \title{Overlay}
 \usage{
-Overlay(...)
+Overlay(id = NULL, ...)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}

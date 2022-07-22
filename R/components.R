@@ -106,15 +106,6 @@ select <- function(name) {
 #' @export
 Breadcrumbs <- component("Breadcrumbs")
 
-#' Button
-#'
-#' Documentation: <https://blueprintjs.com/docs/#core/components/button>
-#'
-#' @example inst/examples/Button.R
-#' @inherit template params
-#' @export
-Button <- component("Button")
-
 #' @rdname Button
 #' @export
 Button.shinyInput <- button("Button") # nolint
@@ -135,15 +126,6 @@ AnchorButton.shinyInput <- button("AnchorButton") # nolint
 #' @inherit template params
 #' @export
 ButtonGroup <- component("ButtonGroup")
-
-#' Card
-#'
-#' Documentation: <https://blueprintjs.com/docs/#core/components/card>
-#'
-#' @example inst/examples/Card.R
-#' @inherit template params
-#' @export
-Card <- component("Card")
 
 #' Collapse
 #'

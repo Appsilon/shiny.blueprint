@@ -1,16 +1,15 @@
-#' Trigger browser event
+#' Changes the state of the app (client-side)
 #' @export
-triggerBrowserEvent <- function(inputId, props, eventIdentifier = "\\(event\\)") {
+modifyAppState <- function(id, props, eventIdentifier = "\\(event\\)") {
   jsCommandTxt <- sprintf('
     (e) => {
-      console.log(e);
-      window.dispatchEvent(new CustomEvent("%s", {detail: %s}))
+      jsmodule.appStateStore.changeState("%s", %s)
     }
-  ', inputId, jsonlite::toJSON(props, auto_unbox = TRUE))
-
+  ', id, jsonlite::toJSON(props, auto_unbox = TRUE))
   # Turning string path into a reference to the event object
   jsCommandTxt <- gsub(sprintf('"%s', eventIdentifier), "", jsCommandTxt)
   jsCommandTxt <- gsub(sprintf("%s\"", eventIdentifier), "", jsCommandTxt)
+  print(jsCommandTxt)
 
   JS(jsCommandTxt)
 }

@@ -4,7 +4,7 @@
 \alias{Callout}
 \title{Callout}
 \usage{
-Callout(...)
+Callout(id = NULL, ...)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
