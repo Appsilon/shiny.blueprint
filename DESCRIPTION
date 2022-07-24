@@ -20,6 +20,7 @@ Imports:
   shiny,
   shiny.react (>= 0.2.2),
   utils,
+  uuid,
   checkmate
 Suggests:
   knitr,

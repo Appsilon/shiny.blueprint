@@ -5,7 +5,7 @@
 #' @example inst/examples/Overlay.R
 #' @inherit template params
 #' @export
-Overlay <- customComponent("Overlay")
+Overlay <- customComponent("DynamicOverlay")
 
 #' Callout
 #'
@@ -14,7 +14,7 @@ Overlay <- customComponent("Overlay")
 #' @example inst/examples/Callout.R
 #' @inherit template params
 #' @export
-Callout <- customComponent("Callout")
+Callout <- customComponent("DynamicCallout")
 
 #' Button
 #'
@@ -23,7 +23,7 @@ Callout <- customComponent("Callout")
 #' @example inst/examples/Button.R
 #' @inherit template params
 #' @export
-Button <- customComponent("Button")
+Button <- customComponent("DynamicButton")
 
 #' Card
 #'
@@ -32,4 +32,13 @@ Button <- customComponent("Button")
 #' @example inst/examples/Card.R
 #' @inherit template params
 #' @export
-Card <- customComponent("Card")
+Card <- customComponent("DynamicCard")
+
+#' Input group
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.input-group>
+#'
+#' @example inst/examples/InputGroup.R
+#' @inherit template params
+#' @export
+InputGroup <- customComponent("DynamicInputGroup")

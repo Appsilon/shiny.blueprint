@@ -1,4 +1,4 @@
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {
@@ -6,51 +6,74 @@ ui <- function(id) {
   div(
     style = "width: 20rem; display: grid; row-gap: 0.5rem",
     Button(
-      id = "openOverlay",
-      # The button is dispatching an event to open the overlay
-      onClick = modifyAppState("isOverlayOpen", TRUE),
+      onClick = setObservable(isOverlayOpen = TRUE),
+      loading = listenTo(isLoading = FALSE),
       "Show overlay without server"
     ),
+    Switch(
+      defaultChecked = FALSE,
+      label = "Loading buttons?",
+      onChange = setObservable(isLoading = eventObject(".target.checked")),
+    ),
+    H3("More than one dependency"),
+    H4("Modify the callout #1 and #2"),
     InputGroup(
-      placeholder = "Change the title of the callout",
-      # Here you are binding your input with the callout component
-      # The `eventObject` is allowing for dynamic interaction
-      onChange = modifyAppState("titleText", eventObject("e.target.value"))
+      placeholder = "Change the title of the callout #1 & #2",
+      onChange = setObservable(titleText = eventObject(".target.value"))
     ),
     InputGroup(
-      placeholder = "Change the text of the callout",
-      # Here you are binding your input with the callout component
-      # The `eventObject` is allowing for dynamic interaction
-      onChange = modifyAppState("bodyText", eventObject("e.target.value"))
+      placeholder = "Change the text of the callout #1 & #2",
+      onChange = setObservable(bodyText = eventObject(".target.value"))
+    ),
+    Divider(),
+    H4("Modify the callout #1 only"),
+    InputGroup(
+      value = listenTo(titleText1 = NA, titleText = NA),
+      placeholder = "Change the title of the callout #1",
+      onChange = setObservable(titleText1 = eventObject(".target.value"))
+    ),
+    InputGroup(
+      value = listenTo(bodyText1 = NA, bodyText = NA),
+      placeholder = "Change the text of the callout #1",
+      onChange = setObservable(bodyText1 = eventObject(".target.value"))
     ),
     Callout(
-      bindObservables = list(
-        list(observer = "title", observable = "titleText"),
-        list(observer = "children", observable = "bodyText")
-      ),
-      id = ns("callout1"),
-      title = "Initial title to be modified",
-      "You can now modify the component purely on the client side"
+      title = listenTo(titleText1 = NA, titleText = "Initial title to be displayed"),
+      listenTo(bodyText1 = NA, bodyText = "You can now modify the component purely on the client side")
+    ),
+    Divider(),
+    H4("Modify the callout #2 only"),
+    InputGroup(
+      value = listenTo(titleText2 = NA, titleText = NA),
+      placeholder = "Change the title of the callout #2",
+      onChange = setObservable(titleText2 = eventObject(".target.value"))
+    ),
+    InputGroup(
+      value = listenTo(bodyText2 = NA, bodyText = NA),
+      placeholder = "Change the text of the callout #2",
+      onChange = setObservable(bodyText2 = eventObject(".target.value"))
     ),
     Callout(
-      bindObservables = list(
-        list(observer = "title", observable = "titleText"),
-        list(observer = "children", observable = "bodyText")
-      ),
-      id = ns("callout1"),
-      title = "Initial title to be modified",
-      "You can now modify the component purely on the client side"
+      title = listenTo(titleText2 = NA, titleText = NA),
+      listenTo(bodyText2 = NA, bodyText = NA)
+    ),
+    Divider(),
+    H4("Below, you may see any latestes changes (listening to many):"),
+    CustomComponent(
+      "pre",
+      listenTo(
+        titleText = NA,
+        titleText1 = NA,
+        titleText2 = NA,
+        bodyText = NA,
+        bodyText1 = NA,
+        bodyText2 = NA,
+      )
     ),
     Overlay(
-      bindObservables = list(
-        list(observer = "isOpen", observable = "isOverlayOpen")
-      ),
-      id = ns("overlay2"),
       usePortal = FALSE,
-      isOpen = FALSE,
-      # onClose = modifyAppState(ns("overlay2"), list(isOpen = FALSE)),
+      isOpen = listenTo(isOverlayOpen = FALSE),
       Card(
-        id = "sda",
         className = "bp4-elevation-4 bp4-dark bp4-overlay-content",
         interactive = FALSE,
         H5("An Overlay component that is closable without server"),
@@ -58,12 +81,9 @@ ui <- function(id) {
           "Hello there!"
         ),
         Button(
-          bindObservables = list(
-            list(observer = "children", observable = "titleText")
-          ),
           id = "closeOverlay",
           "Close me",
-          onClick = modifyAppState("isOverlayOpen", FALSE)
+          onClick = setObservable(isOverlayOpen = FALSE)
         )
       )
     )

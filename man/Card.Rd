@@ -4,7 +4,7 @@
 \alias{Card}
 \title{Card}
 \usage{
-Card(id = NULL, ...)
+Card(..., componentStateKey = NULL)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}

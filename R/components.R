@@ -521,15 +521,6 @@ NumericInput <- component("NumericInput")
 #' @export
 NumericInput.shinyInput <- input("NumericInput", 0) # nolint
 
-#' Input group
-#'
-#' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.input-group>
-#'
-#' @example inst/examples/InputGroup.R
-#' @inherit template params
-#' @export
-InputGroup <- component("InputGroup")
-
 #' @rdname InputGroup
 #' @export
 InputGroup.shinyInput <- input("InputGroup", "") # nolint

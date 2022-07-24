@@ -13,7 +13,7 @@ AnchorButton(...)
 
 AnchorButton.shinyInput(inputId, ...)
 
-Button(id = NULL, ...)
+Button(..., componentStateKey = NULL)
 }
 \arguments{
 \item{inputId}{The \code{input} slot that will be used to access the value.}
