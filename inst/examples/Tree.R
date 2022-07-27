@@ -63,7 +63,9 @@ modifyTree <- function(tree, ids, props) {
 ui <- function(id) {
   ns <- NS(id)
   tagList(
-    reactOutput(ns("tree"))
+    reactOutput(ns("tree")),
+    Divider(),
+    reactOutput(ns("info"))
   )
 }
 
@@ -87,9 +89,17 @@ server <- function(id) {
       Tree(
         contents = treeReactive(),
         onNodeExpand = setInput(ns("expand")),
-        onNodeCollapse = setInput(ns("collapse"))
+        onNodeCollapse = setInput(ns("collapse")),
+        onNodeClick = setInput(ns("click"))
       )
     })
+
+     output$info <- renderReact({
+      UL(
+        tags$li("Selected (id): ", input$click$id),
+        tags$li("Selected (label): ", input$click$label)
+      )
+     })
   })
 }
 

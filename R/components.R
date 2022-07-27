@@ -257,6 +257,7 @@ HTMLTable <- component("HTMLTable")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/icon>
 #'
+#' A list of available icons: <https://blueprintjs.com/docs/#icons>
 #' @example inst/examples/Icon.R
 #' @inherit template params
 #' @export
