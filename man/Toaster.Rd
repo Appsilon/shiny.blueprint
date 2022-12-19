@@ -9,16 +9,16 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Toaster$new()}}
-\item \href{#method-show}{\code{Toaster$show()}}
-\item \href{#method-clear}{\code{Toaster$clear()}}
-\item \href{#method-dismiss}{\code{Toaster$dismiss()}}
-\item \href{#method-clone}{\code{Toaster$clone()}}
+\item \href{#method-Toaster-new}{\code{Toaster$new()}}
+\item \href{#method-Toaster-show}{\code{Toaster$show()}}
+\item \href{#method-Toaster-clear}{\code{Toaster$clear()}}
+\item \href{#method-Toaster-dismiss}{\code{Toaster$dismiss()}}
+\item \href{#method-Toaster-clone}{\code{Toaster$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Toaster-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Toaster-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$new(
@@ -30,8 +30,8 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-show"></a>}}
-\if{latex}{\out{\hypertarget{method-show}{}}}
+\if{html}{\out{<a id="method-Toaster-show"></a>}}
+\if{latex}{\out{\hypertarget{method-Toaster-show}{}}}
 \subsection{Method \code{show()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$show(..., key = NULL)}\if{html}{\out{</div>}}
@@ -39,8 +39,8 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clear"></a>}}
-\if{latex}{\out{\hypertarget{method-clear}{}}}
+\if{html}{\out{<a id="method-Toaster-clear"></a>}}
+\if{latex}{\out{\hypertarget{method-Toaster-clear}{}}}
 \subsection{Method \code{clear()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$clear()}\if{html}{\out{</div>}}
@@ -48,8 +48,8 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-dismiss"></a>}}
-\if{latex}{\out{\hypertarget{method-dismiss}{}}}
+\if{html}{\out{<a id="method-Toaster-dismiss"></a>}}
+\if{latex}{\out{\hypertarget{method-Toaster-dismiss}{}}}
 \subsection{Method \code{dismiss()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$dismiss(key)}\if{html}{\out{</div>}}
@@ -57,8 +57,8 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Toaster-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Toaster-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
