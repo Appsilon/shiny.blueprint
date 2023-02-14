@@ -3,31 +3,24 @@ library(appsilon.blueprint)
 
 top5Films <- list(
   list(
-    label = "The Shawshank Redemption",
-    rightLabel = 1994,
-    key = 1
+    text = "The Shawshank Redemption",
+    label = 1994
   ),
   list(
-    label = "The Godfather",
-    rightLabel = 1972,
-    key = 2
+    text = "The Godfather",
+    label = 1972
   ),
   list(
-    label = "The Godfather: Part II",
-    rightLabel = 1974,
-    key = 3
+    text = "The Godfather: Part II",
+    label = 1974
   ),
   list(
-    label = "The Dark Knight",
-    rightLabel = 2008,
-    key = 4,
-    selected = TRUE
+    text = "The Dark Knight",
+    label = 2008
   ),
   list(
-    label = "12 Angry Men",
-    rightLabel = 1957,
-    key = 5,
-    selected = TRUE
+    text = "12 Angry Men",
+    label = 1957
   )
 )
 
@@ -35,41 +28,41 @@ ui <- function(id) {
   ns <- NS(id)
   tagList(
     H3("Multiselect"),
-    MultiSelect(
-      items = top5Films,
-      inputId = ns("values1"),
+    MultiSelect.shinyInput(
+      inputId = ns("multiselect"),
+      items = paste("Option", LETTERS),
+      selected = c("Option B", "Option E"),
       tagInputProps = list(
         tagProps = list(
           intent = "danger"
         )
-      ),
-      noResults = MenuItem(
-        disabled = TRUE,
-        text = "No results"
       )
     ),
-    uiOutput(ns("values1Output")),
-    H3("Multiselect2"),
-    MultiSelect2(
+    uiOutput(ns("multiselect_output")),
+    H3("Multiselect with labels"),
+    MultiSelect.shinyInput(
+      inputId = ns("multiselect_lab"),
       items = top5Films,
-      inputId = ns("values2"),
-      noResults = MenuItem(
-        disabled = TRUE,
-        text = "No results"
-      )
+      selected = c("12 Angry Men", "The Godfather")
     ),
-    uiOutput(ns("values2Output"))
+    uiOutput(ns("multiselect_lab_output"))
   )
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$values1Output <- renderText({
-      purrr::map_chr(input$values1[[1]], ~ .x$label)
+    output$multiselect_output <- renderText({
+      paste(
+        purrr::map_chr(input$multiselect[[1]], ~ .x$text),
+        collapse = ", "
+      )
     })
 
-    output$values2Output <- renderText({
-      purrr::map_chr(input$values2[[1]], ~ .x$label)
+    output$multiselect_lab_output <- renderText({
+      paste(
+        purrr::map_chr(input$multiselect_lab[[1]], ~ .x$text),
+        collapse = ", "
+      )
     })
   })
 }

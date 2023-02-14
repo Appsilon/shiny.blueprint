@@ -1,34 +1,32 @@
 import React from 'react';
 import { MenuItem, Button } from '@blueprintjs/core';
-import {
-  Select as BlueprintSelect,
-  Select2 as BlueprintSelect2,
-} from '@blueprintjs/select';
+import { Select2 } from '@blueprintjs/select';
 import { highlightText } from './utils/highlight-text.js';
 
 const renderItem = (item, { handleClick, modifiers, query }) => {
   if (!modifiers.matchesPredicate) {
     return null;
   }
-  const text = item.label;
   return React.createElement(MenuItem, {
     active: modifiers.active,
     disabled: modifiers.disabled,
-    label: item.rightLabel.toString(),
+    label: item.label.toString(),
     key: item.key,
     onClick: handleClick,
-    text: highlightText(text, query),
+    text: highlightText(item.text, query),
   });
 };
 
 const filterItem = (query, item) => {
-  return item.label.toLowerCase().indexOf(query.toLowerCase()) >= 0;
+  return item.text.toLowerCase().indexOf(query.toLowerCase()) >= 0;
 };
 
-const SelectFactory = (componentVersion) => (props) => {
-  const { items, inputId, popoverProps, ...propsRest } = props;
+export const Select = ({ items, selected, inputId, popoverProps, ...propsRest }) => {
+  const [currentItem, setCurrentItem] = React.useState(
+    items.find(({ text }) => text === selected)
+  );
 
-  const [currentItem, setCurrentItem] = React.useState(items[0]);
+  React.useEffect(() => Shiny.setInputValue(inputId, currentItem), []);
 
   const handleItemSelect = React.useCallback((newItem) => {
     setCurrentItem(newItem);
@@ -36,24 +34,27 @@ const SelectFactory = (componentVersion) => (props) => {
   }, []);
 
   return React.createElement(
-    componentVersion,
-    {
-      items,
-      ...propsRest,
-      itemPredicate: filterItem,
-      itemRenderer: renderItem,
-      onItemSelect: handleItemSelect,
-      popoverProps: {
-        ...popoverProps,
-        usePortal: false,
+    "div",
+    { style: { width: "fit-content" } },
+    React.createElement(
+      Select2,
+      {
+        items,
+        ...propsRest,
+        itemPredicate: filterItem,
+        itemRenderer: renderItem,
+        onItemSelect: handleItemSelect,
+        popoverProps: {
+          ...popoverProps,
+          usePortal: false,
+        },
       },
-    },
-    React.createElement(Button, {
-      text: currentItem.label,
-      rightIcon: 'caret-down',
-    })
+      React.createElement(Button, {
+        text:
+          currentItem.text +
+          (currentItem.label ? ` (${currentItem.label})` : ""),
+        rightIcon: "caret-down",
+      })
+    )
   );
 };
-
-export const Select = SelectFactory(BlueprintSelect);
-export const Select2 = SelectFactory(BlueprintSelect2);

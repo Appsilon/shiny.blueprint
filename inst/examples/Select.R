@@ -3,29 +3,24 @@ library(appsilon.blueprint)
 
 top5Films <- list(
   list(
-    label = "The Shawshank Redemption",
-    rightLabel = 1994,
-    key = 1
+    text = "The Shawshank Redemption",
+    label = 1994
   ),
   list(
-    label = "The Godfather",
-    rightLabel = 1972,
-    key = 2
+    text = "The Godfather",
+    label = 1972
   ),
   list(
-    label = "The Godfather: Part II",
-    rightLabel = 1974,
-    key = 3
+    text = "The Godfather: Part II",
+    label = 1974
   ),
   list(
-    label = "The Dark Knight",
-    rightLabel = 2008,
-    key = 4
+    text = "The Dark Knight",
+    label = 2008
   ),
   list(
-    label = "12 Angry Men",
-    rightLabel = 1957,
-    key = 5
+    text = "12 Angry Men",
+    label = 1957
   )
 )
 
@@ -33,32 +28,27 @@ ui <- function(id) {
   ns <- NS(id)
   tagList(
     H3("Select"),
-    Select(
-      items = top5Films,
-      inputId = ns("value1"),
-      noResults = MenuItem(
-        disabled = TRUE,
-        text = "No results"
-      )
+    Select.shinyInput(
+      inputId = ns("select"),
+      items = paste("Option", LETTERS),
+      selected = "Option C",
+      noResults = "No options."
     ),
-    uiOutput(ns("value1Output")),
-    H3("Select2"),
-    Select2(
+    uiOutput(ns("select_output")),
+    H3("Select with labels"),
+    Select.shinyInput(
+      inputId = ns("select_lab"),
       items = top5Films,
-      inputId = ns("value2"),
-      noResults = MenuItem(
-        disabled = TRUE,
-        text = "No results"
-      )
+      selected = "The Dark Knight"
     ),
-    uiOutput(ns("value2Output"))
-  )
+    uiOutput(ns("select_lab_output"))
+    )
 }
 
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$value1Output <- renderText(input$value1$label)
-    output$value2Output <- renderText(input$value2$label)
+    output$select_output <- renderText(input$select$text)
+    output$select_lab_output <- renderText(input$select_lab$text)
   })
 }
 

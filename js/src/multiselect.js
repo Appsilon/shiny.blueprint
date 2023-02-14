@@ -1,27 +1,23 @@
 import React from 'react';
 import { MenuItem } from '@blueprintjs/core';
-import {
-  MultiSelect as BlueprintMultiSelect,
-  MultiSelect2 as BlueprintMultiSelect2,
-} from '@blueprintjs/select';
+import { MultiSelect2 } from '@blueprintjs/select';
 import { highlightText } from './utils/highlight-text.js';
-import { ShinyProxy } from '@/shiny.react';
+// import { ShinyProxy } from '@/shiny.react';
 
 const filterItem = (query, item) => {
-  return item.label.toLowerCase().indexOf(query.toLowerCase()) >= 0;
+  return item.text.toLowerCase().indexOf(query.toLowerCase()) >= 0;
 };
 
-const tagRenderer = (item) => item.label;
+const tagRenderer = (item) => item.text;
 
-const MultiSelectFactory = (componentVersion) => (props) => {
-  const { items, inputId, popoverProps, ...propsRest } = props;
+export const MultiSelect = ({ items, selected, inputId, popoverProps, ...propsRest }) => {
 
   const [selectedItems, setSelectedItems] = React.useState(
-    items.filter((item) => item.selected)
+    items.filter((item) => selected.includes(item.text))
   );
 
   React.useEffect(() => {
-    ShinyProxy.setInputValue(inputId, { selectedItems });
+    Shiny.setInputValue(inputId, { selectedItems });
   }, [selectedItems]);
 
   const isSelectedItem = React.useCallback(
@@ -64,36 +60,36 @@ const MultiSelectFactory = (componentVersion) => (props) => {
       if (!modifiers.matchesPredicate) {
         return null;
       }
-      const text = item.label;
       return React.createElement(MenuItem, {
         icon: isSelectedItem(item) ? 'tick' : 'blank',
         selected: modifiers.active,
         active: modifiers.active,
         disabled: modifiers.disabled,
-        label: item.rightLabel.toString(),
+        label: item.label.toString(),
         key: item.key,
         onClick: handleClick,
-        text: highlightText(text, query),
+        text: highlightText(item.text, query),
       });
     },
     [selectedItems]
   );
 
-  return React.createElement(componentVersion, {
-    items,
-    ...propsRest,
-    itemPredicate: filterItem,
-    itemRenderer: renderItem,
-    onItemSelect: handleItemSelect,
-    onRemove: handleItemRemove,
-    popoverProps: {
-      ...popoverProps,
-      usePortal: false,
-    },
-    selectedItems,
-    tagRenderer,
-  });
+  return React.createElement(
+    "div",
+    { style: { width: "fit-content" } },
+    React.createElement(MultiSelect2, {
+      items,
+      ...propsRest,
+      itemPredicate: filterItem,
+      itemRenderer: renderItem,
+      onItemSelect: handleItemSelect,
+      onRemove: handleItemRemove,
+      popoverProps: {
+        ...popoverProps,
+        usePortal: false,
+      },
+      selectedItems,
+      tagRenderer,
+    })
+  );
 };
-
-export const MultiSelect = MultiSelectFactory(BlueprintMultiSelect);
-export const MultiSelect2 = MultiSelectFactory(BlueprintMultiSelect2);
