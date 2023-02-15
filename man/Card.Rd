@@ -13,7 +13,7 @@ Card(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/card}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

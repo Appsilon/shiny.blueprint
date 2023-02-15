@@ -1,7 +1,7 @@
 #' Run example
 #'
 #' Launch a Shiny example app or list the available examples.
-#' Use `react.blueprint::runExample("showcase")` to run a showcase app with all the components.
+#' Use `shiny.blueprint::runExample("showcase")` to run a showcase app with all the components.
 #'
 #' @param example The name of the example to run, or `NULL` to retrieve the list of examples.
 #' @param ... Additional arguments to pass to `shiny::runApp()`.

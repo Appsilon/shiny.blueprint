@@ -23,7 +23,7 @@ FileInput.shinyInput(inputId, ..., value = defaultValue)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/switch}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {

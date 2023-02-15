@@ -13,7 +13,7 @@ Dialog(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/dialog.dialog}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

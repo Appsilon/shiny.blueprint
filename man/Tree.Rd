@@ -13,7 +13,7 @@ Tree(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/tree}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(purrr)
 library(shiny)
 

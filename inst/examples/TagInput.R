@@ -1,5 +1,5 @@
 library(shiny)
-library(react.blueprint)
+library(shiny.blueprint)
 
 
 ui <- function(id) {

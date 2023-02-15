@@ -13,7 +13,7 @@ Tag(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/tag}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

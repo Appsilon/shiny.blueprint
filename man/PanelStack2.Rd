@@ -13,7 +13,7 @@ PanelStack2(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/panel-stack2}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 customComponents <- tagList(

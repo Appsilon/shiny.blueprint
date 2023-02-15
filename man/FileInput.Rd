@@ -13,7 +13,7 @@ FileInput(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/file-input}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {

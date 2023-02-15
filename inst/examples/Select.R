@@ -1,5 +1,5 @@
 library(shiny)
-library(react.blueprint)
+library(shiny.blueprint)
 
 top5Films <- list(
   list(text = "The Shawshank Redemption", label = 1994),

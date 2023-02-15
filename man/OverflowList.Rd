@@ -13,7 +13,7 @@ OverflowList(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/overflow-list}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 boxStyle <- tags$style("

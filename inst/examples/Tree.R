@@ -1,4 +1,4 @@
-library(react.blueprint)
+library(shiny.blueprint)
 library(purrr)
 library(shiny)
 

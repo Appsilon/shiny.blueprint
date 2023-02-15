@@ -21,7 +21,7 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/numeric-input}
 }
 \examples{
 library(shiny)
-library(react.blueprint)
+library(shiny.blueprint)
 
 ui <- function(id) {
   ns <- NS(id)

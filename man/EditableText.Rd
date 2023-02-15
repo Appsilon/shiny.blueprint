@@ -20,7 +20,7 @@ EditableText.shinyInput(inputId, ..., value = defaultValue)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/editable-text}
 }
 \examples{
-library(react.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

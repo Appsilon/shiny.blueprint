@@ -13,5 +13,5 @@ runExample(example = NULL, ...)
 }
 \description{
 Launch a Shiny example app or list the available examples.
-Use \code{react.blueprint::runExample("showcase")} to run a showcase app with all the components.
+Use \code{shiny.blueprint::runExample("showcase")} to run a showcase app with all the components.
 }
