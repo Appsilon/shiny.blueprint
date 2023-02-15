@@ -1,3 +1,3 @@
-const addBlueprintPrefix = (txt) => `appsilon.blueprint-${txt}`;
+const addBlueprintPrefix = (txt) => `react.blueprint-${txt}`;
 
 export { addBlueprintPrefix };

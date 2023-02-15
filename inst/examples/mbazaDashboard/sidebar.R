@@ -26,7 +26,7 @@ sidebarItem <- function(item) {
   shiny::a(
     href = item$path,
     class = "sidebar_item",
-    appsilon.blueprint::Button(
+    react.blueprint::Button(
       minimal = TRUE,
       icon = item$iconName,
       text = item$title,

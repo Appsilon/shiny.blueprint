@@ -20,7 +20,7 @@ HTMLSelect.shinyInput(inputId, ..., value = defaultValue)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/html-select}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {

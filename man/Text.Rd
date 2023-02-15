@@ -13,7 +13,7 @@ Text(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/text}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 ui <- function(id) {

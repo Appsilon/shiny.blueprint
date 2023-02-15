@@ -1,5 +1,5 @@
 library(shiny)
-library(appsilon.blueprint)
+library(react.blueprint)
 
 setInput <- function(inputId, accessor = NULL) {
   JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))

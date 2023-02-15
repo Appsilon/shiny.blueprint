@@ -13,7 +13,7 @@ Label(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/label}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 ui <- function(id) {

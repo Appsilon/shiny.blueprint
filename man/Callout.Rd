@@ -13,7 +13,7 @@ Callout(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/callout}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 ui <- function(id) {

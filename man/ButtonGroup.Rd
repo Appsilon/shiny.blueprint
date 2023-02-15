@@ -13,7 +13,7 @@ ButtonGroup(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/button-group}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 ui <- function(id) {

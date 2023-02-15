@@ -18,7 +18,7 @@ component <- function(name) {
 properties <- function(name) {
   function(...) {
     shiny.react::reactElement(
-      module = "@/appsilon.blueprint",
+      module = "@/react.blueprint",
       name = name,
       props = shiny.react::asProps(...),
       deps = blueprintDependency()
@@ -29,7 +29,7 @@ properties <- function(name) {
 button <- function(name) {
   function(inputId, ...) {
     shiny.react::reactElement(
-      module = "@/appsilon.blueprint",
+      module = "@/react.blueprint",
       name = name,
       props = shiny.react::asProps(inputId = inputId, ...),
       deps = blueprintDependency()
@@ -40,7 +40,7 @@ button <- function(name) {
 input <- function(name, defaultValue) {
   function(inputId, ..., value = defaultValue) {
     shiny.react::reactElement(
-      module = "@/appsilon.blueprint",
+      module = "@/react.blueprint",
       name = name,
       props = shiny.react::asProps(inputId = inputId, ..., value = value),
       deps = blueprintDependency()
@@ -80,7 +80,7 @@ select <- function(name) {
        item
     })
     shiny.react::reactElement(
-      module = "@/appsilon.blueprint",
+      module = "@/react.blueprint",
       name = name,
       props = shiny.react::asProps(
         inputId = inputId,

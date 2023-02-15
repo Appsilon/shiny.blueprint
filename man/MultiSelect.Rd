@@ -31,7 +31,7 @@ Documentation: \url{https://blueprintjs.com/docs/#select/multi-select2}
 }
 \examples{
 library(shiny)
-library(appsilon.blueprint)
+library(react.blueprint)
 
 top5Films <- list(
   list(text = "The Shawshank Redemption", label = 1994),

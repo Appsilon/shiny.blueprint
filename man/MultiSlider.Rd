@@ -17,7 +17,7 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/sliders.multi-
 }
 \examples{
 library(shiny)
-library(appsilon.blueprint)
+library(react.blueprint)
 
 ui <- function(id) {
   ns <- NS(id)

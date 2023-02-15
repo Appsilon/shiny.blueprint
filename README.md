@@ -1,15 +1,15 @@
-# appsilon.blueprint [Appsilon proprietary]
+# react.blueprint [Appsilon proprietary]
 
-[![CI](https://github.com/Appsilon/appsilon.blueprint/actions/workflows/ci.yml/badge.svg)](https://github.com/Appsilon/appsilon.blueprint/actions/workflows/ci.yml)
+[![CI](https://github.com/Appsilon/react.blueprint/actions/workflows/ci.yml/badge.svg)](https://github.com/Appsilon/react.blueprint/actions/workflows/ci.yml)
 
-We believe that a great UI plays a huge role in the success of application projects. appsilon.blueprint gives your apps:
+We believe that a great UI plays a huge role in the success of application projects. react.blueprint gives your apps:
 - beautiful, professional look
 - rich set of components easily usable in Shiny
 - fast speed of development that Shiny is famous for.
 
-As Blueprint.js is built in React, appsilon.blueprint is based on another package called [shiny.react](https://github.com/Appsilon/shiny.react), which allows for using React libraries in Shiny.
+As Blueprint.js is built in React, react.blueprint is based on another package called [shiny.react](https://github.com/Appsilon/shiny.react), which allows for using React libraries in Shiny.
 
-**Note:** This package strives to be as easy to use as possible, while providing most of Blueprint.js possibilities. That said, Blueprint.js is more flexible and low level than Bootstrap, and there is additional complexity coming from using React in Shiny. You should expect using appsilon.blueprint to be somewhat more complex than vanilla Shiny or shiny.semantic (at some point you will likely want to browse the original Blueprint.js documentation), but you get more power, flexibility and better UI in return.
+**Note:** This package strives to be as easy to use as possible, while providing most of Blueprint.js possibilities. That said, Blueprint.js is more flexible and low level than Bootstrap, and there is additional complexity coming from using React in Shiny. You should expect using react.blueprint to be somewhat more complex than vanilla Shiny or shiny.semantic (at some point you will likely want to browse the original Blueprint.js documentation), but you get more power, flexibility and better UI in return.
 
 ## Getting started
 
@@ -18,7 +18,7 @@ As Blueprint.js is built in React, appsilon.blueprint is based on another packag
 To install the packages, run:
 ```R
 remotes::install_github("Appsilon/shiny.react")
-remotes::install_github("Appsilon/appsilon.blueprint")
+remotes::install_github("Appsilon/react.blueprint")
 ```
 
 ### Quick start
@@ -27,7 +27,7 @@ Here's how to make a very basis Blueprint Shiny app:
 
 ```r
 library(shiny)
-library(appsilon.blueprint)
+library(react.blueprint)
 
 shinyApp(
   ui = tagList(
@@ -46,8 +46,8 @@ shinyApp(
 )
 ```
 
-`appsilon.blueprint` aims to provides all components from Palantirs's Blueprint.js library.
+`react.blueprint` aims to provides all components from Palantirs's Blueprint.js library.
 Browse the [official docs](https://blueprintjs.com/)
-or start typing `appsilon.blueprint::` in RStudio to see all available controls.
+or start typing `react.blueprint::` in RStudio to see all available controls.
 
-All components ~are~ will be documented, so if you run `?appsilon.blueprint::MyComponentName`, hopefully you'll see documentation for this component in RStudio, along with examples. When in doubt, open Blueprint.js docs for details.
+All components ~are~ will be documented, so if you run `?react.blueprint::MyComponentName`, hopefully you'll see documentation for this component in RStudio, along with examples. When in doubt, open Blueprint.js docs for details.

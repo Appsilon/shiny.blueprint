@@ -13,7 +13,7 @@ ControlGroup(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/control-group}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 ui <- function(id) {

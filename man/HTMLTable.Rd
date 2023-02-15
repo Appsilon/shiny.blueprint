@@ -13,7 +13,7 @@ HTMLTable(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/html-table}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 ui <- function(id) {
@@ -24,7 +24,7 @@ ui <- function(id) {
     tags$tbody(
       tags$tr(tags$td("Blueprint"), tags$td("JS React"), tags$td("268")),
       tags$tr(tags$td("TS"), tags$td("JSX"), tags$td("68")),
-      tags$tr(tags$td("appsilon.blueprint"), tags$td("R JS"), tags$td("2"))
+      tags$tr(tags$td("react.blueprint"), tags$td("R JS"), tags$td("2"))
     ),
     tags$tfoot(
       tags$tr(tags$td("Total", colspan = 2), tags$td("1508"))

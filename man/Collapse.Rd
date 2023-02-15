@@ -13,7 +13,7 @@ Collapse(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/collapse}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 logs <- Pre(

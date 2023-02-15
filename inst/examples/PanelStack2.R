@@ -1,4 +1,4 @@
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 customComponents <- tagList(

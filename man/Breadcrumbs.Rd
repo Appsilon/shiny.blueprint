@@ -13,7 +13,7 @@ Breadcrumbs(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/breadcrumbs}
 }
 \examples{
-library(appsilon.blueprint)
+library(react.blueprint)
 library(shiny)
 
 items <- list(
