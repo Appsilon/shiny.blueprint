@@ -9,12 +9,34 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@blueprintjs/colors@^4.1.15":
+  version "4.1.15"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/colors/-/colors-4.1.15.tgz#745217581640a1f5fdb4c0d767fde608a7de2887"
+  integrity sha512-iOwfwE3tOXiM+dmwkdK7fY6dCGqg7yBLYAUHrmPUeYscrqZ8gJqUXAtDumuWMoLvm1SEz5SVIEfm16QnHd4efw==
+
 "@blueprintjs/colors@^4.1.4":
   version "4.1.4"
   resolved "https://registry.npmjs.org/@blueprintjs/colors/-/colors-4.1.4.tgz"
   integrity sha512-jggWTpazxg6ifWnaAiug9REsWUeMtkkuaWOFg5CjAiH6YtvMPU4ykWmQc9NnKAkabpKoXfZuR1V1KPAz79iYXQ==
 
-"@blueprintjs/core@^4.0.1", "@blueprintjs/core@^4.6.0":
+"@blueprintjs/core@^4.16.2":
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/core/-/core-4.16.2.tgz#fa9db2352c2e23efdb6939998fa5c3e1e2274f10"
+  integrity sha512-1GyR2oVmqT5Vaj+s9vV4woGczWwZwssBoHignUUIqARt7g6qfIKF6czYoi7uPoS79BpF+cThEwFoh0RJ6LiWAA==
+  dependencies:
+    "@blueprintjs/colors" "^4.1.15"
+    "@blueprintjs/icons" "^4.13.2"
+    "@juggle/resize-observer" "^3.4.0"
+    "@types/dom4" "^2.0.2"
+    classnames "^2.3.1"
+    dom4 "^2.1.5"
+    normalize.css "^8.0.1"
+    popper.js "^1.16.1"
+    react-popper "^1.3.11"
+    react-transition-group "^4.4.5"
+    tslib "~2.3.1"
+
+"@blueprintjs/core@^4.6.0":
   version "4.6.0"
   resolved "https://registry.npmjs.org/@blueprintjs/core/-/core-4.6.0.tgz"
   integrity sha512-f8Sbsd2JUrhsxPjXLHyXTS6gi9QuULtIK4MlyoTyBc1yHb3GzQNq9L8stnKQgWOgNFl/u7wOEiXDlrSVrqfYaA==
@@ -29,6 +51,15 @@
     popper.js "^1.16.1"
     react-popper "^1.3.7"
     react-transition-group "^4.4.1"
+    tslib "~2.3.1"
+
+"@blueprintjs/icons@^4.13.2":
+  version "4.13.2"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/icons/-/icons-4.13.2.tgz#df748957984a4f22988136f89aaaf4c686c100bb"
+  integrity sha512-BxDSkpF2YCyGwcl2Ke4JX+UdQP++s/PKYeYt7SmllZaIXY/sEws3fgop9EfN0kfKGofv9k1VwU/F4uGNRJz/5A==
+  dependencies:
+    change-case "^4.1.2"
+    classnames "^2.3.1"
     tslib "~2.3.1"
 
 "@blueprintjs/icons@^4.3.1":
@@ -190,6 +221,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
+"@juggle/resize-observer@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.4.0.tgz#08d6c5e20cf7e4cc02fd181c4b0c225cd31dbb60"
+  integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
+
 "@popperjs/core@^2.5.4":
   version "2.11.5"
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz"
@@ -212,7 +248,7 @@
   resolved "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@types/dom4@^2.0.1":
+"@types/dom4@^2.0.1", "@types/dom4@^2.0.2":
   version "2.0.2"
   resolved "https://registry.npmjs.org/@types/dom4/-/dom4-2.0.2.tgz"
   integrity sha512-Rt4IC1T7xkCWa0OG1oSsPa0iqnxlDeQqKXZAHrQGLb7wFGncWm85MaxKUjAGejOrUynOgWlFi4c6S6IyJwoK4g==
@@ -725,6 +761,11 @@ classnames@^2.2:
   version "2.3.1"
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.1.tgz"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
+classnames@^2.3.1:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
+  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
 clean-stack@^2.0.0:
   version "2.2.0"
@@ -2582,7 +2623,7 @@ react-is@^16.13.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-popper@^1.3.7:
+react-popper@^1.3.11, react-popper@^1.3.7:
   version "1.3.11"
   resolved "https://registry.npmjs.org/react-popper/-/react-popper-1.3.11.tgz"
   integrity sha512-VSA/bS+pSndSF2fiasHK/PTEEAyOpX60+H5EPAjoArr8JGm+oihu4UbrqcEBpQibJxBVCpYyjAX7abJ+7DoYVg==
@@ -2619,6 +2660,16 @@ react@^18.2.0:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
+
+react-transition-group@^4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
+  integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
 
 rechoir@^0.7.0:
   version "0.7.1"
