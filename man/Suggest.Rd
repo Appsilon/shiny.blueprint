@@ -11,8 +11,8 @@ Suggest.shinyInput(
   inputId,
   items,
   selected = NULL,
-  noResults = "No results.",
-  ...
+  ...,
+  noResults = "No results."
 )
 }
 \arguments{

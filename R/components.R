@@ -53,9 +53,9 @@ select <- function(name) {
     inputId,
     items,
     selected = NULL,
-    noResults = "No results.",
-    ...
-    ) {
+    ...,
+    noResults = "No results."
+  ) {
     checkmate::assert_string(inputId)
     checkmate::assert(
       checkmate::check_character(items),
