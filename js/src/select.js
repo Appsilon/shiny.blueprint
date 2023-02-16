@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MenuItem, Button } from '@blueprintjs/core';
 import { Select2 } from '@blueprintjs/select';
 import { highlightText } from './utils/highlight-text.js';
@@ -15,6 +16,13 @@ const renderItem = (item, { handleClick, modifiers, query }) => {
     onClick: handleClick,
     text: highlightText(item.text, query),
   });
+};
+
+const propTypes = {
+  items: PropTypes.array,
+  selected: PropTypes.string,
+  inputId: PropTypes.string,
+  popoverProps: PropTypes.object,
 };
 
 const filterItem = (query, item) => {
@@ -58,3 +66,5 @@ export const Select = ({ items, selected, inputId, popoverProps, ...propsRest })
     )
   );
 };
+
+Select.propTypes = propTypes;

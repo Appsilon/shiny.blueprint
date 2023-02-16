@@ -9,7 +9,7 @@ export const useToaster = (props) => {
 	Shiny.addCustomMessageHandler(addBlueprintPrefix(`show${toasterId}`), (toast) => {
 		toasters[toasterId].show(toast.props, toast.key ? toast.key : undefined);
 	});
-	Shiny.addCustomMessageHandler(addBlueprintPrefix(`clear${toasterId}`), (empty) => {
+	Shiny.addCustomMessageHandler(addBlueprintPrefix(`clear${toasterId}`), (_) => {
 		toasters[toasterId].clear();
 	});
 	Shiny.addCustomMessageHandler(addBlueprintPrefix(`dismiss${toasterId}`), (key) => {

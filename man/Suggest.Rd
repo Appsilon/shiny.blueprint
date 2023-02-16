@@ -34,28 +34,12 @@ library(shiny)
 library(appsilon.blueprint)
 
 top5Films <- list(
-  list(
-    text = "The Shawshank Redemption",
-    label = 1994
-  ),
-  list(
-    text = "The Godfather",
-    label = 1972
-  ),
-  list(
-    text = "The Godfather: Part II",
-    label = 1974
-  ),
-  list(
-    text = "The Dark Knight",
-    label = 2008
-  ),
-  list(
-    text = "12 Angry Men",
-    label = 1957
-  )
+  list(text = "The Shawshank Redemption", label = 1994),
+  list(text = "The Godfather", label = 1972),
+  list(text = "The Godfather: Part II", label = 1974),
+  list(text = "The Dark Knight", label = 2008),
+  list(text = "12 Angry Men", label = 1957)
 )
-
 
 ui <- function(id) {
   ns <- NS(id)

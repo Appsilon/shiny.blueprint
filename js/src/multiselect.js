@@ -1,14 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MenuItem } from '@blueprintjs/core';
 import { MultiSelect2 } from '@blueprintjs/select';
 import { highlightText } from './utils/highlight-text.js';
-// import { ShinyProxy } from '@/shiny.react';
 
 const filterItem = (query, item) => {
   return item.text.toLowerCase().indexOf(query.toLowerCase()) >= 0;
 };
 
 const tagRenderer = (item) => item.text;
+
+const propTypes = {
+  items: PropTypes.array,
+  selected: PropTypes.string,
+  inputId: PropTypes.string,
+  popoverProps: PropTypes.object,
+};
 
 export const MultiSelect = ({ items, selected, inputId, popoverProps, ...propsRest }) => {
 
@@ -93,3 +100,5 @@ export const MultiSelect = ({ items, selected, inputId, popoverProps, ...propsRe
     })
   );
 };
+
+MultiSelect.propTypes = propTypes;
