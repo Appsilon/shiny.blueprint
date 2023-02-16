@@ -2,10 +2,14 @@
 
 <!-- badges: start -->
 <!-- [![CRAN](https://www.r-pkg.org/badges/version/shiny.blueprint)](https://cran.r-project.org/package=shiny.blueprint) -->
+
 [![CI](https://github.com/Appsilon/shiny.blueprint/actions/workflows/ci.yml/badge.svg)](https://github.com/Appsilon/shiny.blueprint/actions/workflows/ci.yml)
+
 <!-- [![downloads monthly](https://cranlogs.r-pkg.org/badges/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint) -->
 <!-- [![downloads total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint) -->
+
 [![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://opensource.org/licenses/LGPL-3.0)
+
 <!-- badges: end -->
 
 ## Why `shiny.blueprint`?
@@ -62,7 +66,7 @@ All components ~are~ will be documented, so if you run `?shiny.blueprint::MyComp
 
 ## Examples
 
-A good way to learn more is to look at the examples. Once you install the library, you can run them with `shiny.blueprint::runExample("example_name")`. To see all examples run `shiny.blueprint::runExample("showcase")`. Showcase app can also be found [here](https://connect.appsilon.com/content/4bde9d84-f065-4cdd-9c92-3cd8b069b158).
+A good way to learn more is to look at the examples. Once you install the library, you can run them with `shiny.blueprint::runExample("example_name")`. To see all examples run `shiny.blueprint::runExample("showcase")`. Showcase app can also be found [here](https://connect.appsilon.com/shiny-blueprint-showcase/).
 
 ---
 
