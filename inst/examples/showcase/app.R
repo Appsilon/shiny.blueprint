@@ -69,6 +69,12 @@ sections <- list(
   section(
     "CONTEXT"
     # TODO: HotkeysProvider
+  ),
+  section(
+    "SELECT",
+    item("Suggest", "Suggest"),
+    item("Select", "Select"),
+    item("MultiSelect", "MultiSelect")
   )
 )
 items <- do.call(c, lapply(sections, `[[`, "items"))
@@ -86,23 +92,35 @@ makeNav <- function(sections) {
   })
 }
 
-readExample <- function(id) {
-  path <- file.path("..", paste0(id, ".R"))
-  code <- readChar(path, file.info(path)$size)
-  module <- new.env()
-  source(path, local = module)
-  list(code = code, ui = module$ui, server = module$server)
+addFileName <- function(code, filename, commentChar) {
+  paste0(commentChar, " ", filename, "\n\n", code)
 }
 
-makePage <- function(id, name, ui, code) {
+readExample <- function(id) {
+  rPath <- file.path("..", paste0(id, ".R"))
+  rCode <- addFileName(readChar(rPath, file.info(rPath)$size), basename(rPath), "#")
+
+  module <- new.env()
+  source(rPath, local = module)
+  list(rCode = rCode, ui = module$ui, server = module$server)
+}
+
+makePage <- function(id, name, ui, rCode) {
   tagList(
     H1(name),
     H3("Example"),
-    # The ID is used to locate the example in Cypress tests.
-    div(`data-example-id` = id, ui),
-    br(),
-    H3("Code"),
-    Pre(code)
+    div(
+      class = "example-section",
+      # The ID is used to locate the example in Cypress tests.
+      div(`data-example-id` = id, ui)
+    ),
+    div(
+      class = "code-section",
+      div(
+        H5("R code"),
+        Pre(tags$code(class = "language-r", rCode))
+      )
+    )
   )
 }
 
@@ -115,7 +133,7 @@ makeRouter <- function(items) {
         id = item$id,
         name = item$name,
         ui = example$ui(item$id),
-        code = example$code
+        rCode = example$rCode
       ),
       server = function() example$server(item$id)
     )
@@ -125,17 +143,22 @@ makeRouter <- function(items) {
 
 router <- makeRouter(items)
 
-style <- tags$head(tags$style(HTML("
-  .grid {
-    display: grid;
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: 1em;
-  }
-")))
+addResourcePath("showcase-static", "./static")
 
 shinyApp(
   ui = tagList(
-    style,
+    tags$script(
+      src = "https://unpkg.com/prismjs@1.28.0/prism.js"
+    ),
+    tags$script(
+      src = "https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"
+    ),
+    tags$link(
+      rel = "stylesheet",
+      type = "text/css",
+      href = "https://unpkg.com/prismjs@1.28.0/themes/prism.min.css"
+    ),
+    tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/styles.css"),
     tags$div(
       class = "grid",
       tags$nav(makeNav(sections)),

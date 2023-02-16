@@ -19,7 +19,8 @@ Imports:
   htmltools,
   shiny,
   shiny.react (>= 0.2.2),
-  utils
+  utils,
+  checkmate
 Suggests:
   knitr,
   lintr (>= 3.0.0),

@@ -1,5 +1,5 @@
 import { Toaster } from '@blueprintjs/core';
-import { addBlueprintPrefix } from './add-blueprint-prefix.js';
+import { addBlueprintPrefix } from './utils/add-blueprint-prefix.js';
 
 const toasters = {};
 
@@ -9,7 +9,7 @@ export const useToaster = (props) => {
 	Shiny.addCustomMessageHandler(addBlueprintPrefix(`show${toasterId}`), (toast) => {
 		toasters[toasterId].show(toast.props, toast.key ? toast.key : undefined);
 	});
-	Shiny.addCustomMessageHandler(addBlueprintPrefix(`clear${toasterId}`), (empty) => {
+	Shiny.addCustomMessageHandler(addBlueprintPrefix(`clear${toasterId}`), (_) => {
 		toasters[toasterId].clear();
 	});
 	Shiny.addCustomMessageHandler(addBlueprintPrefix(`dismiss${toasterId}`), (key) => {

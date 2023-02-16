@@ -1,13 +1,3 @@
-blueprintDependency <- function() {
-  htmltools::htmlDependency(
-    name = "blueprint",
-    version = "0.1.0",
-    package = "appsilon.blueprint",
-    src = "www",
-    script = "blueprint.min.js"
-  )
-}
-
 #' @param inputId The `input` slot that will be used to access the value.
 #' @param ... Component props and children. See the official Blueprint docs for details.
 #' @param value Initial value.
@@ -53,6 +43,55 @@ input <- function(name, defaultValue) {
       module = "@/appsilon.blueprint",
       name = name,
       props = shiny.react::asProps(inputId = inputId, ..., value = value),
+      deps = blueprintDependency()
+    )
+  }
+}
+
+select <- function(name) {
+  function(
+    inputId,
+    items,
+    selected = NULL,
+    ...,
+    noResults = "No results."
+  ) {
+    checkmate::assert_string(inputId)
+    checkmate::assert(
+      checkmate::check_character(items),
+      checkmate::check_list(items)
+    )
+    if (is.character(items)) {
+      items <- purrr::map(items, ~ list(text = .x, label = ""))
+    }
+    purrr::walk(items, ~ checkmate::assert_subset(
+      c("text", "label"), names(.x)
+    ))
+    checkmate::assert_subset(
+      selected,
+      purrr::map_chr(items, "text")
+    )
+    checkmate::assert_string(noResults)
+    items <- unique(items)
+    items <- purrr::map(items, function(item) {
+       if (is.null(item$key)) {
+         item$key <- paste0(item$text, "-", item$label)
+       }
+       item
+    })
+    shiny.react::reactElement(
+      module = "@/appsilon.blueprint",
+      name = name,
+      props = shiny.react::asProps(
+        inputId = inputId,
+        items = items,
+        selected = selected,
+        noResults = MenuItem(
+          disabled = TRUE,
+          text = noResults
+        ),
+        ...
+      ),
       deps = blueprintDependency()
     )
   }
@@ -608,6 +647,55 @@ Drawer <- component("Drawer")
 #' @inherit template params
 #' @export
 Popover <- component("Popover")
+
+#' Select
+#'
+#' Documentation: <https://blueprintjs.com/docs/#select/select2>
+#'
+#' @example inst/examples/Select.R
+#' @inherit template params
+#' @param items A list of options (character vector or list containing `text` and `label` entries)
+#' @param selected Initialy selected item
+#' @param noResults Message when no results were found
+#' @export
+Select <- component("Select")
+
+#' @rdname Select
+#' @export
+Select.shinyInput <- select("Select") # nolint
+
+#' Suggest
+#'
+#' Documentation: <https://blueprintjs.com/docs/#select/suggest2>
+#'
+#' @example inst/examples/Suggest.R
+#' @inherit template params
+#' @param items A list of options (character vector or list containing `text` and `label` entries)
+#' @param selected Initialy selected item
+#' @param noResults Message when no results were found
+#' @export
+Suggest <- component("Suggest")
+
+#' @rdname Suggest
+#' @export
+Suggest.shinyInput <- select("Suggest") # nolint
+
+#' MultiSelect
+#'
+#' Documentation: <https://blueprintjs.com/docs/#select/multi-select2>
+#'
+#' @example inst/examples/MultiSelect.R
+#' @inherit template params
+#' @param items A list of options (character vector or list containing `text` and `label` entries)
+#' @param selected Initialy selected item
+#' @param noResults Message when no results were found
+#' @export
+MultiSelect <- component("MultiSelect")
+
+#' @rdname MultiSelect
+#' @export
+MultiSelect.shinyInput <- select("MultiSelect") # nolint
+
 
 # TODO: Tooltip
 
