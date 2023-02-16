@@ -1,5 +1,5 @@
 library(shiny)
-library(appsilon.blueprint)
+library(shiny.blueprint)
 
 ui <- function(id) {
   ns <- NS(id)

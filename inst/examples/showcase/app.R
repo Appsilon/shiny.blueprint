@@ -1,4 +1,4 @@
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny.router)
 library(shiny)
 
@@ -97,7 +97,10 @@ addFileName <- function(code, filename, commentChar) {
 }
 
 readExample <- function(id) {
-  rPath <- file.path("..", paste0(id, ".R"))
+  rPath <- system.file(file.path("examples", paste0(id, ".R")), package = "shiny.blueprint")
+  if (!file.exists(rPath)) {
+    return()
+  }
   rCode <- addFileName(readChar(rPath, file.info(rPath)$size), basename(rPath), "#")
 
   module <- new.env()
@@ -127,6 +130,9 @@ makePage <- function(id, name, ui, rCode) {
 makeRouter <- function(items) {
   routes <- lapply(items, function(item) {
     example <- readExample(item$id)
+    if (is.null(example)) {
+      return()
+    }
     route(
       path = item$id,
       ui = makePage(

@@ -23,7 +23,7 @@ RadioGroup.shinyInput(inputId, ..., value = defaultValue)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/radio}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {

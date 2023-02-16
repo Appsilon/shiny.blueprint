@@ -13,7 +13,7 @@ TextArea(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/text-inputs.text-area}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {

@@ -1,3 +1,3 @@
 addBlueprintPrefix <- function(txt) {
-  paste0("appsilon.blueprint-", txt)
+  paste0("shiny.blueprint-", txt)
 }

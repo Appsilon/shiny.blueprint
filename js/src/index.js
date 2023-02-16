@@ -16,5 +16,5 @@ window.jsmodule = {
   ...window.jsmodule,
   '@blueprintjs/core': Blueprint,
   '@blueprintjs/select': BlueprintSelect,
-  '@/appsilon.blueprint': {...Inputs, ...Suggests, ...Selects, ...MultiSelects},
+  '@/shiny.blueprint': {...Inputs, ...Suggests, ...Selects, ...MultiSelects},
 };

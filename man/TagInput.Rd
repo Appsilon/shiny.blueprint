@@ -21,7 +21,7 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/tag-input}
 }
 \examples{
 library(shiny)
-library(appsilon.blueprint)
+library(shiny.blueprint)
 
 
 ui <- function(id) {

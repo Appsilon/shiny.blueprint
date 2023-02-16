@@ -16,7 +16,7 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/icon}
 A list of available icons: \url{https://blueprintjs.com/docs/#icons}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

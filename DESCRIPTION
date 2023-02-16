@@ -1,4 +1,4 @@
-Package: appsilon.blueprint
+Package: shiny.blueprint
 Title: Blueprint UI for Shiny apps
 Version: 0.1.0
 Authors@R:

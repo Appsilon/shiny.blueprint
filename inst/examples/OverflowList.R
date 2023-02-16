@@ -1,4 +1,4 @@
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 boxStyle <- tags$style("

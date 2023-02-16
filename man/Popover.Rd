@@ -13,7 +13,7 @@ Popover(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/popover}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

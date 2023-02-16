@@ -13,7 +13,7 @@ Alert(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/alert}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {
