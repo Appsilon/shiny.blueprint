@@ -9,7 +9,7 @@ Authors@R:
     person("Appsilon Sp. z o.o.", role = c("cph", "cre"), email = "hello@appsilon.com")
   )
 Description: Blueprint UI for Shiny apps through shiny.react bindings.
-License: Appsilon proprietary
+License: LGPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

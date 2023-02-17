@@ -1,4 +1,6 @@
-# shiny.blueprint [Appsilon proprietary]
+# shiny.blueprint
+
+> _Blueprint - React-based UI toolkit for Shiny Apps_
 
 <!-- badges: start -->
 <!-- [![CRAN](https://www.r-pkg.org/badges/version/shiny.blueprint)](https://cran.r-project.org/package=shiny.blueprint) -->
@@ -74,7 +76,7 @@ Developed with :heart: at [Appsilon](https://appsilon.com).
 Get in touch: <opensource@appsilon.com>.
 
 Appsilon is a
-[**Full Service Certified RStudio Partner**](https://www.rstudio.com/certified-partners/).
+[**Full Service Certified Posit Partner**](https://posit.co/certified-partners/).
 
 <a href="https://appsilon.com/careers/">
   <img src="http://d2v95fjda94ghc.cloudfront.net/hiring.png" alt="We are hiring!">
