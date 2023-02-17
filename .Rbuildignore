@@ -2,3 +2,4 @@
 ^\.lintr$
 ^js$
 ^reinstall.sh$
+^renovate.json
