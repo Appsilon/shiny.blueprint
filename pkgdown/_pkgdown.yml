@@ -1,0 +1,45 @@
+title: shiny.blueprint
+template:
+  bootstrap: 5
+  bootswatch: pulse
+  bslib:
+    pkgdown-nav-height: 100px
+  includes:
+    in_header: |
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDZV0LSEHS"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MDZV0LSEHS');
+      </script>
+
+url: https://appsilon.github.io/shiny.blueprint/
+
+navbar:
+  bg: primary
+  structure:
+    left: [reference, news]
+  components:
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/Appsilon/shiny.blueprint
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/Appsilon
+
+home:
+  sidebar:
+    structure: [star, links, license, community, citation, authors, dev]
+    components:
+      star:
+        title: GitHub
+        text: |
+          <a class="github-button" href="https://github.com/appsilon/shiny.blueprint" data-size="large" data-show-count="true" aria-label="Star appsilon/shiny.blueprint on GitHub">Star</a>
+
+footer:
+  structure:
+    left: developed
+  components:
+    developed: "Developed with :heart: by [Appsilon](https://appsilon.com)."
