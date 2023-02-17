@@ -3,3 +3,6 @@
 ^js$
 ^reinstall.sh$
 ^renovate.json
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
