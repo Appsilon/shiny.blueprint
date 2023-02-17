@@ -19,7 +19,7 @@ TabsExpander(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/tabs}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

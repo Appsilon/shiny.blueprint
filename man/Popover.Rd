@@ -13,7 +13,7 @@ Popover(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/popover}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {
@@ -33,6 +33,7 @@ server <- function(id) {
       Popover(
         isOpen = isOpen(),
         target = Button.shinyInput(ns("hello"), "Say Hello", intent = "primary"),
+        usePortal = FALSE,
         content = tags$div(
           style = "padding: 1em",
           H5("Hello!"),

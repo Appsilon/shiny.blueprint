@@ -13,11 +13,13 @@ ResizeSensor(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/resize-sensor}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {
-  JS(paste0("x => Shiny.setInputValue('", inputId, "', x", accessor, ")"))
+  JS(paste0(
+    "x => Shiny.setInputValue('", inputId, "', x", accessor, ")"
+  ))
 }
 
 ui <- function(id) {

@@ -1,0 +1,39 @@
+code[class*=language-], pre[class*=language-] {
+  background: unset;
+  font-family: monospace;
+}
+
+.code-section {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 1em;
+}
+
+@media (max-width: 1024px) {
+  .code-section {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+
+.example-section {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 1em;
+}
+
+.grid > nav {
+  max-height: calc(100vh - 16px);
+  overflow: auto;
+}
+
+.grid > main {
+  max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1em;
+}

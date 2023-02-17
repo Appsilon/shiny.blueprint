@@ -3,11 +3,14 @@
 \name{Switch}
 \alias{Switch}
 \alias{Switch.shinyInput}
+\alias{FileInput.shinyInput}
 \title{Switch}
 \usage{
 Switch(...)
 
 Switch.shinyInput(inputId, ..., value = defaultValue)
+
+FileInput.shinyInput(inputId, ..., value = defaultValue)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
@@ -20,7 +23,7 @@ Switch.shinyInput(inputId, ..., value = defaultValue)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/switch}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 setInput <- function(inputId, accessor = NULL) {

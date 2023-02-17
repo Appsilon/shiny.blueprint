@@ -44,7 +44,7 @@ UL(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/html}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {

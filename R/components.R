@@ -1,13 +1,3 @@
-blueprintDependency <- function() {
-  htmltools::htmlDependency(
-    name = "blueprint",
-    version = "0.1.0",
-    package = "appsilon.blueprint",
-    src = "www",
-    script = "blueprint.min.js"
-  )
-}
-
 #' @param inputId The `input` slot that will be used to access the value.
 #' @param ... Component props and children. See the official Blueprint docs for details.
 #' @param value Initial value.
@@ -25,10 +15,21 @@ component <- function(name) {
   }
 }
 
+properties <- function(name) {
+  function(...) {
+    shiny.react::reactElement(
+      module = "@/shiny.blueprint",
+      name = name,
+      props = shiny.react::asProps(...),
+      deps = blueprintDependency()
+    )
+  }
+}
+
 button <- function(name) {
   function(inputId, ...) {
     shiny.react::reactElement(
-      module = "@/appsilon.blueprint",
+      module = "@/shiny.blueprint",
       name = name,
       props = shiny.react::asProps(inputId = inputId, ...),
       deps = blueprintDependency()
@@ -39,9 +40,58 @@ button <- function(name) {
 input <- function(name, defaultValue) {
   function(inputId, ..., value = defaultValue) {
     shiny.react::reactElement(
-      module = "@/appsilon.blueprint",
+      module = "@/shiny.blueprint",
       name = name,
       props = shiny.react::asProps(inputId = inputId, ..., value = value),
+      deps = blueprintDependency()
+    )
+  }
+}
+
+select <- function(name) {
+  function(
+    inputId,
+    items,
+    selected = NULL,
+    ...,
+    noResults = "No results."
+  ) {
+    checkmate::assert_string(inputId)
+    checkmate::assert(
+      checkmate::check_character(items),
+      checkmate::check_list(items)
+    )
+    if (is.character(items)) {
+      items <- purrr::map(items, ~ list(text = .x, label = ""))
+    }
+    purrr::walk(items, ~ checkmate::assert_subset(
+      c("text", "label"), names(.x)
+    ))
+    checkmate::assert_subset(
+      selected,
+      purrr::map_chr(items, "text")
+    )
+    checkmate::assert_string(noResults)
+    items <- unique(items)
+    items <- purrr::map(items, function(item) {
+       if (is.null(item$key)) {
+         item$key <- paste0(item$text, "-", item$label)
+       }
+       item
+    })
+    shiny.react::reactElement(
+      module = "@/shiny.blueprint",
+      name = name,
+      props = shiny.react::asProps(
+        inputId = inputId,
+        items = items,
+        selected = selected,
+        noResults = MenuItem(
+          disabled = TRUE,
+          text = noResults
+        ),
+        ...
+      ),
       deps = blueprintDependency()
     )
   }
@@ -51,7 +101,7 @@ input <- function(name, defaultValue) {
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/breadcrumbs>
 #'
-#' @example inst/examples/components/Breadcrumbs.R
+#' @example inst/examples/Breadcrumbs.R
 #' @inherit template params
 #' @export
 Breadcrumbs <- component("Breadcrumbs")
@@ -60,7 +110,7 @@ Breadcrumbs <- component("Breadcrumbs")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/button>
 #'
-#' @example inst/examples/components/Button.R
+#' @example inst/examples/Button.R
 #' @inherit template params
 #' @export
 Button <- component("Button")
@@ -81,7 +131,7 @@ AnchorButton.shinyInput <- button("AnchorButton") # nolint
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/button-group>
 #'
-#' @example inst/examples/components/ButtonGroup.R
+#' @example inst/examples/ButtonGroup.R
 #' @inherit template params
 #' @export
 ButtonGroup <- component("ButtonGroup")
@@ -90,7 +140,7 @@ ButtonGroup <- component("ButtonGroup")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/callout>
 #'
-#' @example inst/examples/components/Callout.R
+#' @example inst/examples/Callout.R
 #' @inherit template params
 #' @export
 Callout <- component("Callout")
@@ -99,7 +149,7 @@ Callout <- component("Callout")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/card>
 #'
-#' @example inst/examples/components/Card.R
+#' @example inst/examples/Card.R
 #' @inherit template params
 #' @export
 Card <- component("Card")
@@ -108,7 +158,7 @@ Card <- component("Card")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/collapse>
 #'
-#' @example inst/examples/components/Collapse.R
+#' @example inst/examples/Collapse.R
 #' @inherit template params
 #' @export
 Collapse <- component("Collapse")
@@ -117,7 +167,7 @@ Collapse <- component("Collapse")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/divider>
 #'
-#' @example inst/examples/components/Divider.R
+#' @example inst/examples/Divider.R
 #' @inherit template params
 #' @export
 Divider <- component("Divider")
@@ -126,7 +176,7 @@ Divider <- component("Divider")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/editable-text>
 #'
-#' @example inst/examples/components/EditableText.R
+#' @example inst/examples/EditableText.R
 #' @inherit template params
 #' @export
 EditableText <- component("EditableText")
@@ -140,7 +190,7 @@ EditableText.shinyInput <- input("EditableText", "") # nolint
 #' Documentation: <https://blueprintjs.com/docs/#core/components/html>
 #'
 #' @family HTML elements
-#' @example inst/examples/components/htmlElements.R
+#' @example inst/examples/htmlElements.R
 #' @inherit template params
 #' @name htmlElements
 NULL
@@ -196,7 +246,7 @@ UL <- component("UL")
 #' Documentation: <https://blueprintjs.com/docs/#core/components/html-table>
 #'
 #' @family HTML elements
-#' @example inst/examples/components/HTMLTable.R
+#' @example inst/examples/HTMLTable.R
 #' @inherit template params
 #' @export
 HTMLTable <- component("HTMLTable")
@@ -207,7 +257,8 @@ HTMLTable <- component("HTMLTable")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/icon>
 #'
-#' @example inst/examples/components/Icon.R
+#' A list of available icons: <https://blueprintjs.com/docs/#icons>
+#' @example inst/examples/Icon.R
 #' @inherit template params
 #' @export
 Icon <- component("Icon")
@@ -216,7 +267,7 @@ Icon <- component("Icon")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/menu>
 #'
-#' @example inst/examples/components/Menu.R
+#' @example inst/examples/Menu.R
 #' @inherit template params
 #' @export
 Menu <- component("Menu")
@@ -233,7 +284,7 @@ MenuDivider <- component("MenuDivider")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/navbar>
 #'
-#' @example inst/examples/components/Navbar.R
+#' @example inst/examples/Navbar.R
 #' @inherit template params
 #' @export
 Navbar <- component("Navbar")
@@ -254,7 +305,7 @@ NavbarDivider <- component("NavbarDivider")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/non-ideal-state>
 #'
-#' @example inst/examples/components/NonIdealState.R
+#' @example inst/examples/NonIdealState.R
 #' @inherit template params
 #' @export
 NonIdealState <- component("NonIdealState")
@@ -263,7 +314,7 @@ NonIdealState <- component("NonIdealState")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/overflow-list>
 #'
-#' @example inst/examples/components/OverflowList.R
+#' @example inst/examples/OverflowList.R
 #' @inherit template params
 #' @export
 OverflowList <- component("OverflowList")
@@ -272,7 +323,7 @@ OverflowList <- component("OverflowList")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/panel-stack2>
 #'
-#' @example inst/examples/components/PanelStack2.R
+#' @example inst/examples/PanelStack2.R
 #' @inherit template params
 #' @export
 PanelStack2 <- component("PanelStack2")
@@ -281,7 +332,7 @@ PanelStack2 <- component("PanelStack2")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/progress-bar>
 #'
-#' @example inst/examples/components/ProgressBar.R
+#' @example inst/examples/ProgressBar.R
 #' @inherit template params
 #' @export
 ProgressBar <- component("ProgressBar")
@@ -290,7 +341,7 @@ ProgressBar <- component("ProgressBar")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/resize-sensor>
 #'
-#' @example inst/examples/components/ResizeSensor.R
+#' @example inst/examples/ResizeSensor.R
 #' @inherit template params
 #' @export
 ResizeSensor <- component("ResizeSensor")
@@ -299,7 +350,7 @@ ResizeSensor <- component("ResizeSensor")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/spinner>
 #'
-#' @example inst/examples/components/Spinner.R
+#' @example inst/examples/Spinner.R
 #' @inherit template params
 #' @export
 Spinner <- component("Spinner")
@@ -308,7 +359,7 @@ Spinner <- component("Spinner")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/tabs>
 #'
-#' @example inst/examples/components/Tabs.R
+#' @example inst/examples/Tabs.R
 #' @inherit template params
 #' @export
 Tabs <- component("Tabs")
@@ -325,7 +376,7 @@ TabsExpander <- component("Expander")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/tag>
 #'
-#' @example inst/examples/components/Tag.R
+#' @example inst/examples/Tag.R
 #' @inherit template params
 #' @export
 Tag <- component("Tag")
@@ -334,7 +385,7 @@ Tag <- component("Tag")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/text>
 #'
-#' @example inst/examples/components/Text.R
+#' @example inst/examples/Text.R
 #' @inherit template params
 #' @export
 Text <- component("Text")
@@ -343,7 +394,7 @@ Text <- component("Text")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/tree>
 #'
-#' @example inst/examples/components/Tree.R
+#' @example inst/examples/Tree.R
 #' @inherit template params
 #' @export
 Tree <- component("Tree")
@@ -352,7 +403,7 @@ Tree <- component("Tree")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/form-group>
 #'
-#' @example inst/examples/components/FormGroup.R
+#' @example inst/examples/FormGroup.R
 #' @inherit template params
 #' @export
 FormGroup <- component("FormGroup")
@@ -361,7 +412,7 @@ FormGroup <- component("FormGroup")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/control-group>
 #'
-#' @example inst/examples/components/ControlGroup.R
+#' @example inst/examples/ControlGroup.R
 #' @inherit template params
 #' @export
 ControlGroup <- component("ControlGroup")
@@ -371,7 +422,7 @@ ControlGroup <- component("ControlGroup")
 #' Documentation: <https://blueprintjs.com/docs/#core/components/label>
 #'
 #' @family HTML elements
-#' @example inst/examples/components/Label.R
+#' @example inst/examples/Label.R
 #' @inherit template params
 #' @export
 Label <- component("Label")
@@ -380,7 +431,7 @@ Label <- component("Label")
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/checkbox>
 #'
-#' @example inst/examples/components/Checkbox.R
+#' @example inst/examples/Checkbox.R
 #' @inherit template params
 #' @export
 Checkbox <- component("Checkbox")
@@ -393,7 +444,7 @@ Checkbox.shinyInput <- input("Checkbox", FALSE) # nolint
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/radio>
 #'
-#' @example inst/examples/components/Radio.R
+#' @example inst/examples/Radio.R
 #' @inherit template params
 #' @export
 Radio <- component("Radio")
@@ -410,7 +461,7 @@ RadioGroup.shinyInput <- input("RadioGroup", NULL) # nolint
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/html-select>
 #'
-#' @example inst/examples/components/HTMLSelect.R
+#' @example inst/examples/HTMLSelect.R
 #' @inherit template params
 #' @export
 HTMLSelect <- component("HTMLSelect")
@@ -419,13 +470,50 @@ HTMLSelect <- component("HTMLSelect")
 #' @export
 HTMLSelect.shinyInput <- input("HTMLSelect", "") # nolint
 
-# TODO: Slider
+#' Slider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.slider>
+#'
+#' @example inst/examples/Slider.R
+#' @inherit template params
+#' @export
+Slider <- component("Slider")
+
+#' @rdname Slider
+#' @export
+Slider.shinyInput <- input("Slider", 0) # nolint
+
+#' Range slider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.range-slider>
+#'
+#' @example inst/examples/Slider.R
+#' @inherit template params
+#' @export
+RangeSlider <- component("RangeSlider")
+
+#' @rdname RangeSlider
+#' @export
+RangeSlider.shinyInput <- input("RangeSlider", c(0, 0)) # nolint
+
+#' Multi slider
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.multi-slider>
+#'
+#' @example inst/examples/MultiSlider.R
+#' @inherit template params
+#' @export
+MultiSlider <- component("MultiSlider")
+
+#' @rdname MultiSlider
+#' @export
+MultiSliderHandle <- properties("MultiSliderHandle")
 
 #' Switch
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/switch>
 #'
-#' @example inst/examples/components/Switch.R
+#' @example inst/examples/Switch.R
 #' @inherit template params
 #' @export
 Switch <- component("Switch")
@@ -434,15 +522,37 @@ Switch <- component("Switch")
 #' @export
 Switch.shinyInput <- input("Switch", FALSE) # nolint
 
-# TODO: File input
+#' FileInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/file-input>
+#'
+#' @example inst/examples/Switch.R
+#' @inherit template params
+#' @export
+FileInput <- component("FileInput")
 
-# TODO: Numeric input
+#' @rdname Switch
+#' @export
+FileInput.shinyInput <- input("FileInput", "") # nolint
+
+#' NumericInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/numeric-input>
+#'
+#' @example inst/examples/NumericInput.R
+#' @inherit template params
+#' @export
+NumericInput <- component("NumericInput")
+
+#' @rdname NumericInput
+#' @export
+NumericInput.shinyInput <- input("NumericInput", 0) # nolint
 
 #' Input group
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.input-group>
 #'
-#' @example inst/examples/components/InputGroup.R
+#' @example inst/examples/InputGroup.R
 #' @inherit template params
 #' @export
 InputGroup <- component("InputGroup")
@@ -451,13 +561,24 @@ InputGroup <- component("InputGroup")
 #' @export
 InputGroup.shinyInput <- input("InputGroup", "") # nolint
 
-# TODO: Tag input
+#' TagInput
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/tag-input>
+#'
+#' @example inst/examples/TagInput.R
+#' @inherit template params
+#' @export
+TagInput <- component("TagInput")
+
+#' @rdname TagInput
+#' @export
+TagInput.shinyInput <- input("TagInput", NULL) # nolint
 
 #' Text area
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.text-area>
 #'
-#' @example inst/examples/components/TextArea.R
+#' @example inst/examples/TextArea.R
 #' @inherit template params
 #' @export
 TextArea <- component("TextArea")
@@ -466,30 +587,116 @@ TextArea <- component("TextArea")
 #' @export
 TextArea.shinyInput <- input("TextArea", "") # nolint
 
-# TODO: Overlay
+#' Overlay
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/overlay>
+#'
+#' @example inst/examples/Overlay.R
+#' @inherit template params
+#' @export
+Overlay <- component("Overlay")
 
 # TODO: Portal
 
-# TODO: Alert
+#' Alert
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/alert>
+#'
+#' @example inst/examples/Alert.R
+#' @inherit template params
+#' @export
+Alert <- component("Alert")
 
 # TODO: Context menu
 
-# TODO: Dialog
+#' Dialog
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.dialog>
+#'
+#' @example inst/examples/Dialog.R
+#' @inherit template params
+#' @export
+Dialog <- component("Dialog")
 
-# TODO: MultistepDialog
+#' Multistep dialog
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/dialog.multistep-dialog>
+#'
+#' @example inst/examples/MultistepDialog.R
+#' @inherit template params
+#' @export
+MultistepDialog <- component("MultistepDialog")
 
-# TODO: Drawer
+#' @rdname MultistepDialog
+#' @export
+DialogStep <- component("DialogStep")
+
+#' Drawer
+#'
+#' Documentation: <https://blueprintjs.com/docs/#core/components/drawer>
+#'
+#' @example inst/examples/Drawer.R
+#' @inherit template params
+#' @export
+Drawer <- component("Drawer")
 
 #' Popover
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/popover>
 #'
-#' @example inst/examples/components/Popover.R
+#' @example inst/examples/Popover.R
 #' @inherit template params
 #' @export
 Popover <- component("Popover")
 
-# TODO: Toast
+#' Select
+#'
+#' Documentation: <https://blueprintjs.com/docs/#select/select2>
+#'
+#' @example inst/examples/Select.R
+#' @inherit template params
+#' @param items A list of options (character vector or list containing `text` and `label` entries)
+#' @param selected Initialy selected item
+#' @param noResults Message when no results were found
+#' @export
+Select <- component("Select")
+
+#' @rdname Select
+#' @export
+Select.shinyInput <- select("Select") # nolint
+
+#' Suggest
+#'
+#' Documentation: <https://blueprintjs.com/docs/#select/suggest2>
+#'
+#' @example inst/examples/Suggest.R
+#' @inherit template params
+#' @param items A list of options (character vector or list containing `text` and `label` entries)
+#' @param selected Initialy selected item
+#' @param noResults Message when no results were found
+#' @export
+Suggest <- component("Suggest")
+
+#' @rdname Suggest
+#' @export
+Suggest.shinyInput <- select("Suggest") # nolint
+
+#' MultiSelect
+#'
+#' Documentation: <https://blueprintjs.com/docs/#select/multi-select2>
+#'
+#' @example inst/examples/MultiSelect.R
+#' @inherit template params
+#' @param items A list of options (character vector or list containing `text` and `label` entries)
+#' @param selected Initialy selected item
+#' @param noResults Message when no results were found
+#' @export
+MultiSelect <- component("MultiSelect")
+
+#' @rdname MultiSelect
+#' @export
+MultiSelect.shinyInput <- select("MultiSelect") # nolint
+
 
 # TODO: Tooltip
 

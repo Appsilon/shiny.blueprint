@@ -24,14 +24,41 @@ export const HTMLSelect = InputAdapter(Blueprint.HTMLSelect, (value, setValue) =
   onChange: (event) => setValue(event.target.value),
 }));
 
+export const Slider = InputAdapter(Blueprint.Slider, (value, setValue) => ({
+  value,
+  onChange: setValue,
+}));
+
+export const RangeSlider = InputAdapter(Blueprint.RangeSlider, (value, setValue) => ({
+  value,
+  onChange: setValue,
+}));
+
+export const MultiSliderHandle = Blueprint.MultiSlider.Handle;
+
 export const Switch = InputAdapter(Blueprint.Switch, (value, setValue) => ({
   checked: value,
   onChange: (event) => setValue(event.target.checked),
 }));
 
+export const FileInput = InputAdapter(Blueprint.FileInput, (value, setValue) => ({
+  text: value,
+  onInputChange: (event) => setValue(event.target.files[0].name),
+}));
+
+export const NumericInput = InputAdapter(Blueprint.NumericInput, (value, setValue) => ({
+  value,
+  onValueChange: setValue,
+}));
+
 export const InputGroup = InputAdapter(Blueprint.InputGroup, (value, setValue) => ({
   value,
   onChange: (event) => setValue(event.target.value),
+}));
+
+export const TagInput = InputAdapter(Blueprint.TagInput, (values, setValue) => ({
+  values,
+  onChange: setValue,
 }));
 
 export const TextArea = InputAdapter(Blueprint.TextArea, (value, setValue) => ({

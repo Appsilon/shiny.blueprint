@@ -19,7 +19,7 @@ MenuDivider(...)
 Documentation: \url{https://blueprintjs.com/docs/#core/components/menu}
 }
 \examples{
-library(appsilon.blueprint)
+library(shiny.blueprint)
 library(shiny)
 
 ui <- function(id) {
