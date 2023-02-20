@@ -1,5 +1,6 @@
 library(shiny.blueprint)
 library(shiny.router)
+library(shinyjs)
 library(shiny)
 
 section <- function(name, ...) list(name = name, items = list(...))
@@ -150,18 +151,20 @@ addResourcePath("showcase-static", "./static")
 
 shinyApp(
   ui = tagList(
+    useShinyjs(),
     tags$script(
-      src = "https://unpkg.com/prismjs@1.28.0/prism.js"
-    ),
-    tags$script(
-      src = "https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"
+      src = "showcase-static/js/highlight.min.js"
     ),
     tags$link(
       rel = "stylesheet",
       type = "text/css",
-      href = "https://unpkg.com/prismjs@1.28.0/themes/prism.min.css"
+      href = "showcase-static/css/mono-blue.min.css"
     ),
-    tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/styles.css"),
+    tags$link(
+      rel = "stylesheet",
+      type = "text/css",
+      href = "showcase-static/css/styles.css"
+    ),
     tags$div(
       class = "grid",
       tags$nav(makeNav(sections)),
@@ -170,5 +173,6 @@ shinyApp(
   ),
   server = function(input, output) {
     router$server()
+    runjs("hljs.highlightAll();")
   }
 )
