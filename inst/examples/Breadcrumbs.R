@@ -2,8 +2,8 @@ library(shiny.blueprint)
 library(shiny)
 
 items <- list(
-  list(icon = "folder-close", text = "Users"),
-  list(icon = "folder-close", text = "Janet"),
+  list(href = "/", icon = "folder-close", text = "Users"),
+  list(href = "/", icon = "folder-close", text = "Janet"),
   list(icon = "document", text = "image.jpg")
 )
 
