@@ -1,18 +1,7 @@
-code[class*=language-], pre[class*=language-] {
+code[class*="language-"],
+pre[class*="language-"] {
   background: unset;
   font-family: monospace;
-}
-
-.code-section {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  gap: 1em;
-}
-
-@media (max-width: 1024px) {
-  .code-section {
-    grid-template-columns: repeat(1, 100%);
-  }
 }
 
 .example-section {

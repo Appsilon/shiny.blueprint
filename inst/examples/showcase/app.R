@@ -118,11 +118,8 @@ makePage <- function(id, name, ui, rCode) {
       div(`data-example-id` = id, ui)
     ),
     div(
-      class = "code-section",
-      div(
-        H5("R code"),
-        Pre(tags$code(class = "language-r", rCode))
-      )
+      H5("R code"),
+      Pre(tags$code(class = "language-r", rCode))
     )
   )
 }
