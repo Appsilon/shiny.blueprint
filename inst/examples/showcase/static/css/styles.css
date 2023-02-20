@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+}
+
+.sidebar {
+  padding-left: 10px;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   background: unset;
@@ -5,8 +13,10 @@ pre[class*="language-"] {
 }
 
 .example-section {
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(17, 20, 24, 0.15);
 }
 
 .grid {
@@ -16,13 +26,78 @@ pre[class*="language-"] {
 }
 
 .grid > nav {
-  max-height: calc(100vh - 16px);
   overflow: auto;
+  border-right: 1px solid #ddd;
+}
+
+.section-button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.section-button:hover, .section-button:active {
+  text-decoration-line: underline;
+}
+
+.section-button::before, .section-button::after {
+  content: "";
+  position: absolute;
+  right: 25px;
+  width: 1px;
+  height: 60%;
+  margin: 2px 0;
+  border-left: 2px solid #aaa;
+  transform: rotate(90deg);
+  transition: transform 0.3s;
+}
+
+.section-button::after {
+  transform: rotate(0deg);
+}
+
+.section-button.expanded::after {
+  transform: rotate(90deg);
+}
+
+.li-button {
+  list-style-type: none;
+  padding: 5px 0;
+}
+
+.li-button > a {
+  color: black;
+  font-weight: 300;
+}
+
+.li-button > a:focus {
+  outline: none;
+  text-decoration-line: underline;
+  font-weight: 400;
 }
 
 .grid > main {
-  max-height: 95vh;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1em;
+}
+
+.component-name {
+  margin-top: 3px;
+  margin-bottom: 20px;
+}
+
+.bp4-heading {
+  font-weight: 400;
+}
+
+div[data-example-id] > * {
+  margin: 10px 0;
 }

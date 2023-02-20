@@ -1,6 +1,5 @@
 library(shiny.blueprint)
 library(shiny.router)
-library(shinyjs)
 library(shiny)
 
 section <- function(name, ...) list(name = name, items = list(...))
@@ -67,10 +66,7 @@ sections <- list(
     item("Toast", "Toast")
     # TODO: Tooltip
   ),
-  section(
-    "CONTEXT"
-    # TODO: HotkeysProvider
-  ),
+  # TODO: HotkeysProvider - section
   section(
     "SELECT",
     item("Suggest", "Suggest"),
@@ -82,11 +78,26 @@ items <- do.call(c, lapply(sections, `[[`, "items"))
 
 makeNav <- function(sections) {
   lapply(sections, function(section) {
+    sectionId <- paste0(
+      "section-",
+      gsub(" ", "-", tolower(section$name))
+    )
     tagList(
-      H6(section$name),
-      UL(lapply(section$items, function(item) {
+      tags$button(
+        section$name,
+        class = "section-button",
+        onclick = paste0(
+          "$('#", sectionId, "').slideToggle();",
+          "$(this).toggleClass('expanded');"
+        )
+      ),
+      UL(
+        id = sectionId,
+        style = "display: none;",
+        lapply(section$items, function(item) {
         tags$li(
-          tags$a(item$name, href = route_link(item$id))
+          tags$a(item$name, href = route_link(item$id)),
+          class = "li-button"
         )
       }))
     )
@@ -111,8 +122,8 @@ readExample <- function(id) {
 
 makePage <- function(id, name, ui, rCode) {
   tagList(
-    H1(name),
-    H3("Example"),
+    H3(name, class = "component-name"),
+    H5("Example"),
     div(
       class = "example-section",
       # The ID is used to locate the example in Cypress tests.
@@ -151,9 +162,11 @@ addResourcePath("showcase-static", "./static")
 
 shinyApp(
   ui = tagList(
-    useShinyjs(),
     tags$script(
       src = "showcase-static/js/highlight.min.js"
+    ),
+    tags$script(
+      src = "showcase-static/js/highlight_all.js"
     ),
     tags$link(
       rel = "stylesheet",
@@ -167,12 +180,12 @@ shinyApp(
     ),
     tags$div(
       class = "grid",
-      tags$nav(makeNav(sections)),
+      tags$nav(class = "sidebar", makeNav(sections)),
       tags$main(router$ui)
     )
   ),
-  server = function(input, output) {
+  server = function(input, output, session) {
     router$server()
-    runjs("hljs.highlightAll();")
+    session$sendCustomMessage("highlight_all", list())
   }
 )
