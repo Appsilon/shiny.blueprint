@@ -66,10 +66,7 @@ sections <- list(
     item("Toast", "Toast")
     # TODO: Tooltip
   ),
-  section(
-    "CONTEXT"
-    # TODO: HotkeysProvider
-  ),
+  # TODO: HotkeysProvider - section
   section(
     "SELECT",
     item("Suggest", "Suggest"),
@@ -81,11 +78,26 @@ items <- do.call(c, lapply(sections, `[[`, "items"))
 
 makeNav <- function(sections) {
   lapply(sections, function(section) {
+    sectionId <- paste0(
+      "section-",
+      gsub(" ", "-", tolower(section$name))
+    )
     tagList(
-      H6(section$name),
-      UL(lapply(section$items, function(item) {
+      tags$button(
+        section$name,
+        class = "section-button",
+        onclick = paste0(
+          "$('#", sectionId, "').slideToggle();",
+          "$(this).toggleClass('expanded');"
+        )
+      ),
+      UL(
+        id = sectionId,
+        style = "display: none;",
+        lapply(section$items, function(item) {
         tags$li(
-          tags$a(item$name, href = route_link(item$id))
+          tags$a(item$name, href = route_link(item$id)),
+          class = "li-button"
         )
       }))
     )
@@ -110,19 +122,16 @@ readExample <- function(id) {
 
 makePage <- function(id, name, ui, rCode) {
   tagList(
-    H1(name),
-    H3("Example"),
+    H3(name, class = "component-name"),
+    H5("Example"),
     div(
       class = "example-section",
       # The ID is used to locate the example in Cypress tests.
       div(`data-example-id` = id, ui)
     ),
     div(
-      class = "code-section",
-      div(
-        H5("R code"),
-        Pre(tags$code(class = "language-r", rCode))
-      )
+      H5("R code"),
+      Pre(tags$code(class = "language-r", rCode))
     )
   )
 }
@@ -154,24 +163,29 @@ addResourcePath("showcase-static", "./static")
 shinyApp(
   ui = tagList(
     tags$script(
-      src = "https://unpkg.com/prismjs@1.28.0/prism.js"
+      src = "showcase-static/js/highlight.min.js"
     ),
     tags$script(
-      src = "https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"
+      src = "showcase-static/js/highlight_all.js"
     ),
     tags$link(
       rel = "stylesheet",
       type = "text/css",
-      href = "https://unpkg.com/prismjs@1.28.0/themes/prism.min.css"
+      href = "showcase-static/css/mono-blue.min.css"
     ),
-    tags$link(rel = "stylesheet", type = "text/css", href = "showcase-static/css/styles.css"),
+    tags$link(
+      rel = "stylesheet",
+      type = "text/css",
+      href = "showcase-static/css/styles.css"
+    ),
     tags$div(
       class = "grid",
-      tags$nav(makeNav(sections)),
+      tags$nav(class = "sidebar", makeNav(sections)),
       tags$main(router$ui)
     )
   ),
-  server = function(input, output) {
+  server = function(input, output, session) {
     router$server()
+    session$sendCustomMessage("highlight_all", list())
   }
 )
