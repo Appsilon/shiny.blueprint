@@ -97,6 +97,44 @@ select <- function(name) {
   }
 }
 
+slider <- function(name) {
+  function(inputId, values, min = NULL, max = NULL, ...) {
+    checkmate::assert_string(inputId)
+    checkmate::assert(
+      checkmate::check_numeric(values),
+      checkmate::check_list(values)
+    )
+    checkmate::check_number(min, null.ok = TRUE)
+    checkmate::check_number(max, null.ok = TRUE)
+    if (is.numeric(values)) {
+      values <- purrr::map(values, ~ list(value = .x))
+    }
+    .values <- purrr::map_dbl(values, "value")
+    if (!is.null(min)) {
+      checkmate::assert_true(all(min < .values))
+    } else {
+      min <- base::min(.values)
+    }
+    if (!is.null(max)) {
+      checkmate::assert_true(all(max > .values))
+    } else {
+      max <- base::max(.values)
+    }
+    shiny.react::reactElement(
+      module = "@/shiny.blueprint",
+      name = name,
+      props = shiny.react::asProps(
+        inputId = inputId,
+        values = values,
+        min = min,
+        max = max,
+        ...
+      ),
+      deps = blueprintDependency()
+    )
+  }
+}
+
 #' Breadcrumbs
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/breadcrumbs>
@@ -502,8 +540,16 @@ RangeSlider.shinyInput <- input("RangeSlider", c(0, 0)) # nolint
 #'
 #' @example inst/examples/MultiSlider.R
 #' @inherit template params
+#' @param values Numeric vector or list containing `value` and other params passed
+#'   to `MultiSliderHandle`
+#' @param min Minimal value of the slider
+#' @param max Maximum value of the slider
 #' @export
 MultiSlider <- component("MultiSlider")
+
+#' @rdname MultiSlider
+#' @export
+MultiSlider.shinyInput <- slider("MultiSlider") # nolint
 
 #' @rdname MultiSlider
 #' @export
@@ -531,7 +577,7 @@ Switch.shinyInput <- input("Switch", FALSE) # nolint
 #' @export
 FileInput <- component("FileInput")
 
-#' @rdname Switch
+#' @rdname FileInput
 #' @export
 FileInput.shinyInput <- input("FileInput", "") # nolint
 

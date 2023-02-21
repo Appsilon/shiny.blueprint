@@ -5,6 +5,7 @@
   - `Select`
   - `MultiSelect`
   - `Suggest`
+  - `MultiSlider`
 
 # shiny.blueprint 0.1.0
 
