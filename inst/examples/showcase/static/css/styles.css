@@ -1,9 +1,71 @@
+html, body, .grid {
+  height: 100%;
+}
+
 body {
   margin: 0;
+  line-height: 1.3rem;
 }
 
 .sidebar {
-  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.home-button {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.home-button::before, .home-button::after {
+  content: "";
+  height: 0;
+  border-top: 1px solid #215db0;
+  opacity: 0.5;
+}
+
+.home-button::before {
+  width: 23%;
+  margin-right: 15px;
+}
+
+.home-button::after {
+  width: 30%;
+  margin-left: 15px;
+}
+
+.home-button:focus {
+  outline: none;
+  text-decoration-line: underline;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page-title {
+  margin: 5px 0;
+}
+
+.home-page-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px;
+  margin-top: 35px;
+}
+
+.direction-row {
+  flex-direction: row;
+}
+
+.font-mono {
+  font-family: monospace;
 }
 
 code[class*="language-"],
@@ -21,7 +83,7 @@ pre[class*="language-"] {
 
 .grid {
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-columns: 230px minmax(0, 1fr);
   gap: 1em;
 }
 
@@ -39,7 +101,7 @@ pre[class*="language-"] {
   font-size: 16px;
   width: 100%;
   margin-top: 20px;
-  padding: 0 10px;
+  padding: 0 20px;
   cursor: pointer;
 }
 
@@ -86,7 +148,12 @@ pre[class*="language-"] {
 .grid > main {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 1em;
+  padding: 1.3em 1.5em;
+}
+
+.logo {
+  width: 100px;
+  padding: 5px;
 }
 
 .component-name {
@@ -100,4 +167,12 @@ pre[class*="language-"] {
 
 div[data-example-id] > * {
   margin: 10px 0;
+}
+
+.weight-300 {
+  font-weight: 300;
+}
+
+.weight-600 {
+  font-weight: 600;
 }
