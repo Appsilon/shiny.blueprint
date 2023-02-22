@@ -63,13 +63,23 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">FileInput</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">FileInput</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">FileInput.shinyInput</span><span class="op">(</span><span class="va">inputId</span>, <span class="va">...</span>, value <span class="op">=</span> <span class="va">defaultValue</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>...</dt>
 <dd><p>Component props and children. See the official Blueprint docs for details.</p></dd>
+
+
+<dt>inputId</dt>
+<dd><p>The <code>input</code> slot that will be used to access the value.</p></dd>
+
+
+<dt>value</dt>
+<dd><p>Initial value.</p></dd>
 
 </dl></div>
 
