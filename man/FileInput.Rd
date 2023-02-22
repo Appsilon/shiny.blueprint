@@ -2,12 +2,19 @@
 % Please edit documentation in R/components.R
 \name{FileInput}
 \alias{FileInput}
+\alias{FileInput.shinyInput}
 \title{FileInput}
 \usage{
 FileInput(...)
+
+FileInput.shinyInput(inputId, ..., value = defaultValue)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
+
+\item{inputId}{The \code{input} slot that will be used to access the value.}
+
+\item{value}{Initial value.}
 }
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/file-input}

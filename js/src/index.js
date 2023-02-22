@@ -8,7 +8,8 @@ import * as Blueprint from '@blueprintjs/core';
 import * as Inputs from './inputs.jsx';
 import * as Suggests from './suggest.js';
 import * as Selects from './select.js';
-import * as MultiSelects from './multiselect.js';
+import * as MultiSelect from './multiselect.js';
+import * as MultiSlider from './multiSlider.js';
 
 import './toaster.js';
 
@@ -16,5 +17,11 @@ window.jsmodule = {
   ...window.jsmodule,
   '@blueprintjs/core': Blueprint,
   '@blueprintjs/select': BlueprintSelect,
-  '@/shiny.blueprint': {...Inputs, ...Suggests, ...Selects, ...MultiSelects},
+  '@/shiny.blueprint': {
+    ...Inputs,
+    ...Suggests,
+    ...Selects,
+    ...MultiSelect,
+    ...MultiSlider,
+  },
 };
