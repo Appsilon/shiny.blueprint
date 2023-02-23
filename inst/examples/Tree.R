@@ -65,7 +65,34 @@ ui <- function(id) {
   tagList(
     reactOutput(ns("tree")),
     Divider(),
-    reactOutput(ns("info"))
+    reactOutput(ns("info")),
+    Divider(),
+    Tree.shinyInput(
+      inputId = ns("selected_nodes"),
+      data = list(
+        list(
+          label = "1",
+          isExpanded = TRUE,
+          childNodes = list(
+            list(
+              label = "1.1",
+              childNodes = list(list(label = "1.1.1"))
+            ),
+            list(label = "1.2")
+          )
+        ),
+        list(
+          label = "2",
+          childNodes = list(
+            list(label = "2.1")
+          )
+        ),
+        list(label = "3", hasCaret = TRUE)
+      )
+    ),
+    Divider(),
+    tags$span("Hold ", tags$b("shift ⬆"), " to select multiple nodes."),
+    reactOutput(ns("selected_nodes_list")),
   )
 }
 
@@ -100,6 +127,10 @@ server <- function(id) {
         tags$li("Selected (label): ", input$click$label)
       )
      })
+
+    output$selected_nodes_list <- renderReact({
+      UL(lapply(input$selected_nodes, function(node) tags$li(node)))
+    })
   })
 }
 
