@@ -7,6 +7,10 @@ setInput <- function(inputId, accessor = NULL) {
   ))
 }
 
+printSize <- function(content) {
+  paste0(content$width, "x", content$height)
+}
+
 ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -25,6 +29,16 @@ ui <- function(id) {
         class = "resizable",
         textOutput(ns("size"))
       )
+    ),
+    ResizeSensor.shinyInput(
+      inputId = ns("resizeSensor"),
+      content = div(
+        textOutput(ns("resizeSensorInput")),
+        style = "
+          border: 1px solid black;
+          width: 100px;
+        "
+      )
     )
   )
 }
@@ -33,7 +47,11 @@ server <- function(id) {
   moduleServer(id, function(input, output, session) {
     output$size <- renderText({
       content <- req(input$resize)
-      paste0(content$width, "x", content$height)
+      printSize(content)
+    })
+    output$resizeSensorInput <- renderText({
+      content <- req(input$resizeSensor)
+      printSize(content)
     })
   })
 }
