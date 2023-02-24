@@ -14,9 +14,11 @@ Tree.shinyInput(inputId, data, ...)
 
 \item{inputId}{The \code{input} slot that will be used to access the value.}
 
-\item{data}{A list of nodes data. Params:
-required: \code{label}.
-optional: \code{childNodes}, \code{icon}, \code{hasCaret}, \code{isExpanded}, \code{disabled}, \code{secondaryLabel}}
+\item{data}{A list of nodes parameters:
+\itemize{
+\item required: \code{label}
+\item optional: \code{childNodes}, \code{icon}, \code{hasCaret}, \code{isExpanded}, \code{disabled}, \code{secondaryLabel}
+}}
 }
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/tree}

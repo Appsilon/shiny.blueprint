@@ -26,23 +26,23 @@ properties <- function(name) {
   }
 }
 
-button <- function(name) {
-  function(inputId, ...) {
-    shiny.react::reactElement(
-      module = "@/shiny.blueprint",
-      name = name,
-      props = shiny.react::asProps(inputId = inputId, ...),
-      deps = blueprintDependency()
-    )
-  }
-}
-
 input <- function(name, defaultValue) {
   function(inputId, ..., value = defaultValue) {
     shiny.react::reactElement(
       module = "@/shiny.blueprint",
       name = name,
       props = shiny.react::asProps(inputId = inputId, ..., value = value),
+      deps = blueprintDependency()
+    )
+  }
+}
+
+inputWithoutDefault <- function(name) {
+  function(inputId, ...) {
+    shiny.react::reactElement(
+      module = "@/shiny.blueprint",
+      name = name,
+      props = shiny.react::asProps(inputId = inputId, ...),
       deps = blueprintDependency()
     )
   }
@@ -166,7 +166,7 @@ Button <- component("Button")
 
 #' @rdname Button
 #' @export
-Button.shinyInput <- button("Button") # nolint
+Button.shinyInput <- inputWithoutDefault("Button") # nolint
 
 #' @rdname Button
 #' @export
@@ -174,7 +174,7 @@ AnchorButton <- component("AnchorButton")
 
 #' @rdname Button
 #' @export
-AnchorButton.shinyInput <- button("AnchorButton") # nolint
+AnchorButton.shinyInput <- inputWithoutDefault("AnchorButton") # nolint
 
 #' Button group
 #'
@@ -395,6 +395,10 @@ ProgressBar <- component("ProgressBar")
 #' @export
 ResizeSensor <- component("ResizeSensor")
 
+#' @rdname ResizeSensor
+#' @export
+ResizeSensor.shinyInput <- inputWithoutDefault("ResizeSensor") # nolint
+
 #' Spinner
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/spinner>
@@ -444,11 +448,12 @@ Text <- component("Text")
 #' Documentation: <https://blueprintjs.com/docs/#core/components/tree>
 #'
 #' @example inst/examples/Tree.R
-#' @param inputId The `input` slot that will be used to access the value.
-#' @param data A list of nodes data. Params:
-#'   required: `label`.
-#'   optional: `childNodes`, `icon`, `hasCaret`, `isExpanded`, `disabled`, `secondaryLabel`
-#' @param ... Component props and children. See the official Blueprint docs for details.
+#' @inherit template params
+#' @param data A list of nodes parameters:
+#' \itemize{
+#'   \item required: `label`
+#'   \item optional: `childNodes`, `icon`, `hasCaret`, `isExpanded`, `disabled`, `secondaryLabel`
+#' }
 #' @export
 Tree <- component("Tree")
 

@@ -2,12 +2,17 @@
 % Please edit documentation in R/components.R
 \name{ResizeSensor}
 \alias{ResizeSensor}
+\alias{ResizeSensor.shinyInput}
 \title{Resize sensor}
 \usage{
 ResizeSensor(...)
+
+ResizeSensor.shinyInput(inputId, ...)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
+
+\item{inputId}{The \code{input} slot that will be used to access the value.}
 }
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/resize-sensor}
@@ -20,6 +25,10 @@ setInput <- function(inputId, accessor = NULL) {
   JS(paste0(
     "x => Shiny.setInputValue('", inputId, "', x", accessor, ")"
   ))
+}
+
+printSize <- function(content) {
+  paste0(content$width, "x", content$height)
 }
 
 ui <- function(id) {
@@ -40,6 +49,16 @@ ui <- function(id) {
         class = "resizable",
         textOutput(ns("size"))
       )
+    ),
+    ResizeSensor.shinyInput(
+      inputId = ns("resizeSensor"),
+      content = div(
+        textOutput(ns("resizeSensorInput")),
+        style = "
+          border: 1px solid black;
+          width: 100px;
+        "
+      )
     )
   )
 }
@@ -48,7 +67,11 @@ server <- function(id) {
   moduleServer(id, function(input, output, session) {
     output$size <- renderText({
       content <- req(input$resize)
-      paste0(content$width, "x", content$height)
+      printSize(content)
+    })
+    output$resizeSensorInput <- renderText({
+      content <- req(input$resizeSensor)
+      printSize(content)
     })
   })
 }
