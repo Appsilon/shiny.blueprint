@@ -63,13 +63,25 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Tree</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Tree</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">Tree.shinyInput</span><span class="op">(</span><span class="va">inputId</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>...</dt>
 <dd><p>Component props and children. See the official Blueprint docs for details.</p></dd>
+
+
+<dt>inputId</dt>
+<dd><p>The <code>input</code> slot that will be used to access the value.</p></dd>
+
+
+<dt>data</dt>
+<dd><p>A list of nodes data. Params:
+required: <code>label</code>.
+optional: <code>childNodes</code>, <code>icon</code>, <code>hasCaret</code>, <code>isExpanded</code>, <code>disabled</code>, <code>secondaryLabel</code></p></dd>
 
 </dl></div>
 
@@ -142,7 +154,34 @@
 <span class="r-in"><span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/tagList.html" class="external-link">tagList</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://appsilon.github.io/shiny.react/reference/reactOutput.html" class="external-link">reactOutput</a></span><span class="op">(</span><span class="fu">ns</span><span class="op">(</span><span class="st">"tree"</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    <span class="fu"><a href="Divider.html">Divider</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://appsilon.github.io/shiny.react/reference/reactOutput.html" class="external-link">reactOutput</a></span><span class="op">(</span><span class="fu">ns</span><span class="op">(</span><span class="st">"info"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://appsilon.github.io/shiny.react/reference/reactOutput.html" class="external-link">reactOutput</a></span><span class="op">(</span><span class="fu">ns</span><span class="op">(</span><span class="st">"info"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="Divider.html">Divider</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu">Tree.shinyInput</span><span class="op">(</span></span></span>
+<span class="r-in"><span>      inputId <span class="op">=</span> <span class="fu">ns</span><span class="op">(</span><span class="st">"selected_nodes"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>          label <span class="op">=</span> <span class="st">"1"</span>,</span></span>
+<span class="r-in"><span>          isExpanded <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>          childNodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>            <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>              label <span class="op">=</span> <span class="st">"1.1"</span>,</span></span>
+<span class="r-in"><span>              childNodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"1.1.1"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>            <span class="op">)</span>,</span></span>
+<span class="r-in"><span>            <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"1.2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>          <span class="op">)</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span>,</span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>          label <span class="op">=</span> <span class="st">"2"</span>,</span></span>
+<span class="r-in"><span>          childNodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>            <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"2.1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>          <span class="op">)</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span>,</span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"3"</span>, hasCaret <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="Divider.html">Divider</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="va">tags</span><span class="op">$</span><span class="fu">span</span><span class="op">(</span><span class="st">"Hold "</span>, <span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"shift ⬆"</span><span class="op">)</span>, <span class="st">" to select multiple nodes."</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://appsilon.github.io/shiny.react/reference/reactOutput.html" class="external-link">reactOutput</a></span><span class="op">(</span><span class="fu">ns</span><span class="op">(</span><span class="st">"selected_nodes_list"</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
@@ -177,6 +216,10 @@
 <span class="r-in"><span>        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="st">"Selected (label): "</span>, <span class="va">input</span><span class="op">$</span><span class="va">click</span><span class="op">$</span><span class="va">label</span><span class="op">)</span></span></span>
 <span class="r-in"><span>      <span class="op">)</span></span></span>
 <span class="r-in"><span>     <span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>    <span class="va">output</span><span class="op">$</span><span class="va">selected_nodes_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://appsilon.github.io/shiny.react/reference/renderReact.html" class="external-link">renderReact</a></span><span class="op">(</span><span class="op">{</span></span></span>
+<span class="r-in"><span>      <span class="fu"><a href="htmlElements.html">UL</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">selected_nodes</span>, <span class="kw">function</span><span class="op">(</span><span class="va">node</span><span class="op">)</span> <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">node</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
