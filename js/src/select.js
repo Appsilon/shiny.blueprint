@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { MenuItem, Button } from '@blueprintjs/core';
-import { Select2 } from '@blueprintjs/select';
-import { highlightText } from './utils/highlight-text.js';
+import React from "react";
+import PropTypes from "prop-types";
+import { MenuItem, Button } from "@blueprintjs/core";
+import { Select2 } from "@blueprintjs/select";
+import { highlightText } from "./utils/highlight-text";
 
 const renderItem = (item, { handleClick, modifiers, query }) => {
   if (!modifiers.matchesPredicate) {
@@ -29,7 +29,7 @@ const filterItem = (query, item) => {
   return item.text.toLowerCase().indexOf(query.toLowerCase()) >= 0;
 };
 
-export const Select = ({ items, selected, inputId, popoverProps, ...propsRest }) => {
+const Select = ({ items, selected, inputId, popoverProps, ...propsRest }) => {
   const [currentItem, setCurrentItem] = React.useState(
     items.find(({ text }) => text === selected)
   );
@@ -68,3 +68,4 @@ export const Select = ({ items, selected, inputId, popoverProps, ...propsRest })
 };
 
 Select.propTypes = propTypes;
+export default Select;

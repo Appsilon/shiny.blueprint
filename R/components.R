@@ -48,6 +48,17 @@ input <- function(name, defaultValue) {
   }
 }
 
+tree <- function(name) {
+  function(inputId, data, ...) {
+    shiny.react::reactElement(
+      module = "@/shiny.blueprint",
+      name = name,
+      props = shiny.react::asProps(inputId = inputId, data = data, ...),
+      deps = blueprintDependency()
+    )
+  }
+}
+
 select <- function(name) {
   function(
     inputId,
@@ -433,9 +444,17 @@ Text <- component("Text")
 #' Documentation: <https://blueprintjs.com/docs/#core/components/tree>
 #'
 #' @example inst/examples/Tree.R
-#' @inherit template params
+#' @param inputId The `input` slot that will be used to access the value.
+#' @param data A list of nodes data. Params:
+#'   required: `label`.
+#'   optional: `childNodes`, `icon`, `hasCaret`, `isExpanded`, `disabled`, `secondaryLabel`
+#' @param ... Component props and children. See the official Blueprint docs for details.
 #' @export
 Tree <- component("Tree")
+
+#' @rdname Tree
+#' @export
+Tree.shinyInput <- tree("Tree") # nolint
 
 #' Form group
 #'

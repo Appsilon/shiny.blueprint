@@ -5,13 +5,14 @@ import '@blueprintjs/select/lib/css/blueprint-select.css';
 import * as BlueprintSelect from '@blueprintjs/select';
 import * as Blueprint from '@blueprintjs/core';
 
-import * as Inputs from './inputs.jsx';
-import * as Suggests from './suggest.js';
-import * as Selects from './select.js';
-import * as MultiSelect from './multiselect.js';
-import * as MultiSlider from './multiSlider.js';
+import * as Inputs from './inputs';
+import Suggest from './suggest';
+import Select from './select';
+import MultiSelect from './multiselect';
+import MultiSlider from './multiSlider';
+import Tree from './tree';
 
-import './toaster.js';
+import './toaster';
 
 window.jsmodule = {
   ...window.jsmodule,
@@ -19,9 +20,10 @@ window.jsmodule = {
   '@blueprintjs/select': BlueprintSelect,
   '@/shiny.blueprint': {
     ...Inputs,
-    ...Suggests,
-    ...Selects,
-    ...MultiSelect,
-    ...MultiSlider,
+    Suggest,
+    Select,
+    MultiSelect,
+    MultiSlider,
+    Tree,
   },
 };

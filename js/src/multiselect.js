@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { MenuItem } from '@blueprintjs/core';
-import { MultiSelect2 } from '@blueprintjs/select';
-import { highlightText } from './utils/highlight-text.js';
+import React from "react";
+import PropTypes from "prop-types";
+import { MenuItem } from "@blueprintjs/core";
+import { MultiSelect2 } from "@blueprintjs/select";
+import { highlightText } from "./utils/highlight-text";
 
 const filterItem = (query, item) => {
   return item.text.toLowerCase().indexOf(query.toLowerCase()) >= 0;
@@ -17,8 +17,13 @@ const propTypes = {
   popoverProps: PropTypes.object,
 };
 
-export const MultiSelect = ({ items, selected, inputId, popoverProps, ...propsRest }) => {
-
+const MultiSelect = ({
+  items,
+  selected,
+  inputId,
+  popoverProps,
+  ...propsRest
+}) => {
   const [selectedItems, setSelectedItems] = React.useState(
     items.filter((item) => selected.includes(item.text))
   );
@@ -50,17 +55,23 @@ export const MultiSelect = ({ items, selected, inputId, popoverProps, ...propsRe
     [selectedItems]
   );
 
-  const handleItemRemove = React.useCallback((removedItem) => {
-    deselectItem(removedItem);
-  }, [deselectItem]);
+  const handleItemRemove = React.useCallback(
+    (removedItem) => {
+      deselectItem(removedItem);
+    },
+    [deselectItem]
+  );
 
-  const handleItemSelect = React.useCallback((newItem) => {
-    if (!isSelectedItem(newItem)) {
-      selectItem(newItem);
-    } else {
-      deselectItem(newItem);
-    }
-  }, [isSelectedItem, selectItem, deselectItem]);
+  const handleItemSelect = React.useCallback(
+    (newItem) => {
+      if (!isSelectedItem(newItem)) {
+        selectItem(newItem);
+      } else {
+        deselectItem(newItem);
+      }
+    },
+    [isSelectedItem, selectItem, deselectItem]
+  );
 
   const renderItem = React.useCallback(
     (item, { handleClick, modifiers, query }) => {
@@ -68,7 +79,7 @@ export const MultiSelect = ({ items, selected, inputId, popoverProps, ...propsRe
         return null;
       }
       return React.createElement(MenuItem, {
-        icon: isSelectedItem(item) ? 'tick' : 'blank',
+        icon: isSelectedItem(item) ? "tick" : "blank",
         selected: modifiers.active,
         active: modifiers.active,
         disabled: modifiers.disabled,
@@ -102,3 +113,4 @@ export const MultiSelect = ({ items, selected, inputId, popoverProps, ...propsRe
 };
 
 MultiSelect.propTypes = propTypes;
+export default MultiSelect;

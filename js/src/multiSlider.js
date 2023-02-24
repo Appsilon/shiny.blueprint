@@ -7,7 +7,7 @@ const propTypes = {
   values: PropTypes.array,
 };
 
-export const MultiSlider = ({ inputId, values, ...propsRest }) => {
+const MultiSlider = ({ inputId, values, ...propsRest }) => {
   const [state, setState] = React.useState(values.map(({ value }) => value));
 
   React.useEffect(() => Shiny.setInputValue(inputId, state), []);
@@ -33,3 +33,4 @@ export const MultiSlider = ({ inputId, values, ...propsRest }) => {
 };
 
 MultiSlider.propTypes = propTypes;
+export default MultiSlider;

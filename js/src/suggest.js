@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { MenuItem } from '@blueprintjs/core';
-import { Suggest2 } from '@blueprintjs/select';
-import { highlightText } from './utils/highlight-text.js';
+import React from "react";
+import PropTypes from "prop-types";
+import { MenuItem } from "@blueprintjs/core";
+import { Suggest2 } from "@blueprintjs/select";
+import { highlightText } from "./utils/highlight-text";
 
 const renderItem = (item, { handleClick, modifiers, query }) => {
   if (!modifiers.matchesPredicate) {
@@ -29,7 +29,7 @@ const filterItem = (query, item) => {
   return item.text.toLowerCase().indexOf(query.toLowerCase()) >= 0;
 };
 
-export const Suggest = ({ items, inputId, popoverProps, ...propsRest }) => {
+const Suggest = ({ items, inputId, popoverProps, ...propsRest }) => {
   const handleItemSelect = React.useCallback(
     (newItem) => Shiny.setInputValue(inputId, newItem),
     []
@@ -38,22 +38,20 @@ export const Suggest = ({ items, inputId, popoverProps, ...propsRest }) => {
   return React.createElement(
     "div",
     { style: { width: "fit-content" } },
-    React.createElement(
-      Suggest2,
-      {
-        items,
-        ...propsRest,
-        itemPredicate: filterItem,
-        itemRenderer: renderItem,
-        inputValueRenderer: (item) => item.text,
-        onItemSelect: handleItemSelect,
-        popoverProps: {
-          ...popoverProps,
-          usePortal: false,
-        }
-      }
-    )
+    React.createElement(Suggest2, {
+      items,
+      ...propsRest,
+      itemPredicate: filterItem,
+      itemRenderer: renderItem,
+      inputValueRenderer: (item) => item.text,
+      onItemSelect: handleItemSelect,
+      popoverProps: {
+        ...popoverProps,
+        usePortal: false,
+      },
+    })
   );
 };
 
 Suggest.propTypes = propTypes;
+export default Suggest;
