@@ -49,6 +49,15 @@ ui <- function(id) {
     PanelStack2(
       className = "panel-stack",
       initialPanel = JS("createPanel(1)")
+    ),
+    PanelStack(
+      panels = list(
+        list(title = "Panel 1", content = div("Content 1")),
+        list(title = "Panel 2", content = div("Content 2")),
+        list(title = "Panel 3", content = div("Content 3")),
+        list(title = "Panel 4", content = div("Content 4")),
+        list(title = "Panel 5", content = div("Content 5"))
+      )
     )
   )
 }

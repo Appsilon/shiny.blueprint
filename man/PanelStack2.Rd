@@ -2,12 +2,19 @@
 % Please edit documentation in R/components.R
 \name{PanelStack2}
 \alias{PanelStack2}
+\alias{PanelStack}
 \title{Panel stack (v2)}
 \usage{
 PanelStack2(...)
+
+PanelStack(panels, size = c(300, 250), ...)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
+
+\item{panels}{List of lists - each list contains \code{title} (string) and \code{content} (HTML)}
+
+\item{size}{Numeric vector of length 2 - \code{c(width, height)}}
 }
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/panel-stack2}
@@ -64,6 +71,15 @@ ui <- function(id) {
     PanelStack2(
       className = "panel-stack",
       initialPanel = JS("createPanel(1)")
+    ),
+    PanelStack(
+      panels = list(
+        list(title = "Panel 1", content = div("Content 1")),
+        list(title = "Panel 2", content = div("Content 2")),
+        list(title = "Panel 3", content = div("Content 3")),
+        list(title = "Panel 4", content = div("Content 4")),
+        list(title = "Panel 5", content = div("Content 5"))
+      )
     )
   )
 }

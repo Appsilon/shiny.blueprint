@@ -374,8 +374,21 @@ OverflowList <- component("OverflowList")
 #'
 #' @example inst/examples/PanelStack2.R
 #' @inherit template params
+#' @param panels List of lists - each list contains `title` (string) and `content` (HTML)
+#' @param size Numeric vector of length 2 - `c(width, height)`
 #' @export
 PanelStack2 <- component("PanelStack2")
+
+#' @rdname PanelStack2
+#' @export
+PanelStack <- function(panels, size = c(300, 250), ...) {
+  shiny.react::reactElement(
+    module = "@/shiny.blueprint",
+    name = "PanelStack",
+    props = shiny.react::asProps(panels = panels, size = size, ...),
+    deps = blueprintDependency()
+  )
+}
 
 #' Progress bar
 #'
