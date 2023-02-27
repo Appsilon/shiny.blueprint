@@ -85,10 +85,10 @@ select <- function(name) {
     checkmate::assert_string(noResults)
     items <- unique(items)
     items <- purrr::map(items, function(item) {
-       if (is.null(item$key)) {
-         item$key <- paste0(item$text, "-", item$label)
-       }
-       item
+      if (is.null(item$key)) {
+        item$key <- paste0(item$text, "-", item$label)
+      }
+      item
     })
     shiny.react::reactElement(
       module = "@/shiny.blueprint",
@@ -375,17 +375,18 @@ OverflowList <- component("OverflowList")
 #' @example inst/examples/PanelStack2.R
 #' @inherit template params
 #' @param panels List of lists - each list contains `title` (string) and `content` (HTML)
+#' @param ns Namespace of given panel stack (required if there's more than 1 panel stack)
 #' @param size Numeric vector of length 2 - `c(width, height)`
 #' @export
-PanelStack2 <- component("PanelStack2")
+PanelStack <- component("PanelStack2")
 
-#' @rdname PanelStack2
+#' @rdname PanelStack
 #' @export
-PanelStack <- function(panels, size = c(300, 250), ...) {
+PanelStack.shinyWrapper <- function(panels, ns = "ps", size = c(300, 250), ...) { # nolint
   shiny.react::reactElement(
     module = "@/shiny.blueprint",
     name = "PanelStack",
-    props = shiny.react::asProps(panels = panels, size = size, ...),
+    props = shiny.react::asProps(panels = panels, ns = ns, size = size, ...),
     deps = blueprintDependency()
   )
 }

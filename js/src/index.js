@@ -12,7 +12,7 @@ import MultiSelect from "./multiselect";
 import MultiSlider from "./multiSlider";
 import Tree from "./tree";
 import ResizeSensor from "./resizeSensor.js";
-import PanelStack from "./panelStack";
+import PanelStack, { panelStackHandlers } from "./panelStack";
 
 import "./toaster";
 
@@ -29,5 +29,6 @@ window.jsmodule = {
     Tree,
     ResizeSensor,
     PanelStack,
+    panelStackHandlers,
   },
 };
