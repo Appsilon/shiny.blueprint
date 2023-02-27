@@ -36,3 +36,15 @@ button.btn.btn-primary.btn-copy-ex {
   background-color: rgb(69, 179, 196);
   border-color: rgb(69, 179, 196);
 }
+
+
+.home {
+  left: 0px;
+  position: absolute;
+  padding: 8px 30px;
+  color: rgba(255,255,255,0.55);
+}
+
+.home:hover {
+  color: rgba(255,255,255,0.9);
+}
