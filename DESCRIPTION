@@ -1,14 +1,21 @@
 Package: shiny.blueprint
-Title: Blueprint UI for Shiny apps
-Version: 0.1.0
+Title: Palantir's Blueprint for Shiny apps
+Version: 0.2.0
 Authors@R:
   c(
+    person("Kamil", "Żyła", role = c("aut", "cre"), email = "opensource+kamil@appsilon.com"),
+    person("Filip", "Akkad", role = "aut", email = "filip.akkad@filpro.io"),
     person("Filip", "Stachura", role = "aut", email = "filip@appsilon.com"),
-    person("Filip", "Akkad", role = "aut", email = "filip.akkad@appsilon.com"),
-    person("Kamil", "Zyla", role = "aut", email = "kamil@appsilon.com"),
-    person("Appsilon Sp. z o.o.", role = c("cph", "cre"), email = "hello@appsilon.com")
+    person("Paweł", "Chabros", role = "aut", email = "pawel.chabros@yahoo.pl"),
+    person("Appsilon Sp. z o.o.", role = "cph", email = "opensource@appsilon.com")
   )
-Description: Blueprint UI for Shiny apps through shiny.react bindings.
+Description:
+  Easily use Blueprint, the popular React library from Palantir, in your Shiny app.
+  Blueprint provides a rich set of UI components for creating visually appealing applications
+  and is optimized for building complex, data-dense web interfaces.
+  This package provides most components from the underlying library,
+  as well as special wrappers for some components
+  to make it easy to use them in R without writing JavaScript code.
 License: LGPL-3
 Encoding: UTF-8
 LazyData: true
@@ -16,11 +23,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Imports:
+  checkmate,
   htmltools,
   shiny,
   shiny.react (>= 0.2.2),
-  utils,
-  checkmate
+  utils
 Suggests:
   knitr,
   lintr (>= 3.0.0),

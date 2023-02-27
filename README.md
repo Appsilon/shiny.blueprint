@@ -1,43 +1,38 @@
 # shiny.blueprint
 
-> _Blueprint - React-based UI toolkit for Shiny Apps_
+> _Palantir's Blueprint for Shiny apps_
 
 <!-- badges: start -->
-<!-- [![CRAN](https://www.r-pkg.org/badges/version/shiny.blueprint)](https://cran.r-project.org/package=shiny.blueprint) -->
-
+[![CRAN](https://www.r-pkg.org/badges/version/shiny.blueprint)](https://cran.r-project.org/package=shiny.blueprint)
 [![CI](https://github.com/Appsilon/shiny.blueprint/actions/workflows/ci.yml/badge.svg)](https://github.com/Appsilon/shiny.blueprint/actions/workflows/ci.yml)
-
-<!-- [![downloads monthly](https://cranlogs.r-pkg.org/badges/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint) -->
-<!-- [![downloads total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint) -->
-
-[![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://opensource.org/licenses/LGPL-3.0)
-
+[![downloads monthly](https://cranlogs.r-pkg.org/badges/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint)
+[![downloads total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint)
+[![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://opensource.org/licenses/LGPL-3.0/)
 <!-- badges: end -->
 
 ## Why `shiny.blueprint`?
 
 We believe that a great UI plays a huge role in the success of application projects. shiny.blueprint gives your apps:
 
-- beautiful, professional look
-- rich set of components easily usable in Shiny
+- a beautiful, professional look;
+- a rich set of components easily usable in Shiny;
 - fast speed of development that Shiny is famous for.
-
-As Blueprint.js is built in React, shiny.blueprint is based on another package called [shiny.react](https://github.com/Appsilon/shiny.react), which allows for using React libraries in Shiny.
-
-**Note:** This package strives to be as easy to use as possible, while providing most of Blueprint.js possibilities. That said, Blueprint.js is more flexible and low level than Bootstrap, and there is additional complexity coming from using React in Shiny. You should expect using shiny.blueprint to be somewhat more complex than vanilla Shiny or shiny.semantic (at some point you will likely want to browse the original Blueprint.js documentation), but you get more power, flexibility and better UI in return.
 
 ## Installation
 
-To install the packages, run:
+Stable version:
+```r
+install.packages("shiny.blueprint")
+```
 
-```R
-remotes::install_github("Appsilon/shiny.react")
+Development version:
+```r
 remotes::install_github("Appsilon/shiny.blueprint")
 ```
 
 ## Quick start
 
-Here's how to make a very basis Blueprint Shiny app:
+Here's how to create a basic `shiny.blueprint` app:
 
 ```r
 library(shiny)
@@ -60,15 +55,21 @@ shinyApp(
 )
 ```
 
-`shiny.blueprint` aims to provides all components from Palantirs's Blueprint.js library.
-Browse the [official docs](https://blueprintjs.com/)
-or start typing `shiny.blueprint::` in RStudio to see all available controls.
-
-All components ~are~ will be documented, so if you run `?shiny.blueprint::MyComponentName`, hopefully you'll see documentation for this component in RStudio, along with examples. When in doubt, open Blueprint.js docs for details.
+The majority of Blueprint components are available in `shiny.blueprint`.
+Start typing `shiny.blueprint::` in RStudio to see all available components.
+Visit the [Blueprint docs](https://blueprintjs.com/docs/)
+to see what arguments (props) can be passed to the components.
 
 ## Examples
 
-A good way to learn more is to look at the examples. Once you install the library, you can run them with `shiny.blueprint::runExample("example_name")`. To see all examples run `shiny.blueprint::runExample("showcase")`. Showcase app can also be found [here](https://connect.appsilon.com/shiny-blueprint-showcase/).
+All components have usage examples in R.
+Type `?shiny.blueprint::ComponentName` to see the code
+or `shiny.blueprint::runExample("ExampleName")` to launch it.
+Run this function without arguments to see a list of all available examples.
+
+A showcase application with all components
+can be launched with `shiny.blueprint::runExample("showcase")`
+or by visiting [this link](https://connect.appsilon.com/shiny-blueprint-showcase/).
 
 ---
 

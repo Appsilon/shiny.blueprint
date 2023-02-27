@@ -13,7 +13,7 @@ is a [React](https://reactjs.org/)-based UI library from Palantir.
 It provides a rich set of components for building web interfaces
 and it is similar in concept to
 Microsoft's [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/)
-or Google's [Material-UI](https://material-ui.com/).
+or Google's [MUI](https://mui.com/core/).
 
 In this tutorial we will (begin to) create a `blueprint` R package,
 which will make it possible to use Blueprint in R/Shiny

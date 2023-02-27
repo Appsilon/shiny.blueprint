@@ -6,9 +6,9 @@ ui <- function(id) {
     style = "max-width: 200px",
     className = "bp4-elevation-1",
     MenuDivider(title = "Edit"),
-    MenuItem(icon = "cut", text = "Cut", label = "⌘X"),
-    MenuItem(icon = "duplicate", text = "Copy", label = "⌘C"),
-    MenuItem(icon = "clipboard", text = "Paste", label = "⌘V", disabled = TRUE),
+    MenuItem(icon = "cut", text = "Cut", label = "^X"),
+    MenuItem(icon = "duplicate", text = "Copy", label = "^C"),
+    MenuItem(icon = "clipboard", text = "Paste", label = "^V", disabled = TRUE),
     MenuDivider(title = "Text"),
     MenuItem(
       icon = "style", text = "Style",
