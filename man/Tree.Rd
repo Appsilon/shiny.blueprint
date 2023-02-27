@@ -117,7 +117,7 @@ ui <- function(id) {
       )
     ),
     Divider(),
-    tags$span("Hold ", tags$b("shift ⬆"), " to select multiple nodes."),
+    tags$span("Hold ", tags$b("shift"), " to select multiple nodes."),
     reactOutput(ns("selected_nodes_list")),
   )
 }
