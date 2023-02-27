@@ -15,6 +15,9 @@ template:
 
         gtag('config', 'G-MDZV0LSEHS');
       </script>
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+    before_navbar: |
+      <a href="https://shiny.tools/" class="home"><i class="fa fa-lg fa-chevron-left"></i></a>
 
 url: https://appsilon.github.io/shiny.blueprint/
 
@@ -22,12 +25,17 @@ navbar:
   bg: primary
   structure:
     left: [reference, news]
+    right: [search, github, twitter, mastodon]
   components:
-  right:
-    - icon: fa-github fa-lg
+    github:
+      icon: fa-github fa-lg
       href: https://github.com/Appsilon/shiny.blueprint
-    - icon: fa-twitter fa-lg
+    twitter:
+      icon: fa-twitter fa-lg
       href: https://twitter.com/Appsilon
+    mastodon:
+      icon: fab fa-mastodon fa-lg
+      href: https://fosstodon.org/@appsilon
 
 home:
   sidebar:
