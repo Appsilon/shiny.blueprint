@@ -1,6 +1,6 @@
-# shiny.blueprint (development version)
+# shiny.blueprint (0.2.0)
 
-1. `.shinyInput` version added for the following components:
+1. `.shinyInput` wrappers added for the following components:
 
   - `Select`
   - `MultiSelect`
