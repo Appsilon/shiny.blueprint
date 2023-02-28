@@ -17,6 +17,9 @@ incrementToasterId <- createIdIncrementationFunction()
 Toaster <- R6::R6Class(
   classname = "Toaster",
   public = list(
+    #' @param toasterId Unique number - needed to use more than one toaster
+    #' @param session Shiny session object
+    #' @param ... Parameters passed to `Toaster` component
     initialize = function(
       toasterId = incrementToasterId(),
       session = shiny::getDefaultReactiveDomain(),
@@ -26,6 +29,10 @@ Toaster <- R6::R6Class(
       private$session <- session
       private$registerToaster(...)
     },
+    #' @description Shows a new toast to the user, or updates an existing toast
+    #' corresponding to the provided key
+    #' @param ... Parameters passed to `Toaster` component
+    #' @param key A key of toast to be shown/dismissed
     show = function(..., key = NULL) {
       props <- list(...)
       private$session$sendCustomMessage(
@@ -36,12 +43,15 @@ Toaster <- R6::R6Class(
         )
       )
     },
+    #' @description Dismiss all toasts instantly
     clear = function() {
       private$session$sendCustomMessage(
         private$callName("clear"),
         list()
       )
     },
+    #' @description Dismiss the given toast instantly
+    #' @param key A key of toast to be shown/dismissed
     dismiss = function(key) {
       private$session$sendCustomMessage(
         private$callName("dismiss"),

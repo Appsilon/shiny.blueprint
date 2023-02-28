@@ -4,6 +4,11 @@
 \alias{Toaster}
 \title{Toaster}
 \description{
+Toaster
+
+Toaster
+}
+\details{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 }
 \section{Methods}{
@@ -28,20 +33,43 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{toasterId}}{Unique number - needed to use more than one toaster}
+
+\item{\code{session}}{Shiny session object}
+
+\item{\code{...}}{Parameters passed to \code{Toaster} component}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Toaster-show"></a>}}
 \if{latex}{\out{\hypertarget{method-Toaster-show}{}}}
 \subsection{Method \code{show()}}{
+Shows a new toast to the user, or updates an existing toast
+corresponding to the provided key
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$show(..., key = NULL)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{Parameters passed to \code{Toaster} component}
+
+\item{\code{key}}{A key of toast to be shown/dismissed}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Toaster-clear"></a>}}
 \if{latex}{\out{\hypertarget{method-Toaster-clear}{}}}
 \subsection{Method \code{clear()}}{
+Dismiss all toasts instantly
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$clear()}\if{html}{\out{</div>}}
 }
@@ -51,10 +79,18 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 \if{html}{\out{<a id="method-Toaster-dismiss"></a>}}
 \if{latex}{\out{\hypertarget{method-Toaster-dismiss}{}}}
 \subsection{Method \code{dismiss()}}{
+Dismiss the given toast instantly
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$dismiss(key)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{key}}{A key of toast to be shown/dismissed}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Toaster-clone"></a>}}
