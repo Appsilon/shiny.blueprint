@@ -1,4 +1,4 @@
-# shiny.blueprint
+# shiny.blueprint <a href="https://appsilon.github.io/shiny.blueprint/"><img src="man/figures/shiny-blueprint.png" alt="shiny.blueprint logo" style="float: right; height: 140px;"></a>
 
 > _Palantir's Blueprint for Shiny apps_
 
