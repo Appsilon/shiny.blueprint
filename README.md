@@ -22,13 +22,16 @@ We believe that a great UI plays a huge role in the success of application proje
 
 Stable version:
 ```r
-install.packages("shiny.blueprint")
+install.packages("shiny.blueprint", dependencies = TRUE)
 ```
 
 Development version:
 ```r
-remotes::install_github("Appsilon/shiny.blueprint")
+remotes::install_github("Appsilon/shiny.blueprint", dependencies = TRUE)
 ```
+
+With `dependencies = TRUE` the suggested packages (required to run some examples)
+will be installed in addition to mandatory dependencies.
 
 ## Quick start
 
