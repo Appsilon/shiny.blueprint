@@ -24,7 +24,7 @@ sections <- list(
     item("Navbar", "Navbar"),
     item("Non-ideal state", "NonIdealState"),
     item("Overflow list", "OverflowList"),
-    item("Panel stack (v2)", "PanelStack"),
+    item("Panel stack", "PanelStack"),
     item("Progress bar", "ProgressBar"),
     item("Resize sensor", "ResizeSensor"),
     item("Spinner", "Spinner"),

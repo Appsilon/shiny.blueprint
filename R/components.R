@@ -368,19 +368,19 @@ NonIdealState <- component("NonIdealState")
 #' @export
 OverflowList <- component("OverflowList")
 
-#' Panel stack (v2)
+#' Panel stack
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/panel-stack2>
 #'
-#' @example inst/examples/PanelStack2.R
+#' @example inst/examples/PanelStack.R
 #' @inherit template params
-#' @param panels List of lists - each list contains `title` (string) and `content` (HTML)
-#' @param ns Namespace of given panel stack (required if there's more than 1 panel stack)
-#' @param size Numeric vector of length 2 - `c(width, height)`
 #' @export
 PanelStack <- component("PanelStack2")
 
 #' @rdname PanelStack
+#' @param panels List of lists - each list contains `title` (string) and `content` (HTML)
+#' @param ns Namespace of given panel stack (required if there's more than 1 panel stack)
+#' @param size Numeric vector of length 2 - `c(width, height)`
 #' @export
 PanelStack.shinyWrapper <- function(panels, ns = "ps", size = c(300, 250), ...) { # nolint
   shiny.react::reactElement(
