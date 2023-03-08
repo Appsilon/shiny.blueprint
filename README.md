@@ -1,4 +1,4 @@
-# shiny.blueprint
+# shiny.blueprint <a href="https://appsilon.github.io/shiny.blueprint/"><img src="man/figures/shiny-blueprint.png" alt="shiny.blueprint logo" style="float: right; height: 140px;"></a>
 
 > _Palantir's Blueprint for Shiny apps_
 
@@ -7,7 +7,7 @@
 [![CI](https://github.com/Appsilon/shiny.blueprint/actions/workflows/ci.yml/badge.svg)](https://github.com/Appsilon/shiny.blueprint/actions/workflows/ci.yml)
 [![downloads monthly](https://cranlogs.r-pkg.org/badges/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint)
 [![downloads total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.blueprint)](https://CRAN.R-project.org/package=shiny.blueprint)
-[![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://opensource.org/licenses/LGPL-3.0/)
+[![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://opensource.org/license/lgpl-3-0/)
 <!-- badges: end -->
 
 ## Why `shiny.blueprint`?
@@ -22,13 +22,16 @@ We believe that a great UI plays a huge role in the success of application proje
 
 Stable version:
 ```r
-install.packages("shiny.blueprint")
+install.packages("shiny.blueprint", dependencies = TRUE)
 ```
 
 Development version:
 ```r
-remotes::install_github("Appsilon/shiny.blueprint")
+remotes::install_github("Appsilon/shiny.blueprint", dependencies = TRUE)
 ```
+
+With `dependencies = TRUE` the suggested packages (required to run some examples)
+will be installed in addition to mandatory dependencies.
 
 ## Quick start
 

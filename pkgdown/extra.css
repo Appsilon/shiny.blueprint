@@ -1,9 +1,14 @@
+:root {
+  --primary: rgb(70, 115, 182);
+  --primary-dark: rgb(63, 104, 166);
+}
+
 .navbar {
-  background-color: rgb(69, 179, 196) !important;
+  background-color: var(--primary) !important;
 }
 
 #navbar > ul.navbar-nav > li.nav-item a:hover {
-  background-color: rgb(69, 179, 196) !important;
+  background-color: var(--primary) !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -11,7 +16,7 @@
 }
 
 .navbar-dark .navbar-nav .active > .nav-link {
-  background-color: rgb(69, 179, 196) !important;
+  background-color: var(--primary) !important;
   color: #fff !important;
 }
 
@@ -25,16 +30,16 @@ nav .text-muted {
 }
 
 a {
-  color: rgb(69, 179, 196);
+  color: var(--primary);
 }
 
 a:hover {
-  color: rgb(63, 162, 177);
+  color: var(--primary-dark);
 }
 
 button.btn.btn-primary.btn-copy-ex {
-  background-color: rgb(69, 179, 196);
-  border-color: rgb(69, 179, 196);
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 
