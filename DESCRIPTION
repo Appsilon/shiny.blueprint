@@ -1,5 +1,5 @@
 Package: shiny.blueprint
-Title: Palantir's Blueprint for Shiny apps
+Title: Palantir's 'Blueprint' for 'Shiny' Apps
 Version: 0.2.0
 Authors@R:
   c(
@@ -10,8 +10,8 @@ Authors@R:
     person("Appsilon Sp. z o.o.", role = "cph", email = "opensource@appsilon.com")
   )
 Description:
-  Easily use Blueprint, the popular React library from Palantir, in your Shiny app.
-  Blueprint provides a rich set of UI components for creating visually appealing applications
+  Easily use 'Blueprint', the popular 'React' library from Palantir, in your 'Shiny' app.
+  'Blueprint' provides a rich set of UI components for creating visually appealing applications
   and is optimized for building complex, data-dense web interfaces.
   This package provides most components from the underlying library,
   as well as special wrappers for some components

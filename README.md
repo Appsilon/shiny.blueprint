@@ -1,6 +1,6 @@
 # shiny.blueprint <a href="https://appsilon.github.io/shiny.blueprint/"><img src="man/figures/shiny-blueprint.png" alt="shiny.blueprint logo" style="float: right; height: 140px;"></a>
 
-> _Palantir's Blueprint for Shiny apps_
+> _Palantir's Blueprint for Shiny Apps_
 
 <!-- badges: start -->
 [![CRAN](https://www.r-pkg.org/badges/version/shiny.blueprint)](https://cran.r-project.org/package=shiny.blueprint)
