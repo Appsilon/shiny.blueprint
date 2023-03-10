@@ -20,6 +20,9 @@ Tree.shinyInput(inputId, data, ...)
 \item optional: \code{childNodes}, \code{icon}, \code{hasCaret}, \code{isExpanded}, \code{disabled}, \code{secondaryLabel}
 }}
 }
+\value{
+Object with \code{shiny.tag} class suitable for use in the UI of a Shiny app.
+}
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/tree}
 }

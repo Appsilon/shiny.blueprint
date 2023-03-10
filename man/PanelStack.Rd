@@ -26,6 +26,9 @@ closePanel(ns = "ps")
 
 \item{panelId}{Id of the panel to be closed}
 }
+\value{
+Object with \code{shiny.tag} class suitable for use in the UI of a Shiny app.
+}
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/panel-stack2}
 }

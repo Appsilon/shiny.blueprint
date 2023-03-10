@@ -12,7 +12,9 @@ incrementToasterId <- createIdIncrementationFunction()
 
 #' Toaster
 #'
+#' @description
 #' Documentation: <https://blueprintjs.com/docs/#core/components/toast>
+#'
 #' @export
 Toaster <- R6::R6Class(
   classname = "Toaster",
@@ -29,6 +31,7 @@ Toaster <- R6::R6Class(
       private$session <- session
       private$registerToaster(...)
     },
+
     #' @description Shows a new toast to the user, or updates an existing toast
     #' corresponding to the provided key
     #' @param ... Parameters passed to `Toaster` component
@@ -43,6 +46,7 @@ Toaster <- R6::R6Class(
         )
       )
     },
+
     #' @description Dismiss all toasts instantly
     clear = function() {
       private$session$sendCustomMessage(
@@ -50,6 +54,7 @@ Toaster <- R6::R6Class(
         list()
       )
     },
+
     #' @description Dismiss the given toast instantly
     #' @param key A key of toast to be shown/dismissed
     dismiss = function(key) {
