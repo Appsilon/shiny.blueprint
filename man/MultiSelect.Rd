@@ -26,6 +26,9 @@ MultiSelect.shinyInput(
 
 \item{noResults}{Message when no results were found}
 }
+\value{
+Object with \code{shiny.tag} class suitable for use in the UI of a Shiny app.
+}
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#select/multi-select2}
 }

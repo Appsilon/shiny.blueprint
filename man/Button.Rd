@@ -20,6 +20,9 @@ AnchorButton.shinyInput(inputId, ...)
 
 \item{inputId}{The \code{input} slot that will be used to access the value.}
 }
+\value{
+Object with \code{shiny.tag} class suitable for use in the UI of a Shiny app.
+}
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/button}
 }

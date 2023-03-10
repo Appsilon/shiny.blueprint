@@ -16,6 +16,9 @@ HTMLSelect.shinyInput(inputId, ..., value = defaultValue)
 
 \item{value}{Initial value.}
 }
+\value{
+Object with \code{shiny.tag} class suitable for use in the UI of a Shiny app.
+}
 \description{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/html-select}
 }

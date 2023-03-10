@@ -4,11 +4,6 @@
 \alias{Toaster}
 \title{Toaster}
 \description{
-Toaster
-
-Toaster
-}
-\details{
 Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 }
 \section{Methods}{
