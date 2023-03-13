@@ -22,6 +22,7 @@ Toaster <- R6::R6Class(
     #' @param toasterId Unique number - needed to use more than one toaster
     #' @param session Shiny session object
     #' @param ... Parameters passed to `Toaster` component
+    #' @return A new `Toaster` instance.
     initialize = function(
       toasterId = incrementToasterId(),
       session = shiny::getDefaultReactiveDomain(),
@@ -36,6 +37,7 @@ Toaster <- R6::R6Class(
     #' corresponding to the provided key
     #' @param ... Parameters passed to `Toaster` component
     #' @param key A key of toast to be shown/dismissed
+    #' @return Nothing. This method is called for side effects.
     show = function(..., key = NULL) {
       props <- list(...)
       private$session$sendCustomMessage(
@@ -48,6 +50,7 @@ Toaster <- R6::R6Class(
     },
 
     #' @description Dismiss all toasts instantly
+    #' @return Nothing. This method is called for side effects.
     clear = function() {
       private$session$sendCustomMessage(
         private$callName("clear"),
@@ -57,6 +60,7 @@ Toaster <- R6::R6Class(
 
     #' @description Dismiss the given toast instantly
     #' @param key A key of toast to be shown/dismissed
+    #' @return Nothing. This method is called for side effects.
     dismiss = function(key) {
       private$session$sendCustomMessage(
         private$callName("dismiss"),

@@ -39,6 +39,9 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A new \code{Toaster} instance.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Toaster-show"></a>}}
@@ -59,6 +62,9 @@ corresponding to the provided key
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+Nothing. This method is called for side effects.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Toaster-clear"></a>}}
@@ -69,6 +75,9 @@ Dismiss all toasts instantly
 \if{html}{\out{<div class="r">}}\preformatted{Toaster$clear()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+Nothing. This method is called for side effects.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Toaster-dismiss"></a>}}
@@ -85,6 +94,9 @@ Dismiss the given toast instantly
 \item{\code{key}}{A key of toast to be shown/dismissed}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+Nothing. This method is called for side effects.
 }
 }
 \if{html}{\out{<hr>}}

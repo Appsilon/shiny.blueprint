@@ -5,6 +5,8 @@
 #'
 #' @param example The name of the example to run, or `NULL` to retrieve the list of examples.
 #' @param ... Additional arguments to pass to `shiny::runApp()`.
+#' @return This function normally does not return;
+#' interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 #'
 #' @export
 runExample <- function(example = NULL, ...) {
