@@ -15,7 +15,7 @@ Description:
   and is optimized for building complex, data-dense web interfaces.
   This package provides most components from the underlying library,
   as well as special wrappers for some components
-  to make it easy to use them in R without writing JavaScript code.
+  to make it easy to use them in 'R' without writing 'JavaScript' code.
 License: LGPL-3
 Encoding: UTF-8
 LazyData: true
