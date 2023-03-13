@@ -11,6 +11,10 @@ runExample(example = NULL, ...)
 
 \item{...}{Additional arguments to pass to \code{shiny::runApp()}.}
 }
+\value{
+This function normally does not return;
+interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
+}
 \description{
 Launch a Shiny example app or list the available examples.
 Use \code{shiny.blueprint::runExample("showcase")} to run a showcase app with all the components.
