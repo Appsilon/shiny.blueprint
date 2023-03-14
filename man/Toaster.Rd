@@ -13,7 +13,6 @@ Documentation: \url{https://blueprintjs.com/docs/#core/components/toast}
 \item \href{#method-Toaster-show}{\code{Toaster$show()}}
 \item \href{#method-Toaster-clear}{\code{Toaster$clear()}}
 \item \href{#method-Toaster-dismiss}{\code{Toaster$dismiss()}}
-\item \href{#method-Toaster-clone}{\code{Toaster$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
@@ -97,23 +96,6 @@ Dismiss the given toast instantly
 }
 \subsection{Returns}{
 Nothing. This method is called for side effects.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Toaster-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-Toaster-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Toaster$clone(deep = FALSE)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
 }
 }
 }

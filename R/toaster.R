@@ -18,6 +18,7 @@ incrementToasterId <- createIdIncrementationFunction()
 #' @export
 Toaster <- R6::R6Class(
   classname = "Toaster",
+  cloneable = FALSE,
   public = list(
     #' @param toasterId Unique number - needed to use more than one toaster
     #' @param session Shiny session object
