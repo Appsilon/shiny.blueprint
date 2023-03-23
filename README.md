@@ -18,6 +18,10 @@ We believe that a great UI plays a huge role in the success of application proje
 - a rich set of components easily usable in Shiny;
 - fast speed of development that Shiny is famous for.
 
+To see `shiny.blueprint` in action check out
+the [Blueprint Showcase](https://connect.appsilon.com/shiny-blueprint-showcase/) app
+with all the available components and R usage examples.
+
 ## Installation
 
 Stable version:
