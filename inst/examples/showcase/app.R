@@ -154,8 +154,7 @@ makeRouter <- function(items) {
         name = item$name,
         ui = example$ui(item$id),
         rCode = example$rCode
-      ),
-      server = function() example$server(item$id)
+      )
     )
   })
   routes <- append(
@@ -221,12 +220,11 @@ makeRouter <- function(items) {
             )
           )
         )
-      ),
-      server = function(input, output, session) {}
+      )
     )),
     routes
   )
-  do.call(make_router, routes)
+  do.call(router_ui, routes)
 }
 
 router <- makeRouter(items)
@@ -254,11 +252,11 @@ shinyApp(
     tags$div(
       class = "grid",
       tags$nav(class = "sidebar", makeNav(sections)),
-      tags$main(router$ui)
+      tags$main(router)
     )
   ),
   server = function(input, output, session) {
-    router$server()
+    router_server()
     session$sendCustomMessage("highlight_all", list())
   }
 )
