@@ -148,12 +148,11 @@ prepareExamples <- function(items) {
     if (is.null(example)) {
       return()
     }
-    
-    example_server <- list()
-    example_server[[item$id]] <- example$server
+    exampleServer <- list()
+    exampleServer[[item$id]] <- example$server
     return(
       list(
-        server = example_server,
+        server = exampleServer,
         router = route(
           path = item$id,
           ui = makePage(
@@ -166,12 +165,10 @@ prepareExamples <- function(items) {
       )
     )
   })
-  
   return(routes)
 }
 
 makeRouter <- function(items, routes) {
- 
   routes <- append(
     list(route(
       path = "/",
@@ -274,9 +271,8 @@ shinyApp(
   server = function(input, output, session) {
     router_server()
     session$sendCustomMessage("highlight_all", list())
-    
-    example_servers <- unlist(map(examples, "server"))
-    lapply(items, function(item, modules = example_servers) {
+    exampleServers <- unlist(map(examples, "server"))
+    lapply(items, function(item, modules = exampleServers) {
       modules[[item$id]](item$id)
     })
   }
