@@ -1,6 +1,7 @@
 library(shiny.blueprint)
 library(shiny.router)
 library(shiny)
+library(purrr)
 
 section <- function(name, ...) list(name = name, items = list(...))
 item <- function(name, id) list(type = "item", name = name, id = id)
@@ -141,23 +142,33 @@ makePage <- function(id, name, ui, rCode) {
   )
 }
 
-makeRouter <- function(items) {
+prepareExamples <- function(items) {
   routes <- lapply(items, function(item) {
     example <- readExample(item$id)
     if (is.null(example)) {
       return()
     }
-    route(
-      path = item$id,
-      ui = makePage(
-        id = item$id,
-        name = item$name,
-        ui = example$ui(item$id),
-        rCode = example$rCode
-      ),
-      server = function() example$server(item$id)
+    exampleServer <- list()
+    exampleServer[[item$id]] <- example$server
+    return(
+      list(
+        server = exampleServer,
+        router = route(
+          path = item$id,
+          ui = makePage(
+            id = item$id,
+            name = item$name,
+            ui = example$ui(item$id),
+            rCode = example$rCode
+          )
+        )
+      )
     )
   })
+  return(routes)
+}
+
+makeRouter <- function(items, routes) {
   routes <- append(
     list(route(
       path = "/",
@@ -221,15 +232,15 @@ makeRouter <- function(items) {
             )
           )
         )
-      ),
-      server = function(input, output, session) {}
+      )
     )),
     routes
   )
-  do.call(make_router, routes)
+  do.call(router_ui, routes)
 }
 
-router <- makeRouter(items)
+examples <- prepareExamples(items)
+router <- makeRouter(items, map(examples, "router"))
 
 addResourcePath("showcase-static", "./static")
 
@@ -254,11 +265,15 @@ shinyApp(
     tags$div(
       class = "grid",
       tags$nav(class = "sidebar", makeNav(sections)),
-      tags$main(router$ui)
+      tags$main(router)
     )
   ),
   server = function(input, output, session) {
-    router$server()
+    router_server()
     session$sendCustomMessage("highlight_all", list())
+    exampleServers <- unlist(map(examples, "server"))
+    lapply(items, function(item, modules = exampleServers) {
+      modules[[item$id]](item$id)
+    })
   }
 )
