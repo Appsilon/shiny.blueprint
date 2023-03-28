@@ -1,6 +1,7 @@
 library(shiny.blueprint)
 library(shiny.router)
 library(shiny)
+library(purrr)
 
 section <- function(name, ...) list(name = name, items = list(...))
 item <- function(name, id) list(type = "item", name = name, id = id)
@@ -141,22 +142,36 @@ makePage <- function(id, name, ui, rCode) {
   )
 }
 
-makeRouter <- function(items) {
+prepareExamples <- function(items) {
   routes <- lapply(items, function(item) {
     example <- readExample(item$id)
     if (is.null(example)) {
       return()
     }
-    route(
-      path = item$id,
-      ui = makePage(
-        id = item$id,
-        name = item$name,
-        ui = example$ui(item$id),
-        rCode = example$rCode
+    
+    example_server <- list()
+    example_server[[item$id]] <- example$server
+    return(
+      list(
+        server = example_server,
+        router = route(
+          path = item$id,
+          ui = makePage(
+            id = item$id,
+            name = item$name,
+            ui = example$ui(item$id),
+            rCode = example$rCode
+          )
+        )
       )
     )
   })
+  
+  return(routes)
+}
+
+makeRouter <- function(items, routes) {
+ 
   routes <- append(
     list(route(
       path = "/",
@@ -227,7 +242,8 @@ makeRouter <- function(items) {
   do.call(router_ui, routes)
 }
 
-router <- makeRouter(items)
+examples <- prepareExamples(items)
+router <- makeRouter(items, map(examples, "router"))
 
 addResourcePath("showcase-static", "./static")
 
@@ -258,5 +274,10 @@ shinyApp(
   server = function(input, output, session) {
     router_server()
     session$sendCustomMessage("highlight_all", list())
+    
+    example_servers <- unlist(map(examples, "server"))
+    lapply(items, function(item, modules = example_servers) {
+      modules[[item$id]](item$id)
+    })
   }
 )
