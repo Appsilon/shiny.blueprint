@@ -78,14 +78,15 @@ A showcase application with all components
 can be launched with `shiny.blueprint::runExample("showcase")`
 or by visiting [this link](https://connect.appsilon.com/shiny-blueprint-showcase/).
 
----
+## Appsilon
 
-Developed with :heart: at [Appsilon](https://appsilon.com).
-Get in touch: <opensource@appsilon.com>.
+<img src="https://avatars0.githubusercontent.com/u/6096772" align="right" alt="" width="6%" />
 
-Appsilon is a
-[**Full Service Certified Posit Partner**](https://posit.co/certified-partners/).
+Appsilon is a **Posit (formerly RStudio) Full Service Certified Partner**.<br/>
+Learn more at [appsilon.com](https://appsilon.com).
 
-<a href="https://appsilon.com/careers/">
-  <img src="http://d2v95fjda94ghc.cloudfront.net/hiring.png" alt="We are hiring!">
-</a>
+Get in touch [opensource@appsilon.com](mailto:opensource@appsilon.com)
+
+Explore the [Rhinoverse](https://rhinoverse.dev) - a family of R packages built around [Rhino](https://appsilon.github.io/rhino/)!
+
+<a href = "https://appsilon.com/careers/" target="_blank"><img src="https://raw.githubusercontent.com/Appsilon/website-cdn/gh-pages/WeAreHiring1.png" alt="We are hiring!"/></a>
