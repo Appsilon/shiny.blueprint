@@ -29,6 +29,7 @@ Imports:
   shiny.react (>= 0.2.2),
   utils
 Suggests:
+  covr,
   knitr,
   lintr (>= 3.0.0),
   purrr,
