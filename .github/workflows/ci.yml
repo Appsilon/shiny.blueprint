@@ -41,3 +41,7 @@ jobs:
         with:
           working-directory: js
           start: yarn run-showcase
+
+      - name: Test coverage
+        run: |
+          Rscript -e 'covr::codecov()'
