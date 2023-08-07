@@ -208,8 +208,8 @@ makeRouter <- function(items, routes) {
             href = "https://appsilon.github.io/shiny.react/",
             target = "_blank",
             img(
-                class = "logo",
-                src = "https://github.com/Appsilon/shiny.react/raw/master/man/figures/shiny-react.png" # nolint
+              class = "logo",
+              src = "https://github.com/Appsilon/shiny.react/raw/master/man/figures/shiny-react.png"
             )
           )
         ),

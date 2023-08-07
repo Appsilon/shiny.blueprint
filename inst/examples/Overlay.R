@@ -30,8 +30,8 @@ server <- function(id) {
           interactive = TRUE,
           H5("Analytical applications"),
           tags$p(
-          "User interfaces that enable people to interact smoothly with data,",
-          " ask better questions, and make better decisions."
+            "User interfaces that enable people to interact smoothly with data,",
+            " ask better questions, and make better decisions."
           ),
           Button.shinyInput(
             inputId = ns("closeOverlay"),

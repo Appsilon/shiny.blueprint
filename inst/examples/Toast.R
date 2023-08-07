@@ -28,11 +28,11 @@ ui <- function(id) {
       )
     ),
     H3("Another toaster"),
-      Button.shinyInput(
-        inputId = ns("anotherToastDanger"),
-        "Another danger",
-        intent = "danger"
-      ),
+    Button.shinyInput(
+      inputId = ns("anotherToastDanger"),
+      "Another danger",
+      intent = "danger"
+    ),
     H3("Progress"),
     Button.shinyInput(
       inputId = ns("toastProgress"),
