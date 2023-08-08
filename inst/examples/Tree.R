@@ -121,12 +121,12 @@ server <- function(id) {
       )
     })
 
-     output$info <- renderReact({
+    output$info <- renderReact({
       UL(
         tags$li("Selected (id): ", input$click$id),
         tags$li("Selected (label): ", input$click$label)
       )
-     })
+    })
 
     output$selected_nodes_list <- renderReact({
       UL(lapply(input$selected_nodes, function(node) tags$li(node)))
