@@ -209,7 +209,7 @@ makeRouter <- function(items, routes) {
             target = "_blank",
             img(
               class = "logo",
-              src = "https://github.com/Appsilon/shiny.react/raw/master/man/figures/shiny-react.png"
+              src = "https://github.com/Appsilon/shiny.react/raw/main/man/figures/shiny-react.png"
             )
           )
         ),
