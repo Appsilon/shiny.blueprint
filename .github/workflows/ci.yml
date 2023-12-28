@@ -7,12 +7,13 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.2.0'
+          r-version: '4.3.2'
+          use-public-rspm: true
 
       - name: Install R package dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
@@ -24,16 +25,13 @@ jobs:
         uses: r-lib/actions/check-r-package@v2
         with:
           error-on: '"note"'
-        env:
-          _R_CHECK_LICENSE_: 'FALSE' # We are using a proprietary license.
 
       - name: Lint
         if: always()
         shell: Rscript {0}
-        run: |
-          lints <- lintr::lint_package()
-          for (lint in lints) print(lint)
-          quit(status = length(lints) > 0)
+        run: lintr::lint_package()
+        env:
+          LINTR_ERROR_ON_LINT: true
 
       - name: E2E test
         if: always()
@@ -43,5 +41,5 @@ jobs:
           start: yarn run-showcase
 
       - name: Test coverage
-        run: |
-          Rscript -e 'covr::codecov()'
+        shell: Rscript {0}
+        run: covr::codecov()
