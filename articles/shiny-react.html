@@ -40,7 +40,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">shiny.blueprint</a>
 
@@ -197,18 +197,18 @@ for starters.</p>
 Blueprint library. The <a href="https://blueprintjs.com/docs/#blueprint.quick-start" class="external-link">documentation</a>
 also suggests adding <code>react</code> and <code>react-dom</code>, but
 we skip them as they are already provided by shiny.react.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yarn</span> init <span class="at">--yes</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">yarn</span> add @blueprintjs/core</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">yarn</span> init <span class="at">--yes</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">yarn</span> add @blueprintjs/core</span></code></pre></div>
 <p>We will use a bundler to generate the <code>blueprint.js</code>
 script from the following <code>js/src/index.js</code> file:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Blueprint <span class="op">=</span> <span class="pp">require</span>(<span class="st">'@blueprintjs/core'</span>)<span class="op">;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="pp">require</span>(<span class="st">'@blueprintjs/core/lib/css/blueprint.css'</span>)<span class="op">;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span> <span class="op">=</span> {</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span><span class="op">,</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'@blueprintjs/core'</span><span class="op">:</span> Blueprint</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="kw">const</span> Blueprint <span class="op">=</span> <span class="pp">require</span>(<span class="st">'@blueprintjs/core'</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="pp">require</span>(<span class="st">'@blueprintjs/core/lib/css/blueprint.css'</span>)<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span> <span class="op">=</span> {</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="op">...</span><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span><span class="op">,</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="st">'@blueprintjs/core'</span><span class="op">:</span> Blueprint</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
 <p>This script will make the Blueprint library available as
 <code>jsmodule[@blueprintjs/core]</code> on the browser. It will also
 load the necessary CSS.</p>
@@ -223,65 +223,65 @@ tool</a> which we can use to generate a configuration for that webpack.
 Let’s just pick CSS from the Styling section and copy the the script to
 <code>js/webpack.config.js</code>. We also add dev dependencies as
 suggested by the tool:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yarn</span> add <span class="at">--dev</span> webpack webpack-cli css-loader style-loader</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">yarn</span> add <span class="at">--dev</span> webpack webpack-cli css-loader style-loader</span></code></pre></div>
 <p>Now let’s tweak the config a bit. We change the output to
 <code>inst/www/blueprint.js</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>output<span class="op">:</span> {</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">path</span><span class="op">:</span> path<span class="op">.</span><span class="fu">join</span>(<span class="bu">__dirname</span><span class="op">,</span> <span class="st">'..'</span><span class="op">,</span> <span class="st">'inst'</span><span class="op">,</span> <span class="st">'www'</span>)<span class="op">,</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">filename</span><span class="op">:</span> <span class="st">'blueprint.js'</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>output<span class="op">:</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="dt">path</span><span class="op">:</span> path<span class="op">.</span><span class="fu">join</span>(<span class="bu">__dirname</span><span class="op">,</span> <span class="st">'..'</span><span class="op">,</span> <span class="st">'inst'</span><span class="op">,</span> <span class="st">'www'</span>)<span class="op">,</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="dt">filename</span><span class="op">:</span> <span class="st">'blueprint.js'</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>We add <a href="https://webpack.js.org/configuration/externals/" class="external-link"><code>externals</code></a>
 to let webpack know where to look for modules provided by
 shiny.react:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>externals<span class="op">:</span> {</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'react'</span><span class="op">:</span> <span class="st">'jsmodule["react"]'</span><span class="op">,</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'react-dom'</span><span class="op">:</span> <span class="st">'jsmodule["react-dom"]'</span><span class="op">,</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'@/shiny.react'</span><span class="op">:</span> <span class="st">'jsmodule["@/shiny.react"]'</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>externals<span class="op">:</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="st">'react'</span><span class="op">:</span> <span class="st">'jsmodule["react"]'</span><span class="op">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="st">'react-dom'</span><span class="op">:</span> <span class="st">'jsmodule["react-dom"]'</span><span class="op">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="st">'@/shiny.react'</span><span class="op">:</span> <span class="st">'jsmodule["@/shiny.react"]'</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>}</span></code></pre></div>
 <p>Lastly, we need a little hack for a <a href="https://github.com/palantir/blueprint/issues/4393" class="external-link">problem</a>
 present in Blueprint as of writing this:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plugins<span class="op">:</span> [</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> webpack<span class="op">.</span><span class="fu">DefinePlugin</span>({ <span class="st">'process.env'</span><span class="op">:</span> <span class="st">'{}'</span> })</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>plugins<span class="op">:</span> [</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="kw">new</span> webpack<span class="op">.</span><span class="fu">DefinePlugin</span>({ <span class="st">'process.env'</span><span class="op">:</span> <span class="st">'{}'</span> })</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>]</span></code></pre></div>
 <p>Our final <code>js/webpack.config.js</code> looks as follows:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> webpack <span class="op">=</span> <span class="pp">require</span>(<span class="st">'webpack'</span>)<span class="op">;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> path <span class="op">=</span> <span class="pp">require</span>(<span class="st">'path'</span>)<span class="op">;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">entry</span><span class="op">:</span> <span class="st">'./src/index.js'</span><span class="op">,</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">output</span><span class="op">:</span> {</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">path</span><span class="op">:</span> path<span class="op">.</span><span class="fu">join</span>(<span class="bu">__dirname</span><span class="op">,</span> <span class="st">'..'</span><span class="op">,</span> <span class="st">'inst'</span><span class="op">,</span> <span class="st">'www'</span>)<span class="op">,</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">filename</span><span class="op">:</span> <span class="st">'blueprint.js'</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">module</span><span class="op">:</span> {</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">rules</span><span class="op">:</span> [</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>      {</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">test</span><span class="op">:</span> <span class="ss">/</span><span class="sc">\.</span><span class="ss">css</span><span class="sc">$</span><span class="ss">/</span><span class="op">,</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">use</span><span class="op">:</span> [</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>          <span class="st">'style-loader'</span><span class="op">,</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>          <span class="st">'css-loader'</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">externals</span><span class="op">:</span> {</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'react'</span><span class="op">:</span> <span class="st">'jsmodule["react"]'</span><span class="op">,</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'react-dom'</span><span class="op">:</span> <span class="st">'jsmodule["react-dom"]'</span><span class="op">,</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'@/shiny.react'</span><span class="op">:</span> <span class="st">'jsmodule["@/shiny.react"]'</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">plugins</span><span class="op">:</span> [</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">new</span> webpack<span class="op">.</span><span class="fu">DefinePlugin</span>({ <span class="st">'process.env'</span><span class="op">:</span> <span class="st">'{}'</span> })</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> config<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="kw">const</span> webpack <span class="op">=</span> <span class="pp">require</span>(<span class="st">'webpack'</span>)<span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="kw">const</span> path <span class="op">=</span> <span class="pp">require</span>(<span class="st">'path'</span>)<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="dt">entry</span><span class="op">:</span> <span class="st">'./src/index.js'</span><span class="op">,</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="dt">output</span><span class="op">:</span> {</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>    <span class="dt">path</span><span class="op">:</span> path<span class="op">.</span><span class="fu">join</span>(<span class="bu">__dirname</span><span class="op">,</span> <span class="st">'..'</span><span class="op">,</span> <span class="st">'inst'</span><span class="op">,</span> <span class="st">'www'</span>)<span class="op">,</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>    <span class="dt">filename</span><span class="op">:</span> <span class="st">'blueprint.js'</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  <span class="dt">module</span><span class="op">:</span> {</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>    <span class="dt">rules</span><span class="op">:</span> [</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>      {</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>        <span class="dt">test</span><span class="op">:</span> <span class="ss">/</span><span class="sc">\.</span><span class="ss">css</span><span class="sc">$</span><span class="ss">/</span><span class="op">,</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>        <span class="dt">use</span><span class="op">:</span> [</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a>          <span class="st">'style-loader'</span><span class="op">,</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>          <span class="st">'css-loader'</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>        ]</span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>      }</span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>    ]</span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a>  <span class="dt">externals</span><span class="op">:</span> {</span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a>    <span class="st">'react'</span><span class="op">:</span> <span class="st">'jsmodule["react"]'</span><span class="op">,</span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a>    <span class="st">'react-dom'</span><span class="op">:</span> <span class="st">'jsmodule["react-dom"]'</span><span class="op">,</span></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a>    <span class="st">'@/shiny.react'</span><span class="op">:</span> <span class="st">'jsmodule["@/shiny.react"]'</span></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a>  <span class="dt">plugins</span><span class="op">:</span> [</span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a>    <span class="kw">new</span> webpack<span class="op">.</span><span class="fu">DefinePlugin</span>({ <span class="st">'process.env'</span><span class="op">:</span> <span class="st">'{}'</span> })</span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a>  ]</span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> config<span class="op">;</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="building-the-package">Building the package<a class="anchor" aria-label="anchor" href="#building-the-package"></a>
 </h3>
 <p>We are ready to build our package! First of all, we run webpack in
 the <code>js</code> directory:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yarn</span> webpack</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">yarn</span> webpack</span></code></pre></div>
 <p>This will generate the <code>inst/www/webpack.js</code> bundle. We
 should also generate the NAMESPACE file:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -336,21 +336,21 @@ in the last example. It is a good idea to create
 <code>.shinyInput</code> wrappers to simplify the life of your
 users.</p>
 <p>We change our <code>js/src/index.js</code> to the following:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Blueprint <span class="op">=</span> <span class="pp">require</span>(<span class="st">'@blueprintjs/core'</span>)<span class="op">;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { InputAdapter } <span class="op">=</span> <span class="pp">require</span>(<span class="st">'@/shiny.react'</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="pp">require</span>(<span class="st">'@blueprintjs/core/lib/css/blueprint.css'</span>)<span class="op">;</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Switch <span class="op">=</span> <span class="fu">InputAdapter</span>(Blueprint<span class="op">.</span><span class="at">Switch</span><span class="op">,</span> (value<span class="op">,</span> setValue) <span class="kw">=&gt;</span> ({</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">checked</span><span class="op">:</span> value<span class="op">,</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">onChange</span><span class="op">:</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> <span class="fu">setValue</span>(<span class="bu">event</span><span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">checked</span>)<span class="op">,</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>}))<span class="op">;</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span> <span class="op">=</span> {</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span><span class="op">,</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'@blueprintjs/core'</span><span class="op">:</span> <span class="pp">require</span>(<span class="st">'@blueprintjs/core'</span>)<span class="op">,</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'@/blueprint'</span><span class="op">:</span> { Switch }</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="kw">const</span> Blueprint <span class="op">=</span> <span class="pp">require</span>(<span class="st">'@blueprintjs/core'</span>)<span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="kw">const</span> { InputAdapter } <span class="op">=</span> <span class="pp">require</span>(<span class="st">'@/shiny.react'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="pp">require</span>(<span class="st">'@blueprintjs/core/lib/css/blueprint.css'</span>)<span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="kw">const</span> Switch <span class="op">=</span> <span class="fu">InputAdapter</span>(Blueprint<span class="op">.</span><span class="at">Switch</span><span class="op">,</span> (value<span class="op">,</span> setValue) <span class="kw">=&gt;</span> ({</span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  <span class="dt">checked</span><span class="op">:</span> value<span class="op">,</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>  <span class="dt">onChange</span><span class="op">:</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> <span class="fu">setValue</span>(<span class="bu">event</span><span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">checked</span>)<span class="op">,</span></span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>}))<span class="op">;</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span> <span class="op">=</span> {</span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>  <span class="op">...</span><span class="bu">window</span><span class="op">.</span><span class="at">jsmodule</span><span class="op">,</span></span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>  <span class="st">'@blueprintjs/core'</span><span class="op">:</span> <span class="pp">require</span>(<span class="st">'@blueprintjs/core'</span>)<span class="op">,</span></span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a>  <span class="st">'@/blueprint'</span><span class="op">:</span> { Switch }</span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
 <p>We also add these lines to <code>R/components.R</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span>, <span class="va">defaultValue</span><span class="op">)</span> <span class="op">{</span></span>
@@ -407,7 +407,7 @@ can be arbitrary, but the following convention is recommended:</p>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
 </div>
 
     </footer>
