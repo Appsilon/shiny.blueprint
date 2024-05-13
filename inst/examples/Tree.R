@@ -60,6 +60,8 @@ modifyTree <- function(tree, ids, props) {
   })
 }
 
+setInput <- partial(shiny.react::setInput, jsAccessor = "[0].id")
+
 ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -103,12 +105,12 @@ server <- function(id) {
     treeReactive <- reactiveVal(treeList)
     observeEvent(input$expand, {
       treeReactive(
-        modifyTree(treeReactive(), ids = input$expand$id, props = list(isExpanded = TRUE))
+        modifyTree(treeReactive(), ids = input$expand, props = list(isExpanded = TRUE))
       )
     })
     observeEvent(input$collapse, {
       treeReactive(
-        modifyTree(treeReactive(), ids = input$collapse$id, props = list(isExpanded = FALSE))
+        modifyTree(treeReactive(), ids = input$collapse, props = list(isExpanded = FALSE))
       )
     })
 
@@ -122,10 +124,7 @@ server <- function(id) {
     })
 
     output$info <- renderReact({
-      UL(
-        tags$li("Selected (id): ", input$click$id),
-        tags$li("Selected (label): ", input$click$label)
-      )
+      tags$div("Clicked (id): ", input$click)
     })
 
     output$selected_nodes_list <- renderReact({

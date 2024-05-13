@@ -20,6 +20,13 @@ jobs:
         with:
           extra-packages: local::. # Necessary to avoid object usage linter errors.
 
+      - name: Install shiny.react with React 18.3.1
+        if: always()
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          Rscript -e 'install.packages("remotes"); remotes::install_github("Appsilon/shiny.react@upgrade-react")'
+
       - name: R CMD check
         if: always()
         uses: r-lib/actions/check-r-package@v2

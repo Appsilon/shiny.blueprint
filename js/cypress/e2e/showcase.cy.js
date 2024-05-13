@@ -14,17 +14,17 @@ describe('showcase', () => {
 
   test('Overlay', () => {
     cy.contains('Show').click();
-    cy.get('.bp4-overlay-open').contains('Close');
+    cy.get('.bp5-overlay-open').contains('Close');
   })
 
   test('Dialog', () => {
     cy.contains('Show').click();
-    cy.get('.bp4-dialog').contains('Close');
+    cy.get('.bp5-dialog').contains('Close');
   })
 
   test('MultistepDialog', () => {
     cy.contains('Show').click();
-    const selector = '.bp4-dialog';
+    const selector = '.bp5-dialog';
     for( const text of ['Next', 'Next', 'Step 2', 'Next', 'Submit'])
       cy.get(selector).contains(text).click()
   })

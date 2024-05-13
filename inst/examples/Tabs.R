@@ -20,7 +20,7 @@ server <- function(id) {
         Tab(id = "ember", title = "Ember", panel = "Ember"),
         Tab(id = "react", title = "React", panel = "React"),
         TabsExpander(),
-        tags$input(class = "bp4-input", type = "text", placeholder = "Search...")
+        tags$input(class = "bp5-input", type = "text", placeholder = "Search...")
       )
     )
   })

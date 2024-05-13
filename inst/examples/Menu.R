@@ -4,7 +4,7 @@ library(shiny)
 ui <- function(id) {
   Menu(
     style = "max-width: 200px",
-    className = "bp4-elevation-1",
+    className = "bp5-elevation-1",
     MenuDivider(title = "Edit"),
     MenuItem(icon = "cut", text = "Cut", label = "^X"),
     MenuItem(icon = "duplicate", text = "Copy", label = "^C"),

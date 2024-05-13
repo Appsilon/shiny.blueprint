@@ -50,7 +50,7 @@ server <- function(id) {
         DialogStep(
           id = "step1",
           panel = div(
-            className = "bp4-dialog-body",
+            className = "bp5-dialog-body",
             p("This is a step 1")
           ),
           title = "Step 1"
@@ -58,7 +58,7 @@ server <- function(id) {
         DialogStep(
           id = "step2",
           panel = div(
-            className = "bp4-dialog-body",
+            className = "bp5-dialog-body",
             p("This is a step 2")
           ),
           title = "Step 2"
@@ -66,7 +66,7 @@ server <- function(id) {
         DialogStep(
           id = "step3",
           panel = div(
-            className = "bp4-dialog-body",
+            className = "bp5-dialog-body",
             p("This is a step 3")
           ),
           title = "Step 3"
