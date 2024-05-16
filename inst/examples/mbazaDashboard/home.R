@@ -1,6 +1,6 @@
 menusExample <- div(
   Menu(
-    className = "bp4-elevation-1 menu-example",
+    className = "bp5-elevation-1 menu-example",
     MenuItem(icon = "new-text-box", text = "New, text box"),
     MenuItem(icon = "new-object", text = "New object"),
     MenuItem(icon = "new-link", text = "New link"),
@@ -8,7 +8,7 @@ menusExample <- div(
     MenuItem(icon = "cog", text = "Settings...")
   ),
   Menu(
-    className = "bp4-elevation-1 menu-example",
+    className = "bp5-elevation-1 menu-example",
     MenuDivider(title = "Edit"),
     MenuItem(icon = "cut", text = "Cut", label = "⌘X"),
     MenuItem(icon = "duplicate", text = "Copy", label = "⌘C"),
@@ -69,7 +69,7 @@ homePage <- div(
       Card(
         interactive = TRUE,
         elevation = 2,
-        className = "bp4-running-text",
+        className = "bp5-running-text",
         h1(style = "margin-top: 0", "Welcome!"),
         "Seriously, we're glad to see you here!"
       )

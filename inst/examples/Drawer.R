@@ -25,7 +25,7 @@ server <- function(id) {
         title = "Hello",
         icon = "info-sign",
         div(
-          class = "bp4-dialog-body",
+          class = "bp5-dialog-body",
           p("Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
         )
       )

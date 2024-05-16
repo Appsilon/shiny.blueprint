@@ -35,7 +35,7 @@ navbarRight <-
   )
 
 navbar <- Navbar(
-  className = "bp4-dark",
+  className = "bp5-dark",
   navbarLeft,
   navbarRight
 )

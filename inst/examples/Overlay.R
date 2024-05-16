@@ -26,7 +26,7 @@ server <- function(id) {
         isOpen = isOpen(),
         onClose = triggerEvent(ns("closeOverlay")),
         Card(
-          className = "bp4-elevation-4 bp4-dark bp4-overlay-content",
+          className = "bp5-elevation-4 bp5-dark bp5-overlay-content",
           interactive = TRUE,
           H5("Analytical applications"),
           tags$p(

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { MenuItem } from "@blueprintjs/core";
-import { MultiSelect2 } from "@blueprintjs/select";
+import { MultiSelect as MultiSelectBlueprint } from "@blueprintjs/select";
 import { highlightText } from "./utils/highlight-text";
 
 const filterItem = (query, item) => {
@@ -12,7 +12,7 @@ const tagRenderer = (item) => item.text;
 
 const propTypes = {
   items: PropTypes.array,
-  selected: PropTypes.string,
+  selected: PropTypes.array,
   inputId: PropTypes.string,
   popoverProps: PropTypes.object,
 };
@@ -95,7 +95,7 @@ const MultiSelect = ({
   return React.createElement(
     "div",
     { style: { width: "fit-content" } },
-    React.createElement(MultiSelect2, {
+    React.createElement(MultiSelectBlueprint, {
       items,
       ...propsRest,
       itemPredicate: filterItem,

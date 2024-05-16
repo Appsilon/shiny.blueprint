@@ -57,7 +57,7 @@ function treeReducer(state, action) {
 
 const propTypes = {
   inputId: PropTypes.string,
-  data: PropTypes.object,
+  data: PropTypes.array,
 };
 
 const Tree = ({ inputId, data }) => {

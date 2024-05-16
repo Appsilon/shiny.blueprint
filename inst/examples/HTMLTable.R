@@ -12,7 +12,7 @@ ui <- function(id) {
       tags$tr(tags$td("shiny.blueprint"), tags$td("R JS"), tags$td("2"))
     ),
     tags$tfoot(
-      tags$tr(tags$td("Total", colspan = 2), tags$td("1508"))
+      tags$tr(tags$td("Total", colSpan = 2), tags$td("1508"))
     )
   )
 }

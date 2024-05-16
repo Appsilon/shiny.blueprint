@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { MenuItem, Button } from "@blueprintjs/core";
-import { Select2 } from "@blueprintjs/select";
+import { Select as SelectBlueprint } from "@blueprintjs/select";
 import { highlightText } from "./utils/highlight-text";
 
 const renderItem = (item, { handleClick, modifiers, query }) => {
@@ -45,7 +45,7 @@ const Select = ({ items, selected, inputId, popoverProps, ...propsRest }) => {
     "div",
     { style: { width: "fit-content" } },
     React.createElement(
-      Select2,
+      SelectBlueprint,
       {
         items,
         ...propsRest,

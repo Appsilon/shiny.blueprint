@@ -9,11 +9,8 @@ const propTypes = {
 };
 
 const ResizeSensor = ({ inputId, content, ...propsRest }) => {
-  content.props.style = {
-    ...content.props.style,
-    overflow: "auto",
-    resize: "both",
-  };
+  content.props.style.overflow = "auto";
+  content.props.style.resize = "both";
   const handleResize = useCallback(([{ contentRect }]) => {
     Shiny.setInputValue(inputId, contentRect);
   });

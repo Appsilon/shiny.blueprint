@@ -26,7 +26,10 @@ const MultiSlider = ({ inputId, values, ...propsRest }) => {
     values.map(({ value: _, ...props }, i) =>
       React.createElement(MultiSliderBlueprint.Handle, {
         value: state[i],
-        ...props,
+        ...{
+          ...props,
+          key: i,
+        }
       })
     )
   );

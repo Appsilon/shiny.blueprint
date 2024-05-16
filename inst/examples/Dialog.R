@@ -26,7 +26,7 @@ server <- function(id) {
         isOpen = isOpen(),
         onClose = triggerEvent(ns("closeDialog")),
         div(
-          className = "bp4-dialog-body",
+          className = "bp5-dialog-body",
           H5("Analytical applications"),
           tags$p(
             "User interfaces that enable people to interact smoothly with data,",

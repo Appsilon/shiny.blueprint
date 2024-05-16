@@ -17,7 +17,7 @@ server <- function(id) {
     output$ui <- renderReact({
       Popover(
         isOpen = isOpen(),
-        target = Button.shinyInput(ns("hello"), "Say Hello", intent = "primary"),
+        Button.shinyInput(ns("hello"), "Say Hello", intent = "primary"),
         usePortal = FALSE,
         content = tags$div(
           style = "padding: 1em",

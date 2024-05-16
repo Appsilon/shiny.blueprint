@@ -4,7 +4,7 @@ library(shiny)
 ui <- function(id) {
   Label(
     "Label",
-    tags$input(class = "bp4-input")
+    tags$input(class = "bp5-input")
   )
 }
 
