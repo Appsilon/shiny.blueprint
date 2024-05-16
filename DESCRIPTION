@@ -3,7 +3,8 @@ Title: Palantir's 'Blueprint' for 'Shiny' Apps
 Version: 0.2.0.900
 Authors@R:
   c(
-    person("Kamil", "Żyła", role = c("aut", "cre"), email = "opensource+kamil@appsilon.com"),
+    person("Jakub", "Sobolewski", role = c("aut", "cre"), email = "opensource+jakub.sobolewski@appsilon.com"),
+    person("Kamil", "Żyła", role = "aut", email = "kamil@appsilon.com"),
     person("Filip", "Akkad", role = "aut", email = "filip.akkad@filpro.io"),
     person("Filip", "Stachura", role = "aut", email = "filip@appsilon.com"),
     person("Paweł", "Chabros", role = "aut", email = "pawel.chabros@yahoo.pl"),
