@@ -1,6 +1,6 @@
 Package: shiny.blueprint
 Title: Palantir's 'Blueprint' for 'Shiny' Apps
-Version: 0.2.0
+Version: 0.2.0.900
 Authors@R:
   c(
     person("Kamil", "Żyła", role = c("aut", "cre"), email = "opensource+kamil@appsilon.com"),
