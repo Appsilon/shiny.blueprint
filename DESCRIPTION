@@ -27,7 +27,7 @@ Imports:
   checkmate,
   htmltools,
   shiny,
-  shiny.react (>= 0.2.2),
+  shiny.react (>= 0.4.0),
   utils
 Suggests:
   covr,
