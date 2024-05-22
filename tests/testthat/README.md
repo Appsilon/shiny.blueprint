@@ -1,4 +1,28 @@
-# Server-side component update tests
+# Shiny inputs tests
+
+## Render and get value
+
+- [ ] Button
+- [ ] AnchorButton
+- [ ] EditableText
+- [x] ResizeSensor
+- [ ] Tree
+- [ ] Checkbox
+- [ ] RadioGroup
+- [ ] HTMLSelect
+- [ ] Slider
+- [ ] RangeSlider
+- [ ] MultiSlider
+- [ ] Switch
+- [ ] NumericInput
+- [ ] InputGroup
+- [ ] TagInput
+- [ ] TextArea
+- [ ] Select
+- [ ] Suggest
+- [ ] MultiSelect
+
+## Server-side update
 
 - [ ] Button: update with `shiny.react::updateReactInput` appends new label to the old one
 - [ ] AnchorButton: update with `shiny.react::updateReactInput` appends new label to the old one

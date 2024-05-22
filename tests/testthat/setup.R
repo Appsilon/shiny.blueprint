@@ -29,3 +29,26 @@ serverUpdateActions <- function(inputId, driver) {
     }
   )
 }
+
+renderApp <- function(
+  component = \() { }
+) {
+  shinytest2::AppDriver$new(
+    shiny::shinyApp(
+      ui = shiny::fluidPage(
+        component()
+      ),
+      server = function(input, output, session) {
+
+      }
+    )
+  )
+}
+
+renderActions <- function(inputId, driver) {
+  list(
+    getValue = function() {
+      driver$get_value(input = inputId)
+    }
+  )
+}
