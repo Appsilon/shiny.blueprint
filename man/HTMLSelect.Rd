@@ -3,11 +3,18 @@
 \name{HTMLSelect}
 \alias{HTMLSelect}
 \alias{HTMLSelect.shinyInput}
+\alias{updateHTMLSelect.shinyInput}
 \title{HTML select}
 \usage{
 HTMLSelect(...)
 
 HTMLSelect.shinyInput(inputId, ..., value = defaultValue)
+
+updateHTMLSelect.shinyInput(
+  session = shiny::getDefaultReactiveDomain(),
+  inputId,
+  ...
+)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
@@ -15,6 +22,8 @@ HTMLSelect.shinyInput(inputId, ..., value = defaultValue)
 \item{inputId}{The \code{input} slot that will be used to access the value.}
 
 \item{value}{Initial value.}
+
+\item{session}{The Shiny session object.}
 }
 \value{
 Object with \code{shiny.tag} class suitable for use in the UI of a Shiny app.

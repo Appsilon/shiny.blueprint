@@ -33,36 +33,36 @@ library(shiny)
 
 treeList <- list(
   list(
-    id = "0",
+    id = 0,
     hasCaret = TRUE,
     icon = "folder-close",
     label = "Tree"
   ),
   list(
-    id = "1",
+    id = 1,
     icon = "folder-close",
     isExpanded = TRUE,
     label = "Hello here",
     childNodes = list(
       list(
-        id = "2",
+        id = 2,
         icon = "document",
         label = "Item 0",
         secondaryLabel = Icon(icon = "eye-open")
       ),
       list(
-        id = "3",
+        id = 3,
         icon = "tag",
         label = "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
         childNodes = list(
           list(
-            id = "4",
+            id = 4,
             icon = "document",
             label = "Item 0",
             secondaryLabel = Icon(icon = "eye-open")
           ),
           list(
-            id = "5",
+            id = 5,
             icon = "tag",
             label = "Some other stuff"
           )
@@ -71,7 +71,7 @@ treeList <- list(
     )
   ),
   list(
-    id = "10",
+    id = 10,
     hasCaret = TRUE,
     icon = "folder-close",
     label = "Super secret files",
@@ -89,6 +89,8 @@ modifyTree <- function(tree, ids, props) {
   })
 }
 
+setInput <- partial(shiny.react::setInput, jsAccessor = "[0].id")
+
 ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -101,25 +103,22 @@ ui <- function(id) {
       data = list(
         list(
           label = "1",
-          id = "1",
           isExpanded = TRUE,
           childNodes = list(
             list(
               label = "1.1",
-              id = "1.1",
-              childNodes = list(list(label = "1.1.1", id = "1.1.1"))
+              childNodes = list(list(label = "1.1.1"))
             ),
-            list(label = "1.2", id = "1.2")
+            list(label = "1.2")
           )
         ),
         list(
           label = "2",
-          id = "2",
           childNodes = list(
-            list(label = "2.1", id = "2.1")
+            list(label = "2.1")
           )
         ),
-        list(label = "3", id = "3", hasCaret = TRUE)
+        list(label = "3", hasCaret = TRUE)
       )
     ),
     Divider(),
@@ -147,9 +146,9 @@ server <- function(id) {
     output$tree <- renderReact({
       Tree(
         contents = treeReactive(),
-        onNodeExpand = setInput(ns("expand"), jsAccessor = "[0].id"),
-        onNodeCollapse = setInput(ns("collapse"), jsAccessor = "[0].id"),
-        onNodeClick = setInput(ns("click"), jsAccessor = "[0].id")
+        onNodeExpand = setInput(ns("expand")),
+        onNodeCollapse = setInput(ns("collapse")),
+        onNodeClick = setInput(ns("click"))
       )
     })
 

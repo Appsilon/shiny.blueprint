@@ -11,6 +11,20 @@
 #' @name component
 NULL
 
+#' Documentation template
+#'
+#' @param inputId The `input` slot that will be used to access the value.
+#' @param ... Component props and children. See the official Blueprint docs for details.
+#' @param value Initial value.
+#' @param session The Shiny session object.
+#'
+#' @return
+#' Object with `shiny.tag` class suitable for use in the UI of a Shiny app.
+#'
+#' @keywords internal
+#' @name shinyInput
+NULL
+
 component <- function(name) {
   function(...) {
     shiny.react::reactElement(
@@ -233,13 +247,17 @@ Divider <- component("Divider")
 #' Documentation: <https://blueprintjs.com/docs/#core/components/editable-text>
 #'
 #' @example inst/examples/EditableText.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 EditableText <- component("EditableText")
 
 #' @rdname EditableText
 #' @export
 EditableText.shinyInput <- input("EditableText", "") # nolint
+
+#' @rdname EditableText
+#' @export
+updateEditableText.shinyInput <- shiny.react::updateReactInput # nolint
 
 #' HTML elements
 #'
@@ -515,7 +533,7 @@ Label <- component("Label")
 #' Documentation: <https://blueprintjs.com/docs/#core/components/checkbox>
 #'
 #' @example inst/examples/Checkbox.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 Checkbox <- component("Checkbox")
 
@@ -523,12 +541,16 @@ Checkbox <- component("Checkbox")
 #' @export
 Checkbox.shinyInput <- input("Checkbox", FALSE) # nolint
 
+#' @rdname Checkbox
+#' @export
+updateCheckbox.shinyInput <- shiny.react::updateReactInput # nolint
+
 #' Radio
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/radio>
 #'
 #' @example inst/examples/Radio.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 Radio <- component("Radio")
 
@@ -540,12 +562,16 @@ RadioGroup <- component("RadioGroup")
 #' @export
 RadioGroup.shinyInput <- input("RadioGroup", NULL) # nolint
 
+#' @rdname Radio
+#' @export
+updateRadioGroup.shinyInput <- shiny.react::updateReactInput # nolint
+
 #' HTML select
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/html-select>
 #'
 #' @example inst/examples/HTMLSelect.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 HTMLSelect <- component("HTMLSelect")
 
@@ -553,12 +579,16 @@ HTMLSelect <- component("HTMLSelect")
 #' @export
 HTMLSelect.shinyInput <- input("HTMLSelect", "") # nolint
 
+#' @rdname HTMLSelect
+#' @export
+updateHTMLSelect.shinyInput <- shiny.react::updateReactInput # nolint
+
 #' Slider
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.slider>
 #'
 #' @example inst/examples/Slider.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 Slider <- component("Slider")
 
@@ -566,18 +596,26 @@ Slider <- component("Slider")
 #' @export
 Slider.shinyInput <- input("Slider", 0) # nolint
 
+#' @rdname Slider
+#' @export
+updateSlider.shinyInput <- shiny.react::updateReactInput # nolint
+
 #' Range slider
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/sliders.range-slider>
 #'
 #' @example inst/examples/Slider.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 RangeSlider <- component("RangeSlider")
 
 #' @rdname RangeSlider
 #' @export
 RangeSlider.shinyInput <- input("RangeSlider", c(0, 0)) # nolint
+
+#' @rdname RangeSlider
+#' @export
+updateRangeSlider.shinyInput <- shiny.react::updateReactInput # nolint
 
 #' Multi slider
 #'
@@ -605,13 +643,17 @@ MultiSliderHandle <- properties("MultiSliderHandle")
 #' Documentation: <https://blueprintjs.com/docs/#core/components/switch>
 #'
 #' @example inst/examples/Switch.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 Switch <- component("Switch")
 
 #' @rdname Switch
 #' @export
 Switch.shinyInput <- input("Switch", FALSE) # nolint
+
+#' @rdname Switch
+#' @export
+updateSwitch.shinyInput <- shiny.react::updateReactInput # nolint
 
 #' FileInput
 #'
@@ -631,7 +673,7 @@ FileInput.shinyInput <- input("FileInput", "") # nolint
 #' Documentation: <https://blueprintjs.com/docs/#core/components/numeric-input>
 #'
 #' @example inst/examples/NumericInput.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 NumericInput <- component("NumericInput")
 
@@ -639,18 +681,26 @@ NumericInput <- component("NumericInput")
 #' @export
 NumericInput.shinyInput <- input("NumericInput", 0) # nolint
 
+#' @rdname NumericInput
+#' @export
+updateNumericInput.shinyInput <- shiny.react::updateReactInput # nolint
+
 #' Input group
 #'
 #' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.input-group>
 #'
 #' @example inst/examples/InputGroup.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 InputGroup <- component("InputGroup")
 
 #' @rdname InputGroup
 #' @export
 InputGroup.shinyInput <- input("InputGroup", "") # nolint
+
+#' @rdname InputGroup
+#' @export
+updateInputGroup.shinyInput <- shiny.react::updateReactInput # nolint
 
 #' TagInput
 #'
@@ -670,13 +720,17 @@ TagInput.shinyInput <- input("TagInput", NULL) # nolint
 #' Documentation: <https://blueprintjs.com/docs/#core/components/text-inputs.text-area>
 #'
 #' @example inst/examples/TextArea.R
-#' @inherit component params return
+#' @inherit shinyInput params return
 #' @export
 TextArea <- component("TextArea")
 
 #' @rdname InputGroup
 #' @export
 TextArea.shinyInput <- input("TextArea", "") # nolint
+
+#' @rdname InputGroup
+#' @export
+updateTextArea.shinyInput <- shiny.react::updateReactInput # nolint
 
 #' Overlay
 #'

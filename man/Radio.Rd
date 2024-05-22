@@ -4,6 +4,7 @@
 \alias{Radio}
 \alias{RadioGroup}
 \alias{RadioGroup.shinyInput}
+\alias{updateRadioGroup.shinyInput}
 \title{Radio}
 \usage{
 Radio(...)
@@ -11,6 +12,12 @@ Radio(...)
 RadioGroup(...)
 
 RadioGroup.shinyInput(inputId, ..., value = defaultValue)
+
+updateRadioGroup.shinyInput(
+  session = shiny::getDefaultReactiveDomain(),
+  inputId,
+  ...
+)
 }
 \arguments{
 \item{...}{Component props and children. See the official Blueprint docs for details.}
@@ -18,6 +25,8 @@ RadioGroup.shinyInput(inputId, ..., value = defaultValue)
 \item{inputId}{The \code{input} slot that will be used to access the value.}
 
 \item{value}{Initial value.}
+
+\item{session}{The Shiny session object.}
 }
 \value{
 Object with \code{shiny.tag} class suitable for use in the UI of a Shiny app.
