@@ -6,9 +6,9 @@
     "test-e2e-interactive": "start-server-and-test run-showcase http://localhost:3333 'cypress open --e2e'"
   },
   "dependencies": {
-    "@blueprintjs/core": "5.10.2",
+    "@blueprintjs/core": "5.10.4",
     "@blueprintjs/popover2": "^2.1.4",
-    "@blueprintjs/select": "5.1.4",
+    "@blueprintjs/select": "5.2.0",
     "@popperjs/core": "^2.11.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
